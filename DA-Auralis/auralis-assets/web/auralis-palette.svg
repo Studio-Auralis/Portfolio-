@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 200" width="700" height="200"><rect width="700" height="200" rx="10" fill="#080B12"/><rect x="20" y="20" width="100" height="100" rx="10" fill="#080B12" stroke="#2A3140" stroke-width="1"/>
+<text x="70" y="145" text-anchor="middle" font-family="'Century Gothic','Futura','Josefin Sans',sans-serif" font-size="11" fill="#E8EAED">Deep Space</text>
+<text x="70" y="163" text-anchor="middle" font-family="monospace" font-size="10" fill="#00E5CC">#080B12</text>
+<text x="70" y="180" text-anchor="middle" font-family="'Century Gothic','Futura','Josefin Sans',sans-serif" font-size="8" fill="#5A6372">8, 11, 18</text>
+<rect x="130" y="20" width="100" height="100" rx="10" fill="#0D1117" stroke="#2A3140" stroke-width="1"/>
+<text x="180" y="145" text-anchor="middle" font-family="'Century Gothic','Futura','Josefin Sans',sans-serif" font-size="11" fill="#E8EAED">Dark Matter</text>
+<text x="180" y="163" text-anchor="middle" font-family="monospace" font-size="10" fill="#00E5CC">#0D1117</text>
+<text x="180" y="180" text-anchor="middle" font-family="'Century Gothic','Futura','Josefin Sans',sans-serif" font-size="8" fill="#5A6372">13, 17, 23</text>
+<rect x="240" y="20" width="100" height="100" rx="10" fill="#E8EAED"/>
+<text x="290" y="145" text-anchor="middle" font-family="'Century Gothic','Futura','Josefin Sans',sans-serif" font-size="11" fill="#E8EAED">Moonlight</text>
+<text x="290" y="163" text-anchor="middle" font-family="monospace" font-size="10" fill="#00E5CC">#E8EAED</text>
+<text x="290" y="180" text-anchor="middle" font-family="'Century Gothic','Futura','Josefin Sans',sans-serif" font-size="8" fill="#5A6372">232, 234, 237</text>
+<rect x="350" y="20" width="100" height="100" rx="10" fill="#00E5CC"/>
+<text x="400" y="145" text-anchor="middle" font-family="'Century Gothic','Futura','Josefin Sans',sans-serif" font-size="11" fill="#E8EAED">Aurora</text>
+<text x="400" y="163" text-anchor="middle" font-family="monospace" font-size="10" fill="#00E5CC">#00E5CC</text>
+<text x="400" y="180" text-anchor="middle" font-family="'Century Gothic','Futura','Josefin Sans',sans-serif" font-size="8" fill="#5A6372">0, 229, 204</text>
+<rect x="460" y="20" width="100" height="100" rx="10" fill="#00BFA6"/>
+<text x="510" y="145" text-anchor="middle" font-family="'Century Gothic','Futura','Josefin Sans',sans-serif" font-size="11" fill="#E8EAED">Aurora Deep</text>
+<text x="510" y="163" text-anchor="middle" font-family="monospace" font-size="10" fill="#00E5CC">#00BFA6</text>
+<text x="510" y="180" text-anchor="middle" font-family="'Century Gothic','Futura','Josefin Sans',sans-serif" font-size="8" fill="#5A6372">0, 191, 166</text>
+<rect x="570" y="20" width="100" height="100" rx="10" fill="#5A6372"/>
+<text x="620" y="145" text-anchor="middle" font-family="'Century Gothic','Futura','Josefin Sans',sans-serif" font-size="11" fill="#E8EAED">Nebula</text>
+<text x="620" y="163" text-anchor="middle" font-family="monospace" font-size="10" fill="#00E5CC">#5A6372</text>
+<text x="620" y="180" text-anchor="middle" font-family="'Century Gothic','Futura','Josefin Sans',sans-serif" font-size="8" fill="#5A6372">90, 99, 114</text>
+</svg>

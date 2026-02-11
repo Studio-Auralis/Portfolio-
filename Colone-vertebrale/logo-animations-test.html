@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Animations Logo Auralis</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: #0e1018;
+            font-family: 'Segoe UI', sans-serif;
+            color: #e8eaed;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00E5CC;
+            margin-bottom: 50px;
+            font-size: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #151820;
+            border: 1px solid #232738;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .card h2 {
+            color: #00E5CC;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .logo-container {
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0e1018;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .logo {
+            width: clamp(250px, 50vw, 400px);
+            height: auto;
+        }
+
+        /* Animation 1 : Rotation lente */
+        .anim-1 {
+            animation: rotate360 20s linear infinite;
+        }
+
+        @keyframes rotate360 {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Animation 2 : Flottement */
+        .anim-2 {
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(0, 229, 204, 0.5));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Animation 3 : Glitch Effect */
+        .anim-3 {
+            animation: glitch 2s infinite;
+            filter: drop-shadow(0 0 20px rgba(0, 229, 204, 0.6));
+        }
+
+        @keyframes glitch {
+            0%, 100% {
+                transform: translate(0);
+                filter: drop-shadow(0 0 20px rgba(0, 229, 204, 0.6));
+            }
+            10% {
+                transform: translate(-5px, 5px);
+                filter: drop-shadow(2px 0 20px rgba(0, 229, 204, 0.8))
+                        drop-shadow(-2px 0 20px rgba(255, 0, 255, 0.6));
+            }
+            20% {
+                transform: translate(5px, -5px);
+                filter: drop-shadow(-2px 0 20px rgba(0, 229, 204, 0.8))
+                        drop-shadow(2px 0 20px rgba(255, 255, 0, 0.6));
+            }
+            30% { transform: translate(0); }
+        }
+
+        /* Animation 4 : Rotation 3D */
+        .anim-4 {
+            animation: rotate3D 8s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(0, 229, 204, 0.5));
+        }
+
+        @keyframes rotate3D {
+            0%, 100% { transform: perspective(1000px) rotateY(0deg); }
+            50% { transform: perspective(1000px) rotateY(180deg); }
+        }
+
+        /* Animation 5 : Shimmer/Shine */
+        .anim-5 {
+            position: relative;
+            filter: drop-shadow(0 0 20px rgba(0, 229, 204, 0.4));
+        }
+
+        .anim-5::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(0, 229, 204, 0.3) 50%,
+                transparent 100%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Animation 6 : Neon Glow Static */
+        .anim-6 {
+            filter: drop-shadow(0 0 15px rgba(0, 229, 204, 0.6))
+                    drop-shadow(0 0 30px rgba(0, 229, 204, 0.4))
+                    drop-shadow(0 0 45px rgba(0, 229, 204, 0.2));
+        }
+
+        /* Animation 7 : Fade In/Out */
+        .anim-7 {
+            animation: fadeInOut 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 25px rgba(0, 229, 204, 0.5));
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* Animation 8 : Wave Effect */
+        .anim-8 {
+            animation: wave 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(0, 229, 204, 0.5));
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: translateX(0) rotate(0deg);
+            }
+            25% {
+                transform: translateX(-10px) rotate(-5deg);
+            }
+            75% {
+                transform: translateX(10px) rotate(5deg);
+            }
+        }
+
+        /* Animation 9 : Vibration */
+        .anim-9 {
+            animation: vibrate 0.3s linear infinite;
+            filter: drop-shadow(0 0 25px rgba(0, 229, 204, 0.6));
+        }
+
+        @keyframes vibrate {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-2px, 2px); }
+            50% { transform: translate(2px, -2px); }
+            75% { transform: translate(-2px, -2px); }
+        }
+
+        /* Animation 10 : Breathing (doux) */
+        .anim-10 {
+            animation: breathe 5s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(0, 229, 204, 0.4));
+        }
+
+        @keyframes breathe {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(0, 229, 204, 0.4));
+            }
+            50% {
+                filter: drop-shadow(0 0 40px rgba(0, 229, 204, 0.7));
+            }
+        }
+
+        /* Animation 11 : Tilt Perspective */
+        .anim-11 {
+            animation: tilt 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 25px rgba(0, 229, 204, 0.5));
+        }
+
+        @keyframes tilt {
+            0%, 100% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg); }
+            25% { transform: perspective(1000px) rotateX(10deg) rotateY(-10deg); }
+            75% { transform: perspective(1000px) rotateX(-10deg) rotateY(10deg); }
+        }
+
+        /* Animation 12 : Bounce */
+        .anim-12 {
+            animation: bounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(0, 229, 204, 0.5));
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            25% { transform: translateY(-30px); }
+            50% { transform: translateY(0); }
+            75% { transform: translateY(-15px); }
+        }
+
+        code {
+            display: block;
+            margin-top: 15px;
+            padding: 10px;
+            background: #0e1018;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #00BFA6;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 Test Animations Logo Auralis</h1>
+
+    <div class="grid">
+        <!-- Animation 1 -->
+        <div class="card">
+            <h2>1. Rotation Lente 360°</h2>
+            <div class="logo-container">
+                <img src="auralis-horizontal.svg" alt="Auralis" class="logo anim-1">
+            </div>
+            <code>animation: rotate360 20s linear infinite;</code>
+        </div>
+
+        <!-- Animation 2 -->
+        <div class="card">
+            <h2>2. Flottement Doux</h2>
+            <div class="logo-container">
+                <img src="auralis-horizontal.svg" alt="Auralis" class="logo anim-2">
+            </div>
+            <code>animation: float 4s ease-in-out infinite;</code>
+        </div>
+
+        <!-- Animation 3 -->
+        <div class="card">
+            <h2>3. Effet Glitch</h2>
+            <div class="logo-container">
+                <img src="auralis-horizontal.svg" alt="Auralis" class="logo anim-3">
+            </div>
+            <code>animation: glitch 2s infinite;</code>
+        </div>
+
+        <!-- Animation 4 -->
+        <div class="card">
+            <h2>4. Rotation 3D (Perspective)</h2>
+            <div class="logo-container">
+                <img src="auralis-horizontal.svg" alt="Auralis" class="logo anim-4">
+            </div>
+            <code>animation: rotate3D 8s ease-in-out infinite;</code>
+        </div>
+
+        <!-- Animation 5 -->
+        <div class="card">
+            <h2>5. Shimmer/Shine</h2>
+            <div class="logo-container">
+                <img src="auralis-horizontal.svg" alt="Auralis" class="logo anim-5">
+            </div>
+            <code>Effet de brillance qui traverse le logo</code>
+        </div>
+
+        <!-- Animation 6 -->
+        <div class="card">
+            <h2>6. Neon Glow Statique</h2>
+            <div class="logo-container">
+                <img src="auralis-horizontal.svg" alt="Auralis" class="logo anim-6">
+            </div>
+            <code>filter: drop-shadow(...) - Pas d'animation</code>
+        </div>
+
+        <!-- Animation 7 -->
+        <div class="card">
+            <h2>7. Fade In/Out</h2>
+            <div class="logo-container">
+                <img src="auralis-horizontal.svg" alt="Auralis" class="logo anim-7">
+            </div>
+            <code>animation: fadeInOut 3s ease-in-out infinite;</code>
+        </div>
+
+        <!-- Animation 8 -->
+        <div class="card">
+            <h2>8. Wave (Vague)</h2>
+            <div class="logo-container">
+                <img src="auralis-horizontal.svg" alt="Auralis" class="logo anim-8">
+            </div>
+            <code>animation: wave 4s ease-in-out infinite;</code>
+        </div>
+
+        <!-- Animation 9 -->
+        <div class="card">
+            <h2>9. Vibration</h2>
+            <div class="logo-container">
+                <img src="auralis-horizontal.svg" alt="Auralis" class="logo anim-9">
+            </div>
+            <code>animation: vibrate 0.3s linear infinite;</code>
+        </div>
+
+        <!-- Animation 10 -->
+        <div class="card">
+            <h2>10. Breathing (Respiration)</h2>
+            <div class="logo-container">
+                <img src="auralis-horizontal.svg" alt="Auralis" class="logo anim-10">
+            </div>
+            <code>animation: breathe 5s ease-in-out infinite;</code>
+        </div>
+
+        <!-- Animation 11 -->
+        <div class="card">
+            <h2>11. Tilt Perspective</h2>
+            <div class="logo-container">
+                <img src="auralis-horizontal.svg" alt="Auralis" class="logo anim-11">
+            </div>
+            <code>animation: tilt 6s ease-in-out infinite;</code>
+        </div>
+
+        <!-- Animation 12 -->
+        <div class="card">
+            <h2>12. Bounce (Rebond)</h2>
+            <div class="logo-container">
+                <img src="auralis-horizontal.svg" alt="Auralis" class="logo anim-12">
+            </div>
+            <code>animation: bounce 2s ease-in-out infinite;</code>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin: 50px 0; color: #5A6372;">
+        <p>Choisissez l'animation qui vous plaît le plus !</p>
+        <p style="font-size: 0.9rem;">Testez également sur mobile pour voir le rendu</p>
+    </div>
+</body>
+</html>

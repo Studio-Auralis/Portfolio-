@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title & Basic SEO -->
+    <title>Auralis - Développeur Web & IA | Automatisation & Agents Intelligents</title>
+    <meta name="description" content="Développeur Web & IA spécialisé en automatisation intelligente et agents IA. Expertise React, Python, n8n, LangChain et GPT. Solutions sur mesure.">
+    <meta name="keywords" content="développeur IA, automatisation, agents IA, React, Python, n8n, LangChain, GPT, Claude, développement web, intelligence artificielle, workflow automation, chatbot">
+    <meta name="author" content="Auralis">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="French">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://studio-auralis.github.io/">
+    <meta property="og:title" content="Auralis - Développeur Web & IA">
+    <meta property="og:description" content="Spécialiste en automatisation IA et agents intelligents. Création de solutions web innovantes et workflows automatisés.">
+    <meta property="og:image" content="https://studio-auralis.github.io/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Auralis Portfolio">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://studio-auralis.github.io/">
+    <meta name="twitter:title" content="Auralis - Développeur Web & IA">
+    <meta name="twitter:description" content="Spécialiste en automatisation IA et agents intelligents. Création de solutions web innovantes et workflows automatisés.">
+    <meta name="twitter:image" content="https://studio-auralis.github.io/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="apple-touch-icon.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://studio-auralis.github.io/">
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#080B12">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Auralis",
+      "jobTitle": "Développeur Web & Intelligence Artificielle",
+      "description": "Spécialiste en automatisation IA, développement web et création d'agents intelligents",
+      "url": "https://studio-auralis.github.io/",
+      "image": "https://studio-auralis.github.io/auralis-horizontal.svg",
+      "sameAs": [
+        "https://github.com/Studio-Auralis"
+      ],
+      "knowsAbout": [
+        "Développement Web",
+        "Intelligence Artificielle",
+        "Automatisation",
+        "React",
+        "Python",
+        "n8n",
+        "LangChain",
+        "GPT",
+        "Claude AI"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Développement Web & IA",
+          "description": "Création de sites web modernes, automatisation de processus métier et développement d'agents IA"
+        }
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Fond cosmique 3D -->
+    <div id="cosmos">
+        <canvas id="starfield"></canvas>
+        <canvas id="three-scene"></canvas>
+        <div class="neb neb-1"></div>
+        <div class="neb neb-2"></div>
+        <div class="neb neb-3"></div>
+        <div class="vignette"></div>
+        <div class="grain"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-text-dev">DÉVELOPPEUR</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">Accueil</a></li>
+            <li><a href="#services" class="nav-link">Services</a></li>
+            <li><a href="#projects" class="nav-link">Projets</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="glitch-wrapper">
+                <img src="auralis-horizontal.svg" alt="Auralis - Développeur Web & IA" class="hero-logo-main" width="320" height="60">
+            </div>
+            <h1 class="hero-subtitle">
+                <span class="typing-text"></span>
+                <span class="cursor">|</span>
+            </h1>
+            <p class="hero-description">
+                Création d'expériences web innovantes & solutions d'intelligence artificielle
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <span class="btn-text">Voir mes projets</span>
+                    <span class="btn-icon">→</span>
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <span class="btn-text">Me contacter</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="orbit-container">
+                <div class="planet">
+                    <div class="robot">
+                        <div class="robot-head">
+                            <div class="antenna"></div>
+                            <div class="robot-eyes">
+                                <div class="eye eye-left">
+                                    <div class="pupil"></div>
+                                </div>
+                                <div class="eye eye-right">
+                                    <div class="pupil"></div>
+                                </div>
+                            </div>
+                            <div class="robot-mouth"></div>
+                        </div>
+                        <div class="robot-body">
+                            <div class="body-light"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="orbit orbit-1">
+                    <div class="satellite"></div>
+                </div>
+                <div class="orbit orbit-2">
+                    <div class="satellite"></div>
+                </div>
+                <div class="orbit orbit-3">
+                    <div class="satellite"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-header">
+            <span class="section-tag">// SERVICES</span>
+            <h2 class="section-title">Mes Expertises</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3>Développement Web</h3>
+                <p>Sites web modernes, responsive et performants. Applications web sur mesure avec les dernières technologies.</p>
+                <div class="service-tags">
+                    <span>React</span>
+                    <span>Next.js</span>
+                    <span>Node.js</span>
+                </div>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+                    </svg>
+                </div>
+                <h3>Automatisation IA</h3>
+                <p>Automatisation intelligente de vos processus métier. Intégration d'IA pour optimiser votre productivité.</p>
+                <div class="service-tags">
+                    <span>Python</span>
+                    <span>OpenAI</span>
+                    <span>LangChain</span>
+                </div>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
+                        <path d="M20 12a8 8 0 0 0-8-8v8h8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+                <h3>Création d'Agents IA</h3>
+                <p>Développement d'agents intelligents autonomes. Chatbots avancés et assistants virtuels personnalisés.</p>
+                <div class="service-tags">
+                    <span>GPT</span>
+                    <span>Claude</span>
+                    <span>RAG</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-header">
+            <span class="section-tag">// PORTFOLIO</span>
+            <h2 class="section-title">Mes Projets</h2>
+        </div>
+        <div class="projects-filter">
+            <button class="filter-btn active" data-filter="all">Tous</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="ia">IA</button>
+            <button class="filter-btn" data-filter="agent">Agents</button>
+        </div>
+        <div class="projects-grid">
+            <!-- Project Card 1 -->
+            <div class="project-card" data-category="web">
+                <div class="project-video">
+                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project1.mp4" type="video/mp4"></video> -->
+                    <div class="video-overlay">
+                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="project-placeholder">
+                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="18" stroke="#00E5CC" stroke-width="1.5"/>
+                            <circle cx="32" cy="32" r="12" stroke="#00BFA6" stroke-width="1.5"/>
+                            <line x1="14" y1="32" x2="50" y2="32" stroke="#00E5CC" stroke-width="1.5"/>
+                            <path d="M32 14 Q38 32 32 50" stroke="#00E5CC" stroke-width="1.5" fill="none"/>
+                            <path d="M32 14 Q26 32 32 50" stroke="#00E5CC" stroke-width="1.5" fill="none"/>
+                            <circle cx="32" cy="14" r="2" fill="#00E5CC"/>
+                            <circle cx="32" cy="50" r="2" fill="#00E5CC"/>
+                            <circle cx="14" cy="32" r="2" fill="#00E5CC"/>
+                            <circle cx="50" cy="32" r="2" fill="#00E5CC"/>
+                        </svg>
+                        <span>Projet Web</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Site Aménagement Extérieur 63</h3>
+                    <p>Site web moderne pour entreprise d'aménagement paysager et extérieur.</p>
+                    <div class="project-tech">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://studio-auralis.github.io/Site-Web-Am-nagement-Ext-rieur-63-/" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Voir
+                        </a>
+                        <a href="https://github.com/Studio-Auralis/Site-Web-Am-nagement-Ext-rieur-63-" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="project-card" data-category="ia">
+                <div class="project-video">
+                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project2.mp4" type="video/mp4"></video> -->
+                    <div class="video-overlay">
+                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="project-placeholder">
+                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="10" stroke="#00E5CC" stroke-width="1.5"/>
+                            <circle cx="32" cy="32" r="4" fill="#00BFA6"/>
+                            <g transform="rotate(0 32 32)">
+                                <rect x="30" y="16" width="4" height="8" fill="#00E5CC"/>
+                                <circle cx="32" cy="16" r="3" stroke="#00E5CC" stroke-width="1.5" fill="none"/>
+                            </g>
+                            <g transform="rotate(120 32 32)">
+                                <rect x="30" y="16" width="4" height="8" fill="#00E5CC"/>
+                                <circle cx="32" cy="16" r="3" stroke="#00E5CC" stroke-width="1.5" fill="none"/>
+                            </g>
+                            <g transform="rotate(240 32 32)">
+                                <rect x="30" y="16" width="4" height="8" fill="#00E5CC"/>
+                                <circle cx="32" cy="16" r="3" stroke="#00E5CC" stroke-width="1.5" fill="none"/>
+                            </g>
+                            <path d="M 32 32 L 40 24" stroke="#00BFA6" stroke-width="1.5"/>
+                            <path d="M 32 32 L 24 40" stroke="#00BFA6" stroke-width="1.5"/>
+                        </svg>
+                        <span>Automatisation IA</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Automatisation IA</h3>
+                    <p>Système d'automatisation intelligent pour optimiser les workflows.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>OpenAI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Voir
+                        </a>
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="project-card" data-category="agent">
+                <div class="project-video">
+                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project3.mp4" type="video/mp4"></video> -->
+                    <div class="video-overlay">
+                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="project-placeholder">
+                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Layer 1 -->
+                            <circle cx="18" cy="24" r="3" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
+                            <circle cx="18" cy="40" r="3" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
+                            <!-- Layer 2 -->
+                            <circle cx="32" cy="18" r="3" stroke="#00BFA6" stroke-width="1.5" fill="#0D1117"/>
+                            <circle cx="32" cy="32" r="3" stroke="#00BFA6" stroke-width="1.5" fill="#0D1117"/>
+                            <circle cx="32" cy="46" r="3" stroke="#00BFA6" stroke-width="1.5" fill="#0D1117"/>
+                            <!-- Layer 3 -->
+                            <circle cx="46" cy="24" r="3" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
+                            <circle cx="46" cy="40" r="3" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
+                            <!-- Connections -->
+                            <line x1="18" y1="24" x2="32" y2="18" stroke="#00E5CC" stroke-width="1" opacity="0.5"/>
+                            <line x1="18" y1="24" x2="32" y2="32" stroke="#00E5CC" stroke-width="1" opacity="0.5"/>
+                            <line x1="18" y1="40" x2="32" y2="32" stroke="#00E5CC" stroke-width="1" opacity="0.5"/>
+                            <line x1="18" y1="40" x2="32" y2="46" stroke="#00E5CC" stroke-width="1" opacity="0.5"/>
+                            <line x1="32" y1="18" x2="46" y2="24" stroke="#00E5CC" stroke-width="1" opacity="0.5"/>
+                            <line x1="32" y1="32" x2="46" y2="24" stroke="#00E5CC" stroke-width="1" opacity="0.5"/>
+                            <line x1="32" y1="32" x2="46" y2="40" stroke="#00E5CC" stroke-width="1" opacity="0.5"/>
+                            <line x1="32" y1="46" x2="46" y2="40" stroke="#00E5CC" stroke-width="1" opacity="0.5"/>
+                        </svg>
+                        <span>Agent IA</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Agent IA Autonome</h3>
+                    <p>Agent intelligent capable d'effectuer des tâches complexes de manière autonome.</p>
+                    <div class="project-tech">
+                        <span>LangChain</span>
+                        <span>GPT-4</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Voir
+                        </a>
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 4 -->
+            <div class="project-card" data-category="web">
+                <div class="project-video">
+                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project4.mp4" type="video/mp4"></video> -->
+                    <div class="video-overlay">
+                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="project-placeholder">
+                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="28" stroke="#00E5CC" stroke-width="2" opacity="0.2"/>
+                            <rect x="14" y="18" width="36" height="24" rx="2" fill="url(#grad4)" stroke="#00E5CC" stroke-width="1.5"/>
+                            <rect x="16" y="20" width="32" height="18" fill="#0D1117"/>
+                            <line x1="24" y1="26" x2="34" y2="26" stroke="#00E5CC" stroke-width="1"/>
+                            <line x1="24" y1="30" x2="40" y2="30" stroke="#00BFA6" stroke-width="1"/>
+                            <line x1="24" y1="34" x2="36" y2="34" stroke="#00E5CC" stroke-width="1"/>
+                            <rect x="22" y="44" width="20" height="2" rx="1" fill="#00E5CC"/>
+                            <defs>
+                                <linearGradient id="grad4" x1="14" y1="18" x2="50" y2="42">
+                                    <stop offset="0%" stop-color="#00E5CC" stop-opacity="0.4"/>
+                                    <stop offset="100%" stop-color="#00BFA6" stop-opacity="0.2"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>Application Web</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Application Web</h3>
+                    <p>Application web complète avec authentification et base de données.</p>
+                    <div class="project-tech">
+                        <span>Next.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Voir
+                        </a>
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 5 -->
+            <div class="project-card" data-category="ia">
+                <div class="project-video">
+                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project5.mp4" type="video/mp4"></video> -->
+                    <div class="video-overlay">
+                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="project-placeholder">
+                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Nodes -->
+                            <rect x="14" y="14" width="10" height="10" rx="2" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
+                            <circle cx="32" cy="19" r="5" stroke="#00BFA6" stroke-width="1.5" fill="#0D1117"/>
+                            <rect x="40" y="14" width="10" height="10" rx="2" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
+                            <circle cx="19" cy="45" r="5" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
+                            <rect x="27" y="40" width="10" height="10" rx="2" stroke="#00BFA6" stroke-width="1.5" fill="#0D1117"/>
+                            <circle cx="45" cy="45" r="5" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
+                            <!-- Arrows -->
+                            <line x1="24" y1="19" x2="27" y2="19" stroke="#00E5CC" stroke-width="1.5"/>
+                            <polygon points="27,19 24,17 24,21" fill="#00E5CC"/>
+                            <line x1="37" y1="19" x2="40" y2="19" stroke="#00E5CC" stroke-width="1.5"/>
+                            <polygon points="40,19 37,17 37,21" fill="#00E5CC"/>
+                            <line x1="19" y1="30" x2="19" y2="40" stroke="#00E5CC" stroke-width="1.5"/>
+                            <polygon points="19,40 17,37 21,37" fill="#00E5CC"/>
+                            <line x1="32" y1="24" x2="32" y2="40" stroke="#00BFA6" stroke-width="1.5"/>
+                            <polygon points="32,40 30,37 34,37" fill="#00BFA6"/>
+                            <line x1="45" y1="24" x2="45" y2="40" stroke="#00E5CC" stroke-width="1.5"/>
+                            <polygon points="45,40 43,37 47,37" fill="#00E5CC"/>
+                            <line x1="24" y1="45" x2="27" y2="45" stroke="#00E5CC" stroke-width="1.5"/>
+                            <polygon points="27,45 24,43 24,47" fill="#00E5CC"/>
+                            <line x1="37" y1="45" x2="40" y2="45" stroke="#00E5CC" stroke-width="1.5"/>
+                            <polygon points="40,45 37,43 37,47" fill="#00E5CC"/>
+                        </svg>
+                        <span>Workflow IA</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Workflow Automatisé</h3>
+                    <p>Système de workflow automatisé avec intégration d'APIs et IA.</p>
+                    <div class="project-tech">
+                        <span>n8n</span>
+                        <span>Claude</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="workflow-demo.html" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Voir
+                        </a>
+                        <a href="https://github.com/votre-github" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 6 -->
+            <div class="project-card" data-category="agent">
+                <div class="project-video">
+                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project6.mp4" type="video/mp4"></video> -->
+                    <div class="video-overlay">
+                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="project-placeholder">
+                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="28" stroke="#00E5CC" stroke-width="2" opacity="0.2"/>
+                            <rect x="16" y="20" width="32" height="24" rx="4" fill="url(#grad6)" stroke="#00E5CC" stroke-width="1.5"/>
+                            <path d="M28 44L32 48L36 44" fill="url(#grad6)" stroke="#00E5CC" stroke-width="1.5" stroke-linejoin="round"/>
+                            <circle cx="25" cy="30" r="2" fill="#E8EAED"/>
+                            <circle cx="32" cy="30" r="2" fill="#E8EAED"/>
+                            <circle cx="39" cy="30" r="2" fill="#E8EAED"/>
+                            <line x1="22" y1="36" x2="42" y2="36" stroke="#00BFA6" stroke-width="1" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="grad6" x1="16" y1="20" x2="48" y2="48">
+                                    <stop offset="0%" stop-color="#00E5CC" stop-opacity="0.3"/>
+                                    <stop offset="100%" stop-color="#00BFA6" stop-opacity="0.1"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>Chatbot IA</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Chatbot Avancé</h3>
+                    <p>Chatbot intelligent avec mémoire contextuelle et RAG.</p>
+                    <div class="project-tech">
+                        <span>RAG</span>
+                        <span>Pinecone</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Voir
+                        </a>
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-header">
+            <span class="section-tag">// CONTACT</span>
+            <h2 class="section-title">Travaillons Ensemble</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p class="contact-description">
+                    Vous avez un projet en tête ? Une idée à concrétiser ? 
+                    N'hésitez pas à me contacter pour en discuter.
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:votre@email.com" class="contact-link">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <span>votre@email.com</span>
+                    </a>
+                    <a href="https://github.com/votre-github" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </div>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com/in/votre-linkedin" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </div>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" required>
+                    <label for="name">Nom</label>
+                    <div class="form-line"></div>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email</label>
+                    <div class="form-line"></div>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <label for="message">Message</label>
+                    <div class="form-line"></div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-submit">
+                    <span class="btn-text">Envoyer</span>
+                    <span class="btn-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                    </span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="auralis-horizontal.svg" alt="Auralis" class="footer-logo-img" width="160" height="30" loading="lazy">
+            </div>
+            <p class="footer-text">© 2026 Auralis - Tous droits réservés</p>
+            <div class="footer-links">
+                <a href="https://github.com/votre-github" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/votre-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Cosmos 3D Background Scripts -->
+    <script src="cosmos-3d.js"></script>
+    <script src="starfield-2d.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
