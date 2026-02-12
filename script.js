@@ -6,14 +6,22 @@ const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 const navLinksItems = document.querySelectorAll('.nav-link');
 
-// Scroll effect for navbar
+// Scroll effect for navbar (throttled)
+let scrollTicking = false;
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+    if (!scrollTicking) {
+        scrollTicking = true;
+        requestAnimationFrame(() => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            setActiveLink();
+            scrollTicking = false;
+        });
     }
-});
+}, { passive: true });
 
 // Mobile menu toggle
 hamburger.addEventListener('click', () => {
@@ -48,7 +56,7 @@ function setActiveLink() {
     });
 }
 
-window.addEventListener('scroll', setActiveLink);
+// setActiveLink is now called inside the throttled scroll handler above
 
 // ============================================
 // TYPING EFFECT
@@ -277,9 +285,18 @@ const createCustomCursor = () => {
     cursor.innerHTML = '<img src="cursor-arrow.svg" alt="" class="cursor-arrow">';
     document.body.appendChild(cursor);
 
-    // Use CSS transform for better performance
+    // Use rAF for smooth cursor updates
+    let cursorX = 0, cursorY = 0, rafPending = false;
     document.addEventListener('mousemove', (e) => {
-        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        cursorX = e.clientX;
+        cursorY = e.clientY;
+        if (!rafPending) {
+            rafPending = true;
+            requestAnimationFrame(() => {
+                cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+                rafPending = false;
+            });
+        }
     }, { passive: true });
 
     // Detect hover on clickable elements
@@ -294,7 +311,7 @@ const createCustomCursor = () => {
         });
     });
 
-    // Add styles for custom cursor (optimized)
+    // Add styles for custom cursor (optimized - no heavy filters)
     const cursorStyle = document.createElement('style');
     cursorStyle.textContent = `
         .custom-cursor {
@@ -304,14 +321,15 @@ const createCustomCursor = () => {
             pointer-events: none;
             z-index: 10001;
             will-change: transform;
+            contain: layout style;
         }
 
         .cursor-arrow {
             width: 24px;
             height: 32px;
             display: block;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 6px rgba(0, 229, 204, 0.6));
-            transition: transform 0.15s ease;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+            transition: transform 0.1s ease;
         }
 
         .custom-cursor.cursor-hover .cursor-arrow {
@@ -346,27 +364,24 @@ const robot = document.querySelector('.robot');
 const pupils = document.querySelectorAll('.pupil');
 
 if (robot && pupils.length > 0) {
+    let eyeRaf = false;
     document.addEventListener('mousemove', (e) => {
-        const robotRect = robot.getBoundingClientRect();
-        const robotCenterX = robotRect.left + robotRect.width / 2;
-        const robotCenterY = robotRect.top + robotRect.height / 2;
-
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-
-        // Calculate angle between robot and cursor
-        const angle = Math.atan2(mouseY - robotCenterY, mouseX - robotCenterX);
-
-        // Maximum distance pupils can move from center
-        const maxDistance = 4;
-
-        pupils.forEach(pupil => {
+        if (eyeRaf) return;
+        eyeRaf = true;
+        requestAnimationFrame(() => {
+            const robotRect = robot.getBoundingClientRect();
+            const robotCenterX = robotRect.left + robotRect.width / 2;
+            const robotCenterY = robotRect.top + robotRect.height / 2;
+            const angle = Math.atan2(e.clientY - robotCenterY, e.clientX - robotCenterX);
+            const maxDistance = 4;
             const moveX = Math.cos(angle) * maxDistance;
             const moveY = Math.sin(angle) * maxDistance;
-
-            pupil.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
+            pupils.forEach(pupil => {
+                pupil.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
+            });
+            eyeRaf = false;
         });
-    });
+    }, { passive: true });
 }
 
 // ============================================

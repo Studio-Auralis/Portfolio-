@@ -136,9 +136,9 @@
     return new THREE.Points(geo, mat);
   }
 
-  var dust1 = mkDust(700, 0x00E5CC, 0.06, 0.3, 65); scene.add(dust1);
-  var dust2 = mkDust(400, 0xE8EAED, 0.04, 0.18, 55); scene.add(dust2);
-  var dust3 = mkDust(200, 0x00BFA6, 0.08, 0.15, 50); scene.add(dust3);
+  var dust1 = mkDust(400, 0x00E5CC, 0.06, 0.3, 65); scene.add(dust1);
+  var dust2 = mkDust(200, 0xE8EAED, 0.04, 0.18, 55); scene.add(dust2);
+  var dust3 = mkDust(100, 0x00BFA6, 0.08, 0.15, 50); scene.add(dust3);
 
   /* ═══════════════════════════════════════════
      MOUSE + SCROLL TRACKING
