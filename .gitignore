@@ -29,6 +29,22 @@ npm-debug.log*
 
 # Screenshots (temp)
 chatbot-demo-test.png
+*-test.png
+*-final.png
+*-logo.png
+*-check.png
+portfolio-home.png
+logoooo.png
+logooo.png
+barre24.png
+featured-*.png
+navbar-test.png
+pagegit.png
+perf-*.png
+projects-*.png
+desktop-*.png
+tablet-*.png
+mobile-*.png
 
 # Private keys & certificates
 *.pem
@@ -40,6 +56,22 @@ chatbot-demo-test.png
 # Secrets
 secrets.*
 credentials.*
+*.secret
+api_keys.*
+token.*
+
+# Config sensible
+config.local.*
+*.local.json
+*.local.yaml
+
+# Dossiers sensibles
+private/
+secrets/
+.credentials/
+backup/
 
 # Temp
 nul
+*.tmp
+*.bak

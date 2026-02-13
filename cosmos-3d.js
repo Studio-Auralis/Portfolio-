@@ -1,12 +1,12 @@
 // ═══════════════════════════════════════════
-// THREE.JS — 3D COSMOS SCENE
+// THREE.JS — 3D COSMOS SCENE (Performance Optimized)
 // ═══════════════════════════════════════════
 (function() {
 
-  /* ── RENDERER ── */
+  /* ── RENDERER (no antialias for performance) ── */
   var canvas = document.getElementById('three-scene');
-  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
   renderer.setSize(window.innerWidth, window.innerHeight);
 
   var scene = new THREE.Scene();
@@ -34,7 +34,7 @@
   scene.add(wireShell);
 
   var glowMat = new THREE.MeshBasicMaterial({ color: 0x00E5CC, transparent: true, opacity: 0.035 });
-  var glowSphere = new THREE.Mesh(new THREE.SphereGeometry(1.3, 32, 32), glowMat);
+  var glowSphere = new THREE.Mesh(new THREE.SphereGeometry(1.3, 16, 16), glowMat);
   scene.add(glowSphere);
 
   /* ═══════════════════════════════════════════
@@ -45,14 +45,14 @@
       color: 0x00E5CC, emissive: 0x00E5CC, emissiveIntensity: em,
       transparent: true, opacity: op, roughness: 0.15, metalness: 0.9, side: THREE.DoubleSide
     });
-    return new THREE.Mesh(new THREE.TorusGeometry(r, tube, 16, 220), m);
+    return new THREE.Mesh(new THREE.TorusGeometry(r, tube, 12, 100), m);
   }
   var r1 = mkRing(4.8, 0.022, 0.28, 0.18); r1.rotation.x = Math.PI * 0.42; r1.rotation.z = 0.3; scene.add(r1);
   var r2 = mkRing(5.6, 0.014, 0.14, 0.08); r2.rotation.x = Math.PI * 0.42; r2.rotation.z = 0.3; scene.add(r2);
   var r3 = mkRing(3.8, 0.018, 0.18, 0.12); r3.rotation.x = Math.PI * 0.6; r3.rotation.z = -0.4; scene.add(r3);
 
   /* ═══════════════════════════════════════════
-     ORBITING PARTICLES
+     ORBITING PARTICLES (reduced count)
      ═══════════════════════════════════════════ */
   var orbiters = [];
   function mkOrbiters(n, rr, tx, tz) {
@@ -62,7 +62,7 @@
         color: Math.random() > 0.3 ? 0x00E5CC : 0xE8EAED,
         transparent: true, opacity: 0.2 + Math.random() * 0.5
       });
-      var m = new THREE.Mesh(new THREE.SphereGeometry(sz, 6, 6), mat);
+      var m = new THREE.Mesh(new THREE.SphereGeometry(sz, 4, 4), mat);
       scene.add(m);
       orbiters.push({
         mesh: m,
@@ -75,11 +75,11 @@
       });
     }
   }
-  mkOrbiters(30, 4.8, Math.PI * 0.42, 0.3);
-  mkOrbiters(15, 3.8, Math.PI * 0.6, -0.4);
+  mkOrbiters(20, 4.8, Math.PI * 0.42, 0.3);
+  mkOrbiters(10, 3.8, Math.PI * 0.6, -0.4);
 
   /* ═══════════════════════════════════════════
-     FLOATING GEOMETRY (octahedra + tetrahedra)
+     FLOATING GEOMETRY (reduced to 8)
      ═══════════════════════════════════════════ */
   var floaters = [];
   var geoTypes = [
@@ -88,7 +88,7 @@
     function(s) { return new THREE.IcosahedronGeometry(s, 0); }
   ];
 
-  for (var i = 0; i < 12; i++) {
+  for (var i = 0; i < 8; i++) {
     var sz = 0.1 + Math.random() * 0.35;
     var geo = geoTypes[Math.floor(Math.random() * geoTypes.length)](sz);
     var useWire = Math.random() > 0.45;
@@ -118,7 +118,7 @@
   }
 
   /* ═══════════════════════════════════════════
-     PARTICLE DUST (2 layers)
+     PARTICLE DUST (reduced counts)
      ═══════════════════════════════════════════ */
   function mkDust(count, color, size, opacity, spread) {
     var pos = new Float32Array(count * 3);
@@ -136,9 +136,9 @@
     return new THREE.Points(geo, mat);
   }
 
-  var dust1 = mkDust(400, 0x00E5CC, 0.06, 0.3, 65); scene.add(dust1);
-  var dust2 = mkDust(200, 0xE8EAED, 0.04, 0.18, 55); scene.add(dust2);
-  var dust3 = mkDust(100, 0x00BFA6, 0.08, 0.15, 50); scene.add(dust3);
+  var dust1 = mkDust(250, 0x00E5CC, 0.06, 0.3, 65); scene.add(dust1);
+  var dust2 = mkDust(120, 0xE8EAED, 0.04, 0.18, 55); scene.add(dust2);
+  var dust3 = mkDust(80, 0x00BFA6, 0.08, 0.15, 50); scene.add(dust3);
 
   /* ═══════════════════════════════════════════
      MOUSE + SCROLL TRACKING
@@ -147,7 +147,7 @@
   document.addEventListener('mousemove', function(e) {
     tmx = (e.clientX / window.innerWidth - 0.5) * 2;
     tmy = (e.clientY / window.innerHeight - 0.5) * 2;
-  });
+  }, { passive: true });
 
   var scrollProgress = 0;
   function getMaxScroll() {
@@ -159,18 +159,39 @@
   }, { passive: true });
 
   /* ═══════════════════════════════════════════
-     ANIMATION LOOP
+     VISIBILITY & THROTTLE CONTROLS
+     ═══════════════════════════════════════════ */
+  var isPageVisible = true;
+  document.addEventListener('visibilitychange', function() {
+    isPageVisible = !document.hidden;
+    if (isPageVisible) lastFrameTime = 0;
+  });
+
+  // Target ~30fps for smooth but efficient rendering
+  var FRAME_INTERVAL = 1000 / 30;
+  var lastFrameTime = 0;
+
+  /* ═══════════════════════════════════════════
+     ANIMATION LOOP (throttled to ~30fps)
      ═══════════════════════════════════════════ */
   var clock = new THREE.Clock();
 
-  function animate() {
+  function animate(now) {
     requestAnimationFrame(animate);
+
+    // Skip if page not visible
+    if (!isPageVisible) return;
+
+    // Throttle to ~30fps
+    if (now - lastFrameTime < FRAME_INTERVAL) return;
+    lastFrameTime = now;
+
     var t = clock.getElapsedTime();
     var sp = scrollProgress; // 0 → 1
 
     // Smooth mouse
-    mx += (tmx - mx) * 0.02;
-    my += (tmy - my) * 0.02;
+    mx += (tmx - mx) * 0.04;
+    my += (tmy - my) * 0.04;
 
     // Camera: mouse parallax + scroll drift lent
     camera.position.x = mx * 1.5 + Math.sin(sp * Math.PI * 0.5) * 2;
@@ -235,13 +256,17 @@
 
     renderer.render(scene, camera);
   }
-  animate();
+  requestAnimationFrame(animate);
 
-  /* ── RESIZE ── */
+  /* ── RESIZE (debounced) ── */
+  var resizeTimer;
   window.addEventListener('resize', function() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }, 150);
   });
 
   /* ── REDUCED MOTION ── */

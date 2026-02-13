@@ -408,6 +408,23 @@ document.querySelectorAll('.project-card').forEach(card => {
 });
 
 // ============================================
+// LAZY-LOAD IFRAME
+// ============================================
+(function() {
+    const iframe = document.querySelector('.featured-preview iframe[data-src]');
+    if (!iframe) return;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                iframe.src = iframe.dataset.src;
+                observer.unobserve(iframe);
+            }
+        });
+    }, { rootMargin: '200px 0px' });
+    observer.observe(iframe);
+})();
+
+// ============================================
 // CONSOLE EASTER EGG
 // ============================================
 console.log('%c🚀 Portfolio Dev & IA', 'font-size: 24px; font-weight: bold; color: #00f5ff;');
