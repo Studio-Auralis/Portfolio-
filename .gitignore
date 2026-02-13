@@ -21,5 +21,14 @@ desktop.ini
 *.log
 npm-debug.log*
 
+# Claude Code
+.claude/
+
+# Playwright MCP
+.playwright-mcp/
+
+# Screenshots (temp)
+chatbot-demo-test.png
+
 # Temp
 nul
