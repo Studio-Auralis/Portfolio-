@@ -113,7 +113,8 @@ filterBtns.forEach(btn => {
         const filter = btn.dataset.filter;
 
         projectCards.forEach(card => {
-            if (filter === 'all' || card.dataset.category === filter) {
+            const categories = card.dataset.category.split(' ');
+            if (filter === 'all' || categories.includes(filter)) {
                 card.classList.remove('hidden');
                 card.style.animation = 'fadeIn 0.5s ease forwards';
             } else {
