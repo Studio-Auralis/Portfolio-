@@ -30,5 +30,16 @@ npm-debug.log*
 # Screenshots (temp)
 chatbot-demo-test.png
 
+# Private keys & certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+
+# Secrets
+secrets.*
+credentials.*
+
 # Temp
 nul
