@@ -819,6 +819,10 @@
             .chat-panel-mobile-handle { display: none; }
         }
 
+        @media (max-width: 768px) {
+            .chat-btn-wrapper.chat-open { display: none; }
+        }
+
         /* Hidden utility */
         .hidden { display: none !important; }
     </style>
@@ -1205,6 +1209,7 @@
         function openChat() {
             isOpen = true;
             chatPanel.classList.remove('hidden', 'closing');
+            chatBtnWrapper.classList.add('chat-open');
             chatPulseRing.classList.add('hidden');
             chatNotifDot.classList.add('hidden');
             chatIconOpen.classList.add('hidden');
@@ -1222,6 +1227,7 @@
         function closeChat() {
             isOpen = false;
             chatPanel.classList.add('closing');
+            chatBtnWrapper.classList.remove('chat-open');
             chatIconClose.classList.add('hidden');
             chatIconOpen.classList.remove('hidden');
             chatBtn.setAttribute('aria-label', 'Ouvrir le chat');
