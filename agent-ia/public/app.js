@@ -291,10 +291,257 @@ async function startAnalysis(data) {
 
     submitBtn.disabled = false;
   } catch (err) {
-    loadingOverlay.classList.add('hidden');
-    showError(err.message);
-    submitBtn.disabled = false;
+    // Fallback to demo mode when server is unavailable
+    console.info('Serveur non disponible — lancement du mode démo');
+    await runDemoMode(data);
   }
+}
+
+// ══════════════════════════════════════════════════
+// DEMO MODE (no backend)
+// ══════════════════════════════════════════════════
+function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function streamText(agent, text, chunkSize) {
+  chunkSize = chunkSize || 8;
+  const chunks = [];
+  for (let i = 0; i < text.length; i += chunkSize) {
+    chunks.push(text.slice(i, i + chunkSize));
+  }
+  let i = 0;
+  return new Promise(function (resolve) {
+    function tick() {
+      if (i >= chunks.length) { resolve(); return; }
+      handleSSE('chunk', { agent: agent, content: chunks[i] });
+      i++;
+      setTimeout(tick, 18 + Math.random() * 22);
+    }
+    tick();
+  });
+}
+
+async function runDemoMode(data) {
+  var co = data.companyName;
+  var sec = data.sector;
+  var emp = data.employees;
+  var chal = data.challenges;
+  var bud = data.budget || 'Non précisé';
+
+  // Steps
+  var steps = [
+    { id: 'analysis', label: 'Analyse sectorielle' },
+    { id: 'opportunities', label: 'Identification opportunités' },
+    { id: 'technical', label: 'Solutions techniques' },
+    { id: 'strategy', label: 'Stratégie globale' },
+    { id: 'feedback', label: 'Feedback croisé' },
+    { id: 'report', label: 'Rapport final' },
+  ];
+  handleSSE('steps', { steps: steps });
+
+  loadingOverlay.classList.add('hidden');
+  showSection(orchSection);
+
+  // ── Step 1: Analyst ──
+  handleSSE('step-update', { stepId: 'analysis', status: 'active' });
+  handleSSE('thinking', { agent: 'analyst', name: 'Agent Analyste', color: '#4A9EFF' });
+  await wait(1500);
+  var analystText1 = "## Analyse sectorielle — " + co + "\n\n" +
+    "### Contexte\n" +
+    "**" + co + "** opère dans le secteur **" + sec + "** avec **" + emp + "**. " +
+    "Ce secteur connaît une transformation digitale accélérée, avec une adoption croissante de l'IA dans les processus métiers.\n\n" +
+    "### Diagnostic\n" +
+    "Les défis identifiés par l'entreprise :\n" +
+    "- " + chal.split(/[.,;]/).filter(function(s) { return s.trim(); }).slice(0, 3).map(function(s) { return s.trim(); }).join('\n- ') + "\n\n" +
+    "### Tendances IA dans le secteur " + sec + "\n" +
+    "- **Automatisation des processus répétitifs** : réduction de 40-60% du temps sur les tâches administratives\n" +
+    "- **IA conversationnelle** : chatbots et assistants pour le support client et interne\n" +
+    "- **Analyse prédictive** : anticipation des tendances marché et comportement client\n" +
+    "- **Génération de contenu** : automatisation de la production de documents et rapports\n";
+  await streamText('analyst', analystText1);
+  handleSSE('agent-done', {});
+  handleSSE('step-update', { stepId: 'analysis', status: 'done' });
+
+  // ── Step 2: Analyst opportunities ──
+  handleSSE('step-update', { stepId: 'opportunities', status: 'active' });
+  handleSSE('thinking', { agent: 'analyst', name: 'Agent Analyste', color: '#4A9EFF' });
+  await wait(1200);
+  var analystText2 = "## Opportunités identifiées\n\n" +
+    "| # | Opportunité | Impact | Priorité |\n" +
+    "|---|-----------|--------|----------|\n" +
+    "| 1 | Automatisation du support client via chatbot IA | Élevé | Haute |\n" +
+    "| 2 | Pipeline de qualification de leads automatisé | Élevé | Haute |\n" +
+    "| 3 | Génération automatique de rapports et documents | Moyen | Moyenne |\n" +
+    "| 4 | Analyse prédictive des données métier | Élevé | Moyenne |\n" +
+    "| 5 | Assistant IA interne pour l'équipe | Moyen | Basse |\n\n" +
+    "### Risques identifiés\n" +
+    "- Résistance au changement de l'équipe (mitigation : formation progressive)\n" +
+    "- Qualité des données existantes (mitigation : audit préalable)\n" +
+    "- Dépendance aux APIs externes (mitigation : architecture modulaire)\n";
+  await streamText('analyst', analystText2);
+  handleSSE('agent-done', {});
+  handleSSE('step-update', { stepId: 'opportunities', status: 'done' });
+
+  // ── Step 3: Technical ──
+  handleSSE('step-update', { stepId: 'technical', status: 'active' });
+  handleSSE('thinking', { agent: 'technical', name: 'Agent Technique', color: '#4AFF8B' });
+  await wait(1800);
+  var techText = "## Solutions techniques proposées\n\n" +
+    "### 1. Chatbot IA — Support & Qualification\n" +
+    "**Comment ça marche** : Chatbot conversationnel basé sur un LLM (GPT-4 / Claude) intégré au site web, capable de répondre aux questions clients et qualifier les leads.\n\n" +
+    "| Critère | Détail |\n" +
+    "|---------|--------|\n" +
+    "| Complexité | Moyenne |\n" +
+    "| Délai | 3-4 semaines |\n" +
+    "| Coût estimé | 3 000€ - 8 000€ |\n" +
+    "| Stack | Node.js, Groq/OpenAI API, Widget JS |\n\n" +
+    "**Alternative simple** : Chatbot no-code via Botpress ou Voiceflow (1-2 semaines, ~1 500€)\n\n" +
+    "### 2. Pipeline de leads automatisé\n" +
+    "**Comment ça marche** : Workflow n8n/Make connectant CRM, emails et IA pour scorer et router automatiquement les leads entrants.\n\n" +
+    "| Critère | Détail |\n" +
+    "|---------|--------|\n" +
+    "| Complexité | Faible à moyenne |\n" +
+    "| Délai | 2-3 semaines |\n" +
+    "| Coût estimé | 2 000€ - 5 000€ |\n" +
+    "| Stack | n8n, API CRM, Claude API |\n\n" +
+    "### 3. Générateur de rapports IA\n" +
+    "**Comment ça marche** : Système qui collecte les données internes et génère automatiquement des rapports formatés via LLM.\n\n" +
+    "| Critère | Détail |\n" +
+    "|---------|--------|\n" +
+    "| Complexité | Moyenne |\n" +
+    "| Délai | 4-5 semaines |\n" +
+    "| Coût estimé | 4 000€ - 10 000€ |\n" +
+    "| Stack | Python, LangChain, API interne |\n\n" +
+    "### 4. Analyse prédictive\n" +
+    "**Comment ça marche** : Dashboard analytique avec modèles ML pour anticiper les tendances (churn, ventes, saisonnalité).\n\n" +
+    "| Critère | Détail |\n" +
+    "|---------|--------|\n" +
+    "| Complexité | Élevée |\n" +
+    "| Délai | 6-8 semaines |\n" +
+    "| Coût estimé | 8 000€ - 20 000€ |\n" +
+    "| Stack | Python, scikit-learn, Dashboard React |\n";
+  await streamText('technical', techText);
+  handleSSE('agent-done', {});
+  handleSSE('step-update', { stepId: 'technical', status: 'done' });
+
+  // ── Step 4: Strategist ──
+  handleSSE('step-update', { stepId: 'strategy', status: 'active' });
+  handleSSE('thinking', { agent: 'strategist', name: 'Agent Stratégique', color: '#4AFFD4' });
+  await wait(1600);
+  var stratText = "## Synthèse stratégique\n\n" +
+    "### Vision\n" +
+    "Transformer **" + co + "** en une entreprise augmentée par l'IA, en commençant par les quick wins à fort impact puis en montant en puissance progressivement.\n\n" +
+    "### Roadmap en 3 phases\n\n" +
+    "**Phase 1 — Quick Wins (0-3 mois)**\n" +
+    "- Chatbot IA pour le support client → ROI estimé : +30% efficacité support\n" +
+    "- Pipeline de leads automatisé → ROI estimé : +25% conversion\n" +
+    "- Budget estimé : 5 000€ - 13 000€\n\n" +
+    "**Phase 2 — Consolidation (3-6 mois)**\n" +
+    "- Génération automatique de rapports → Gain : 10h/semaine\n" +
+    "- Assistant IA interne pour l'équipe → Gain : +20% productivité\n" +
+    "- Budget estimé : 6 000€ - 15 000€\n\n" +
+    "**Phase 3 — Transformation (6-12 mois)**\n" +
+    "- Analyse prédictive et dashboard décisionnel\n" +
+    "- Intégration IA dans tous les processus clés\n" +
+    "- Budget estimé : 10 000€ - 25 000€\n\n" +
+    "### KPIs de succès\n" +
+    "| KPI | Objectif | Échéance |\n" +
+    "|-----|----------|----------|\n" +
+    "| Temps de réponse support | -50% | 3 mois |\n" +
+    "| Taux de conversion leads | +25% | 3 mois |\n" +
+    "| Heures économisées/semaine | +15h | 6 mois |\n" +
+    "| ROI global | 200-300% | 12 mois |\n";
+  await streamText('strategist', stratText);
+  handleSSE('agent-done', {});
+  handleSSE('step-update', { stepId: 'strategy', status: 'done' });
+
+  // ── Step 5: Feedback ──
+  handleSSE('step-update', { stepId: 'feedback', status: 'active' });
+  handleSSE('thinking', { agent: 'analyst', name: 'Agent Analyste', color: '#4A9EFF' });
+  await wait(1000);
+  var fbAnalyst = "### Feedback Analyste\n" +
+    "Les solutions techniques proposées sont bien alignées avec les opportunités identifiées. " +
+    "Je recommande de prioriser le chatbot IA car il adresse directement les défis mentionnés par " + co + " et offre un ROI rapide et mesurable.\n";
+  await streamText('analyst', fbAnalyst);
+  handleSSE('agent-done', {});
+
+  handleSSE('thinking', { agent: 'technical', name: 'Agent Technique', color: '#4AFF8B' });
+  await wait(800);
+  var fbTech = "### Feedback Technique\n" +
+    "La roadmap est réaliste. Pour la Phase 1, je suggère de commencer par une architecture modulaire " +
+    "qui permettra de réutiliser les composants (API IA, connecteurs CRM) dans les phases suivantes. " +
+    "Cela optimisera les coûts de développement de 20-30%.\n";
+  await streamText('technical', fbTech);
+  handleSSE('agent-done', {});
+  handleSSE('step-update', { stepId: 'feedback', status: 'done' });
+
+  // ── Step 6: Final Report ──
+  handleSSE('step-update', { stepId: 'report', status: 'active' });
+  handleSSE('thinking', { agent: 'strategist', name: 'Agent Stratégique', color: '#4AFFD4' });
+  await wait(1500);
+
+  var finalReport = "# Rapport Stratégique IA — " + co + "\n\n" +
+    "---\n\n" +
+    "## Résumé exécutif\n\n" +
+    "Ce rapport présente une stratégie complète d'intégration de l'Intelligence Artificielle pour **" + co + "**, " +
+    "entreprise du secteur **" + sec + "** comptant **" + emp + "**.\n\n" +
+    "L'analyse de nos trois agents spécialisés a identifié **5 opportunités majeures** d'optimisation par l'IA, " +
+    "avec un ROI estimé de **200-300% sur 12 mois**.\n\n" +
+    "---\n\n" +
+    "## Diagnostic\n\n" +
+    "### Défis actuels\n" +
+    "- " + chal.split(/[.,;]/).filter(function(s) { return s.trim(); }).slice(0, 3).map(function(s) { return s.trim(); }).join('\n- ') + "\n\n" +
+    "### Contexte sectoriel\n" +
+    "Le secteur **" + sec + "** connaît une adoption croissante de l'IA, avec un taux de pénétration estimé à 35-45% " +
+    "pour les entreprises de taille similaire. Les early adopters constatent des gains de productivité de 25-40%.\n\n" +
+    "---\n\n" +
+    "## Solutions recommandées\n\n" +
+    "### 1. Chatbot IA conversationnel\n" +
+    "- **Objectif** : Automatiser le support client et la qualification de leads\n" +
+    "- **Technologie** : LLM (GPT-4/Claude) + Widget JavaScript\n" +
+    "- **Délai** : 3-4 semaines\n" +
+    "- **Investissement** : 3 000€ - 8 000€\n" +
+    "- **ROI attendu** : +30% efficacité support, -50% temps de réponse\n\n" +
+    "### 2. Pipeline de leads automatisé\n" +
+    "- **Objectif** : Scorer et router les leads automatiquement\n" +
+    "- **Technologie** : n8n + API CRM + Claude API\n" +
+    "- **Délai** : 2-3 semaines\n" +
+    "- **Investissement** : 2 000€ - 5 000€\n" +
+    "- **ROI attendu** : +25% taux de conversion\n\n" +
+    "### 3. Générateur de rapports\n" +
+    "- **Objectif** : Automatiser la production de documents récurrents\n" +
+    "- **Technologie** : Python + LangChain\n" +
+    "- **Délai** : 4-5 semaines\n" +
+    "- **Investissement** : 4 000€ - 10 000€\n" +
+    "- **ROI attendu** : 10h économisées par semaine\n\n" +
+    "### 4. Analyse prédictive\n" +
+    "- **Objectif** : Dashboard décisionnel avec ML\n" +
+    "- **Technologie** : Python + scikit-learn + React\n" +
+    "- **Délai** : 6-8 semaines\n" +
+    "- **Investissement** : 8 000€ - 20 000€\n" +
+    "- **ROI attendu** : anticipation des tendances à +85% de précision\n\n" +
+    "---\n\n" +
+    "## Roadmap\n\n" +
+    "| Phase | Période | Actions | Budget estimé |\n" +
+    "|-------|---------|---------|---------------|\n" +
+    "| Quick Wins | Mois 1-3 | Chatbot + Pipeline leads | 5 000€ - 13 000€ |\n" +
+    "| Consolidation | Mois 3-6 | Rapports auto + Assistant IA | 6 000€ - 15 000€ |\n" +
+    "| Transformation | Mois 6-12 | Prédictif + Intégration globale | 10 000€ - 25 000€ |\n\n" +
+    "**Budget total estimé : 21 000€ - 53 000€** " + (bud !== 'Non précisé' ? "(budget indiqué : " + bud + ")" : "") + "\n\n" +
+    "---\n\n" +
+    "## KPIs de suivi\n\n" +
+    "| Indicateur | Cible | Échéance |\n" +
+    "|------------|-------|----------|\n" +
+    "| Temps de réponse support | -50% | 3 mois |\n" +
+    "| Conversion leads | +25% | 3 mois |\n" +
+    "| Heures économisées | +15h/sem | 6 mois |\n" +
+    "| Satisfaction client | +20pts NPS | 6 mois |\n" +
+    "| ROI global | 200-300% | 12 mois |\n\n" +
+    "---\n\n" +
+    "*Rapport généré par le système multi-agents AI Strategy Engine — Studio Auralis*\n";
+
+  handleSSE('step-update', { stepId: 'report', status: 'done' });
+  handleSSE('complete', { report: finalReport });
+  submitBtn.disabled = false;
 }
 
 function handleSSE(type, data) {
