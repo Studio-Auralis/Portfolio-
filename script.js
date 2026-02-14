@@ -396,7 +396,7 @@ document.querySelectorAll('.project-card').forEach(card => {
         }
 
         // Trouver le premier lien "Voir" dans la carte
-        const viewLink = card.querySelector('.project-link[href*="workflow-demo"], .project-link[href*="demo"], .project-link[href*="http"]');
+        const viewLink = card.querySelector('.project-link');
         if (viewLink) {
             // Ouvrir dans un nouvel onglet
             window.open(viewLink.href, '_blank');
