@@ -823,6 +823,26 @@
             .chat-btn-wrapper.chat-open { display: none; }
         }
 
+        .demo-badge-inline {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 999px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            background: rgba(245, 158, 11, 0.08);
+            margin-bottom: 1rem;
+            animation: demoBadgePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes demoBadgePulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
         /* Hidden utility */
         .hidden { display: none !important; }
     </style>
@@ -832,6 +852,7 @@
     <div class="demo-page">
         <div class="demo-content">
             <h1>Auralis ChatWidget</h1>
+            <div class="demo-badge-inline">MODE DÉMO</div>
             <p>
                 Chatbot IA conversationnel avec interface moderne, animations fluides,
                 et integration Groq API. Cliquez sur le bouton en bas a droite pour tester.
