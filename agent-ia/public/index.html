@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Strategy Engine — Studio Auralis</title>
+  <meta name="description" content="Système multi-agents IA pour votre transformation digitale. Analyse personnalisée par intelligence artificielle.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/svg+xml" href="/assets/auralis-favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <!-- Particle canvas background -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="https://studio-auralis.com" class="logo" target="_blank" rel="noopener">
+        <div class="logo-icon">
+          <img src="/assets/auralis-emblem.svg" alt="Auralis" width="32" height="32">
+        </div>
+        <span class="logo-text">Studio Auralis</span>
+      </a>
+      <div class="header-title">
+        <h1>AI Strategy Engine</h1>
+        <p>Système multi-agents pour votre transformation digitale</p>
+      </div>
+      <a href="https://studio-auralis.com" class="header-link" target="_blank" rel="noopener">
+        ← Retour au portfolio
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ══════════ STEP 1: Form ══════════ -->
+    <section id="form-section" class="section active">
+      <div class="form-container">
+        <div class="form-header">
+          <div class="form-badge">Analyse gratuite</div>
+          <h2>Découvrez votre stratégie IA personnalisée</h2>
+          <p>Nos 3 agents IA vont analyser votre entreprise en temps réel et produire un rapport stratégique complet.</p>
+        </div>
+
+        <form id="analysis-form" autocomplete="off">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="companyName">Nom de l'entreprise <span class="required">*</span></label>
+              <input type="text" id="companyName" name="companyName" placeholder="Ex : Mon Entreprise SAS" required>
+            </div>
+
+            <div class="form-group">
+              <label for="sector">Secteur d'activité <span class="required">*</span></label>
+              <select id="sector" name="sector" required>
+                <option value="">Sélectionnez un secteur</option>
+                <option value="E-commerce / Retail">E-commerce / Retail</option>
+                <option value="SaaS / Tech">SaaS / Tech</option>
+                <option value="Finance / Assurance">Finance / Assurance</option>
+                <option value="Santé / Pharma">Santé / Pharma</option>
+                <option value="Immobilier">Immobilier</option>
+                <option value="Éducation / Formation">Éducation / Formation</option>
+                <option value="Industrie / Manufacturing">Industrie / Manufacturing</option>
+                <option value="Logistique / Transport">Logistique / Transport</option>
+                <option value="Marketing / Communication">Marketing / Communication</option>
+                <option value="Juridique / Legal">Juridique / Legal</option>
+                <option value="Restauration / Hôtellerie">Restauration / Hôtellerie</option>
+                <option value="Consulting / Services">Consulting / Services</option>
+                <option value="other">Autre (précisez)</option>
+              </select>
+              <input type="text" id="sectorCustom" name="sectorCustom" placeholder="Précisez votre secteur" class="hidden">
+            </div>
+
+            <div class="form-group">
+              <label for="employees">Nombre d'employés <span class="required">*</span></label>
+              <select id="employees" name="employees" required>
+                <option value="">Sélectionnez</option>
+                <option value="1-10 employés">1 - 10</option>
+                <option value="11-50 employés">11 - 50</option>
+                <option value="51-200 employés">51 - 200</option>
+                <option value="200+ employés">200+</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="budget">Budget approximatif <span class="optional">(optionnel)</span></label>
+              <select id="budget" name="budget">
+                <option value="">Non renseigné</option>
+                <option value="< 5 000€">Moins de 5 000€</option>
+                <option value="5 000€ - 15 000€">5 000€ - 15 000€</option>
+                <option value="15 000€ - 50 000€">15 000€ - 50 000€</option>
+                <option value="50 000€+">50 000€+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="challenges">Principaux défis / tâches répétitives <span class="required">*</span></label>
+            <textarea id="challenges" name="challenges" rows="4" placeholder="Décrivez les processus que vous aimeriez automatiser, vos défis quotidiens, les tâches chronophages de votre équipe..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary" id="submit-btn">
+            <span class="btn-text">Lancer l'analyse</span>
+            <span class="btn-icon">→</span>
+          </button>
+        </form>
+
+        <!-- Agent previews -->
+        <div class="agents-preview">
+          <div class="agent-preview" style="--agent-color: #4A9EFF">
+            <div class="agent-avatar-small">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </div>
+            <div>
+              <strong>Agent Analyste</strong>
+              <span>Analyse sectorielle</span>
+            </div>
+          </div>
+          <div class="agent-preview" style="--agent-color: #4AFF8B">
+            <div class="agent-avatar-small">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="7 10 10 13 14 8 17 11"/></svg>
+            </div>
+            <div>
+              <strong>Agent Technique</strong>
+              <span>Solutions techniques</span>
+            </div>
+          </div>
+          <div class="agent-preview" style="--agent-color: #4AFFD4">
+            <div class="agent-avatar-small">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V10l4-5 4 3 4-4 3 3v13"/><circle cx="9" cy="5" r="1.5" fill="currentColor" stroke="none"/><circle cx="17" cy="7" r="1.5" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <div>
+              <strong>Agent Stratégique</strong>
+              <span>Plan d'action</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ STEP 2: Orchestration ══════════ -->
+    <section id="orchestration-section" class="section">
+      <div class="orchestration-layout">
+
+        <!-- Sidebar: Steps progress -->
+        <aside class="steps-sidebar">
+          <h3>Progression</h3>
+          <div id="steps-list" class="steps-list">
+            <!-- Dynamically populated -->
+          </div>
+          <div class="company-info" id="company-info">
+            <!-- Filled with form data -->
+          </div>
+        </aside>
+
+        <!-- Main: Agent chat -->
+        <div class="chat-panel">
+          <div class="chat-header">
+            <h3>Communication inter-agents</h3>
+            <div class="live-badge">
+              <span class="live-dot"></span>
+              En direct
+            </div>
+          </div>
+          <div id="chat-messages" class="chat-messages">
+            <!-- Messages appear here -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════ STEP 3: Report ══════════ -->
+    <section id="report-section" class="section">
+      <div class="report-container">
+        <div class="report-header">
+          <div class="report-badge">Rapport terminé</div>
+          <h2>Votre Stratégie IA Personnalisée</h2>
+          <p id="report-subtitle"></p>
+        </div>
+
+        <div id="report-content" class="report-content">
+          <!-- Report rendered here -->
+        </div>
+
+        <div class="report-actions">
+          <button id="btn-download-pdf" class="btn-secondary">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger en PDF
+          </button>
+          <a href="https://studio-auralis.com/#contact" target="_blank" rel="noopener" class="btn-primary btn-cta">
+            <span class="btn-text">Mettre en œuvre cette stratégie avec Studio Auralis</span>
+            <span class="btn-icon">→</span>
+          </a>
+        </div>
+
+        <div class="report-footer">
+          <p>Ce rapport a été généré par le système multi-agents de <strong>Studio Auralis</strong>.<br>
+          Pour une implémentation sur mesure, notre équipe d'experts est à votre disposition.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Loading overlay -->
+  <div id="loading-overlay" class="loading-overlay hidden">
+    <div class="loading-spinner"></div>
+    <p>Initialisation des agents...</p>
+  </div>
+
+  <!-- Error toast -->
+  <div id="error-toast" class="error-toast hidden">
+    <span id="error-message"></span>
+    <button onclick="this.parentElement.classList.add('hidden')" aria-label="Fermer"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
