@@ -249,6 +249,27 @@
             "description": "Site vitrine responsive pour un paysagiste : galerie projets, devis en ligne, SEO local optimisé et animations scroll.",
             "url": "https://studio-auralis.github.io/Site-Web-Am-nagement-Ext-rieur-63-/"
           }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "WebSite",
+            "name": "MotionUp Studio",
+            "description": "Site vitrine pour une agence de production vidéo avec design immersif, animations scroll et SEO complet.",
+            "url": "https://motionup-studio.com"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "WebApplication",
+            "name": "SubTitlesAI",
+            "description": "Application SaaS de sous-titrage automatique par IA avec profils vocaux, couleurs par interlocuteur et génération de titres/descriptions.",
+            "applicationCategory": "Multimedia",
+            "operatingSystem": "Web"
+          }
         }
       ]
     }
@@ -362,7 +383,7 @@
             <h2 class="section-title">Mes Expertises</h2>
         </div>
         <div class="services-grid">
-            <article class="service-card" data-aos="fade-up">
+            <article class="service-card">
                 <div class="service-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
@@ -376,7 +397,7 @@
                     <span>Node.js</span>
                 </div>
             </article>
-            <article class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <article class="service-card">
                 <div class="service-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <circle cx="12" cy="12" r="3"/>
@@ -391,7 +412,7 @@
                     <span>LangChain</span>
                 </div>
             </article>
-            <article class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <article class="service-card">
                 <div class="service-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
@@ -458,355 +479,228 @@
             <button class="filter-btn" data-filter="agent">Agents</button>
         </div>
         <div class="projects-grid">
-            <!-- Project Card 0 — Global Conflict Tracker -->
-            <article class="project-card" data-category="data web">
-                <div class="project-video">
-                    <div class="video-overlay">
-                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="project-placeholder">
-                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="32" cy="32" r="28" stroke="#00E5CC" stroke-width="1.5" opacity="0.2"/>
-                            <ellipse cx="32" cy="32" rx="28" ry="14" stroke="#00E5CC" stroke-width="1" opacity="0.3"/>
-                            <ellipse cx="32" cy="32" rx="28" ry="14" stroke="#00BFA6" stroke-width="1" opacity="0.2" transform="rotate(60 32 32)"/>
-                            <ellipse cx="32" cy="32" rx="28" ry="14" stroke="#00E5CC" stroke-width="1" opacity="0.2" transform="rotate(120 32 32)"/>
-                            <circle cx="20" cy="26" r="2.5" fill="#00E5CC" opacity="0.8"/>
-                            <circle cx="38" cy="22" r="2" fill="#FF6B6B" opacity="0.8"/>
-                            <circle cx="44" cy="34" r="2.5" fill="#00E5CC" opacity="0.6"/>
-                            <circle cx="26" cy="40" r="1.5" fill="#FF6B6B" opacity="0.7"/>
-                            <circle cx="40" cy="42" r="2" fill="#00BFA6" opacity="0.6"/>
-                            <circle cx="32" cy="30" r="1.5" fill="#FF6B6B" opacity="0.9"/>
-                            <line x1="20" y1="26" x2="32" y2="30" stroke="#FF6B6B" stroke-width="0.5" opacity="0.4"/>
-                            <line x1="38" y1="22" x2="32" y2="30" stroke="#FF6B6B" stroke-width="0.5" opacity="0.4"/>
-                            <line x1="26" y1="40" x2="32" y2="30" stroke="#FF6B6B" stroke-width="0.5" opacity="0.4"/>
-                        </svg>
-                        <span>Global Conflict Tracker</span>
+            <!-- Row 1: Conflict Tracker (featured 2 cols) + MotionUp -->
+            <article class="project-card project-card--featured" data-category="data web">
+                <div class="project-card__image">
+                    <img src="screenshots/conflict-tracker.webp" alt="Global Conflict Tracker - cartographie interactive des conflits mondiaux" width="1919" height="1079" loading="lazy">
+                    <div class="project-card__overlay">
+                        <span class="project-card__category">Data Visualization</span>
                     </div>
                 </div>
-                <div class="project-info">
+                <div class="project-card__content">
                     <h3>Global Conflict Tracker</h3>
-                    <p>Cartographie en temps réel des conflits armés mondiaux avec dashboard interactif.</p>
-                    <div class="project-tech">
+                    <p>Cartographie en temps réel des conflits armés mondiaux avec dashboard interactif, intégration GDELT et UNHCR.</p>
+                    <div class="project-card__tags">
                         <span>JavaScript</span>
                         <span>GDELT</span>
                         <span>UNHCR</span>
                         <span>Data Viz</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://conflit.studio-auralis.com" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
+                    <div class="project-card__links">
+                        <a href="https://conflit.studio-auralis.com" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Voir le projet Global Conflict Tracker">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                             Voir
                         </a>
-                        <a href="https://github.com/Studio-Auralis/Conflit" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
+                        <a href="https://github.com/Studio-Auralis/Conflit" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Code source Global Conflict Tracker">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                             Code
                         </a>
                     </div>
                 </div>
             </article>
 
-            <!-- Project Card 1 -->
             <article class="project-card" data-category="web">
-                <div class="project-video">
-                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project1.mp4" type="video/mp4"></video> -->
-                    <div class="video-overlay">
-                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="project-placeholder">
-                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="32" cy="32" r="18" stroke="#00E5CC" stroke-width="1.5"/>
-                            <circle cx="32" cy="32" r="12" stroke="#00BFA6" stroke-width="1.5"/>
-                            <line x1="14" y1="32" x2="50" y2="32" stroke="#00E5CC" stroke-width="1.5"/>
-                            <path d="M32 14 Q38 32 32 50" stroke="#00E5CC" stroke-width="1.5" fill="none"/>
-                            <path d="M32 14 Q26 32 32 50" stroke="#00E5CC" stroke-width="1.5" fill="none"/>
-                            <circle cx="32" cy="14" r="2" fill="#00E5CC"/>
-                            <circle cx="32" cy="50" r="2" fill="#00E5CC"/>
-                            <circle cx="14" cy="32" r="2" fill="#00E5CC"/>
-                            <circle cx="50" cy="32" r="2" fill="#00E5CC"/>
-                        </svg>
-                        <span>Projet Web</span>
+                <div class="project-card__image">
+                    <img src="screenshots/motionup.webp" alt="MotionUp Studio - site vitrine agence de production vidéo" width="1905" height="1079" loading="lazy">
+                    <div class="project-card__overlay">
+                        <span class="project-card__category">Site Client</span>
                     </div>
                 </div>
-                <div class="project-info">
-                    <h3>Site Aménagement Extérieur 63</h3>
-                    <p>Site vitrine responsive pour un paysagiste : galerie projets, devis en ligne, SEO local optimisé et animations scroll.</p>
-                    <div class="project-tech">
+                <div class="project-card__content">
+                    <h3>MotionUp Studio</h3>
+                    <p>Site vitrine pour une agence de production vidéo. Design immersif, animations scroll et SEO complet.</p>
+                    <div class="project-card__tags">
                         <span>HTML5</span>
                         <span>CSS3</span>
                         <span>JavaScript</span>
+                        <span>SEO</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://studio-auralis.github.io/Site-Web-Am-nagement-Ext-rieur-63-/" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
+                    <div class="project-card__links">
+                        <a href="https://motionup-studio.com" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Voir le site MotionUp Studio">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                             Voir
                         </a>
-                        <a href="https://github.com/Studio-Auralis/Site-Web-Am-nagement-Ext-rieur-63-" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
+                        <a href="https://github.com/Studio-Auralis" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Code source MotionUp Studio">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                             Code
                         </a>
                     </div>
                 </div>
             </article>
 
-            <!-- Project Card 2 -->
-            <article class="project-card" data-category="ia">
-                <div class="project-video">
-                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project2.mp4" type="video/mp4"></video> -->
-                    <div class="video-overlay">
-                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="project-placeholder">
-                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="32" cy="32" r="10" stroke="#00E5CC" stroke-width="1.5"/>
-                            <circle cx="32" cy="32" r="4" fill="#00BFA6"/>
-                            <g transform="rotate(0 32 32)">
-                                <rect x="30" y="16" width="4" height="8" fill="#00E5CC"/>
-                                <circle cx="32" cy="16" r="3" stroke="#00E5CC" stroke-width="1.5" fill="none"/>
-                            </g>
-                            <g transform="rotate(120 32 32)">
-                                <rect x="30" y="16" width="4" height="8" fill="#00E5CC"/>
-                                <circle cx="32" cy="16" r="3" stroke="#00E5CC" stroke-width="1.5" fill="none"/>
-                            </g>
-                            <g transform="rotate(240 32 32)">
-                                <rect x="30" y="16" width="4" height="8" fill="#00E5CC"/>
-                                <circle cx="32" cy="16" r="3" stroke="#00E5CC" stroke-width="1.5" fill="none"/>
-                            </g>
-                            <path d="M 32 32 L 40 24" stroke="#00BFA6" stroke-width="1.5"/>
-                            <path d="M 32 32 L 24 40" stroke="#00BFA6" stroke-width="1.5"/>
-                        </svg>
-                        <span>Automatisation IA</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Automatisation IA</h3>
-                    <p>Pipeline d'automatisation connectant CRM, emails et API tierces pour réduire les tâches manuelles de 70%.</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>OpenAI</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
-                            Voir
-                        </a>
-                        <a href="#" class="project-link">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                            Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Project Card 3 -->
+            <!-- Row 2: AI Strategy + Workflow + Chatbot -->
             <article class="project-card" data-category="agent">
-                <div class="project-video">
-                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project3.mp4" type="video/mp4"></video> -->
-                    <div class="video-overlay">
-                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="project-placeholder">
-                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Agent 1 - Analyst (blue) -->
-                            <circle cx="16" cy="20" r="6" stroke="#4A9EFF" stroke-width="1.5" fill="#0D1117"/>
-                            <circle cx="16" cy="20" r="2.5" fill="#4A9EFF" opacity="0.6"/>
-                            <!-- Agent 2 - Technical (green) -->
-                            <circle cx="16" cy="44" r="6" stroke="#4AFF8B" stroke-width="1.5" fill="#0D1117"/>
-                            <circle cx="16" cy="44" r="2.5" fill="#4AFF8B" opacity="0.6"/>
-                            <!-- Agent 3 - Strategist (cyan) -->
-                            <circle cx="48" cy="32" r="7" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
-                            <circle cx="48" cy="32" r="3" fill="#00E5CC" opacity="0.6"/>
-                            <!-- Orchestrator center -->
-                            <rect x="27" y="27" width="10" height="10" rx="2" stroke="#00BFA6" stroke-width="1.5" fill="#0D1117"/>
-                            <rect x="30" y="30" width="4" height="4" rx="1" fill="#00BFA6" opacity="0.5"/>
-                            <!-- Connections agent→orchestrator -->
-                            <line x1="22" y1="20" x2="27" y2="29" stroke="#4A9EFF" stroke-width="1" opacity="0.5"/>
-                            <line x1="22" y1="44" x2="27" y2="35" stroke="#4AFF8B" stroke-width="1" opacity="0.5"/>
-                            <line x1="41" y1="32" x2="37" y2="32" stroke="#00E5CC" stroke-width="1" opacity="0.5"/>
-                            <!-- Data flow arrows -->
-                            <polygon points="27,29 25,27 23,29" fill="#4A9EFF" opacity="0.6"/>
-                            <polygon points="27,35 25,37 23,35" fill="#4AFF8B" opacity="0.6"/>
-                            <polygon points="37,31 39,29 39,33" fill="#00E5CC" opacity="0.6"/>
-                        </svg>
-                        <span>AI Strategy</span>
+                <div class="project-card__image">
+                    <img src="screenshots/ai-strategy.webp" alt="AI Strategy Engine - système multi-agents IA pour stratégies d'entreprise" width="1915" height="1079" loading="lazy">
+                    <div class="project-card__overlay">
+                        <span class="project-card__category">Multi-Agents</span>
                     </div>
                 </div>
-                <div class="project-info">
+                <div class="project-card__content">
                     <h3>AI Strategy Engine <span class="demo-tag">DÉMO</span></h3>
-                    <p>Système multi-agents (Analyste, Technicien, Stratège) orchestré en pipeline pour générer des stratégies IA d'entreprise avec streaming temps réel.</p>
-                    <div class="project-tech">
+                    <p>Système multi-agents orchestré en pipeline pour générer des stratégies IA d'entreprise avec streaming temps réel.</p>
+                    <div class="project-card__tags">
                         <span>Node.js</span>
                         <span>Groq API</span>
                         <span>SSE</span>
                     </div>
-                    <div class="project-links">
-                        <a href="agent-ia/public/index.html" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
+                    <div class="project-card__links">
+                        <a href="agent-ia/public/index.html" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Voir AI Strategy Engine">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                             Voir
                         </a>
-                        <a href="https://github.com/Studio-Auralis" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
+                        <a href="https://github.com/Studio-Auralis" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Code source AI Strategy Engine">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                             Code
                         </a>
                     </div>
                 </div>
             </article>
 
-            <!-- Project Card 5 -->
             <article class="project-card" data-category="ia">
-                <div class="project-video">
-                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project5.mp4" type="video/mp4"></video> -->
-                    <div class="video-overlay">
-                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="project-placeholder">
-                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Nodes -->
-                            <rect x="14" y="14" width="10" height="10" rx="2" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
-                            <circle cx="32" cy="19" r="5" stroke="#00BFA6" stroke-width="1.5" fill="#0D1117"/>
-                            <rect x="40" y="14" width="10" height="10" rx="2" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
-                            <circle cx="19" cy="45" r="5" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
-                            <rect x="27" y="40" width="10" height="10" rx="2" stroke="#00BFA6" stroke-width="1.5" fill="#0D1117"/>
-                            <circle cx="45" cy="45" r="5" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
-                            <!-- Arrows -->
-                            <line x1="24" y1="19" x2="27" y2="19" stroke="#00E5CC" stroke-width="1.5"/>
-                            <polygon points="27,19 24,17 24,21" fill="#00E5CC"/>
-                            <line x1="37" y1="19" x2="40" y2="19" stroke="#00E5CC" stroke-width="1.5"/>
-                            <polygon points="40,19 37,17 37,21" fill="#00E5CC"/>
-                            <line x1="19" y1="30" x2="19" y2="40" stroke="#00E5CC" stroke-width="1.5"/>
-                            <polygon points="19,40 17,37 21,37" fill="#00E5CC"/>
-                            <line x1="32" y1="24" x2="32" y2="40" stroke="#00BFA6" stroke-width="1.5"/>
-                            <polygon points="32,40 30,37 34,37" fill="#00BFA6"/>
-                            <line x1="45" y1="24" x2="45" y2="40" stroke="#00E5CC" stroke-width="1.5"/>
-                            <polygon points="45,40 43,37 47,37" fill="#00E5CC"/>
-                            <line x1="24" y1="45" x2="27" y2="45" stroke="#00E5CC" stroke-width="1.5"/>
-                            <polygon points="27,45 24,43 24,47" fill="#00E5CC"/>
-                            <line x1="37" y1="45" x2="40" y2="45" stroke="#00E5CC" stroke-width="1.5"/>
-                            <polygon points="40,45 37,43 37,47" fill="#00E5CC"/>
-                        </svg>
-                        <span>Workflow IA</span>
+                <div class="project-card__image">
+                    <img src="screenshots/workflow.webp" alt="Workflow Automatisé - orchestration n8n avec enrichissement IA" width="1902" height="1078" loading="lazy">
+                    <div class="project-card__overlay">
+                        <span class="project-card__category">Automation</span>
                     </div>
                 </div>
-                <div class="project-info">
+                <div class="project-card__content">
                     <h3>Workflow Automatisé</h3>
                     <p>Orchestration n8n de 12+ noeuds : scraping, enrichissement IA, notifications Slack et reporting automatique.</p>
-                    <div class="project-tech">
+                    <div class="project-card__tags">
                         <span>n8n</span>
                         <span>Claude</span>
                     </div>
-                    <div class="project-links">
-                        <a href="workflow-demo.html" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
+                    <div class="project-card__links">
+                        <a href="workflow-demo.html" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Voir le Workflow Automatisé">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                             Voir
                         </a>
-                        <a href="https://github.com/Studio-Auralis" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
+                        <a href="https://github.com/Studio-Auralis" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Code source Workflow Automatisé">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                             Code
                         </a>
                     </div>
                 </div>
             </article>
 
-            <!-- Project Card 6 -->
             <article class="project-card" data-category="agent">
-                <div class="project-video">
-                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project6.mp4" type="video/mp4"></video> -->
-                    <div class="video-overlay">
-                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="project-placeholder">
-                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="32" cy="32" r="28" stroke="#00E5CC" stroke-width="2" opacity="0.2"/>
-                            <rect x="16" y="20" width="32" height="24" rx="4" fill="url(#grad6)" stroke="#00E5CC" stroke-width="1.5"/>
-                            <path d="M28 44L32 48L36 44" fill="url(#grad6)" stroke="#00E5CC" stroke-width="1.5" stroke-linejoin="round"/>
-                            <circle cx="25" cy="30" r="2" fill="#E8EAED"/>
-                            <circle cx="32" cy="30" r="2" fill="#E8EAED"/>
-                            <circle cx="39" cy="30" r="2" fill="#E8EAED"/>
-                            <line x1="22" y1="36" x2="42" y2="36" stroke="#00BFA6" stroke-width="1" stroke-linecap="round"/>
-                            <defs>
-                                <linearGradient id="grad6" x1="16" y1="20" x2="48" y2="48">
-                                    <stop offset="0%" stop-color="#00E5CC" stop-opacity="0.3"/>
-                                    <stop offset="100%" stop-color="#00BFA6" stop-opacity="0.1"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                        <span>Chatbot IA</span>
+                <div class="project-card__image">
+                    <img src="screenshots/chatbot.webp" alt="Chatbot Avancé - widget chat IA avec animations et Groq API" width="1919" height="1079" loading="lazy">
+                    <div class="project-card__overlay">
+                        <span class="project-card__category">Chatbot IA</span>
                     </div>
                 </div>
-                <div class="project-info">
+                <div class="project-card__content">
                     <h3>Chatbot Avancé <span class="demo-tag">DÉMO</span></h3>
-                    <p>Widget chat IA avec animations Framer Motion, réponses Groq en temps réel, rate limiting et design glassmorphism.</p>
-                    <div class="project-tech">
+                    <p>Widget chat IA avec animations Framer Motion, réponses Groq en temps réel et design glassmorphism.</p>
+                    <div class="project-card__tags">
                         <span>React</span>
                         <span>TypeScript</span>
                         <span>Groq API</span>
                     </div>
-                    <div class="project-links">
-                        <a href="chatbot-demo.html" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
+                    <div class="project-card__links">
+                        <a href="chatbot-demo.html" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Voir le Chatbot Avancé">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                             Voir
                         </a>
-                        <a href="https://github.com/Studio-Auralis" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
+                        <a href="https://github.com/Studio-Auralis" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Code source Chatbot Avancé">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            Code
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card" data-category="ia">
+                <div class="project-card__image">
+                    <img src="screenshots/subtitlesai.webp" alt="SubTitlesAI - application SaaS de sous-titrage automatique par IA" width="1906" height="1078" loading="lazy">
+                    <div class="project-card__overlay">
+                        <span class="project-card__category">SaaS / IA</span>
+                    </div>
+                </div>
+                <div class="project-card__content">
+                    <h3>SubTitlesAI</h3>
+                    <p>Application SaaS de sous-titrage automatique par IA. Upload de vidéo, génération de sous-titres en 120+ langues, profils vocaux avec couleurs par interlocuteur, génération automatique de titres et descriptions. Précision 98%.</p>
+                    <div class="project-card__tags">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>IA</span>
+                        <span>Whisper</span>
+                    </div>
+                    <div class="project-card__links">
+                        <a href="#" class="project-link" aria-label="Voir SubTitlesAI">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Voir
+                        </a>
+                        <a href="https://github.com/Studio-Auralis" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Code source SubTitlesAI">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            Code
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Row 3: Aménagement + Automatisation IA (wide 2 cols) -->
+            <article class="project-card" data-category="web">
+                <div class="project-card__image">
+                    <img src="screenshots/amenagement-ext.webp" alt="Site Aménagement Extérieur 63 - site vitrine responsive paysagiste" width="1919" height="1079" loading="lazy">
+                    <div class="project-card__overlay">
+                        <span class="project-card__category">Site Vitrine</span>
+                    </div>
+                </div>
+                <div class="project-card__content">
+                    <h3>Site Aménagement Extérieur 63</h3>
+                    <p>Site vitrine responsive pour un paysagiste : galerie projets, devis en ligne, SEO local optimisé.</p>
+                    <div class="project-card__tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="project-card__links">
+                        <a href="https://studio-auralis.github.io/Site-Web-Am-nagement-Ext-rieur-63-/" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Voir le site Aménagement Extérieur 63">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Voir
+                        </a>
+                        <a href="https://github.com/Studio-Auralis/Site-Web-Am-nagement-Ext-rieur-63-" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Code source Aménagement Extérieur 63">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            Code
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card project-card--wide" data-category="ia">
+                <div class="project-card__image project-card__image--placeholder">
+                    <span aria-hidden="true">&#129302;</span>
+                    <div class="project-card__overlay">
+                        <span class="project-card__category">Automation IA</span>
+                    </div>
+                </div>
+                <div class="project-card__content">
+                    <h3>Automatisation IA</h3>
+                    <p>Pipeline d'automatisation connectant CRM, emails et API tierces pour réduire les tâches manuelles de 70%.</p>
+                    <div class="project-card__tags">
+                        <span>Python</span>
+                        <span>OpenAI</span>
+                    </div>
+                    <div class="project-card__links">
+                        <a href="#" class="project-link" aria-label="Voir le projet Automatisation IA">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Voir
+                        </a>
+                        <a href="#" class="project-link" aria-label="Code source Automatisation IA">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                             Code
                         </a>
                     </div>
@@ -909,5 +803,10 @@
     <script src="starfield-2d.js"></script>
 
     <script src="script.js"></script>
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="scroll-animations.js"></script>
 </body>
 </html>

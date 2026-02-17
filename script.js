@@ -141,64 +141,12 @@ style.textContent = `
 document.head.appendChild(style);
 
 // ============================================
-// VIDEO PLAY/PAUSE ON HOVER
+// VIDEO PLAY/PAUSE — removed (no video elements)
 // ============================================
-const projectVideos = document.querySelectorAll('.project-video');
-
-projectVideos.forEach(videoContainer => {
-    const video = videoContainer.querySelector('video');
-    const playBtn = videoContainer.querySelector('.play-btn');
-
-    if (video && playBtn) {
-        // Play on hover
-        videoContainer.addEventListener('mouseenter', () => {
-            if (video.src) {
-                video.play().catch(() => {});
-            }
-        });
-
-        // Pause on leave
-        videoContainer.addEventListener('mouseleave', () => {
-            if (video.src) {
-                video.pause();
-            }
-        });
-
-        // Toggle play/pause on button click
-        playBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (video.src) {
-                if (video.paused) {
-                    video.play();
-                } else {
-                    video.pause();
-                }
-            }
-        });
-    }
-});
 
 // ============================================
-// SCROLL ANIMATIONS (Simple AOS alternative)
+// SCROLL ANIMATIONS — handled by scroll-animations.js (GSAP)
 // ============================================
-function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll('[data-aos]');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('aos-animate');
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-
-    animatedElements.forEach(el => observer.observe(el));
-}
-
-document.addEventListener('DOMContentLoaded', initScrollAnimations);
 
 // ============================================
 // CONTACT FORM
