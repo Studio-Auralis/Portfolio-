@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
-Disallow:
+Disallow: /DA-Auralis/
+Disallow: /DA-Utulise/
 
 Sitemap: https://studio-auralis.com/sitemap.xml
