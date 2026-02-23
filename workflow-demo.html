@@ -1,68 +1,943 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workflow Automatisé - Démonstration</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-            overflow-x: hidden;
-        }
-        #root {
-            width: 100%;
-            min-height: 100vh;
-        }
-        .back-button {
-            position: fixed;
-            top: 55px;
-            left: 20px;
-            z-index: 10000;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #00E5CC, #00BFA6);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 229, 204, 0.3);
-        }
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 229, 204, 0.4);
-            background: linear-gradient(135deg, #00BFA6, #00E5CC);
-        }
-        .back-button svg {
-            width: 16px;
-            height: 16px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatisation IA — Lead Automation | Studio Auralis</title>
+  <meta name="description" content="Un lead arrive, il est qualifié et envoyé au bon commercial en 30 secondes. Démo interactive du workflow lead automation par Studio Auralis.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    /* ── Page-specific overrides ── */
+    body { cursor: none; }
+
+    .subpage-hero {
+      padding: 120px 0 32px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .subpage-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-80);
+      margin-bottom: 20px;
+      transition: color .3s;
+    }
+    .subpage-back:hover { color: var(--gold); }
+    .subpage-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--text-100);
+      letter-spacing: -.03em;
+      margin-bottom: 16px;
+    }
+    .subpage-subtitle {
+      font-size: 17px;
+      color: var(--text-60);
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── Sections ── */
+    .demo-section {
+      position: relative;
+      z-index: 2;
+      padding: 0 0 80px;
+    }
+    .demo-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .demo-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .demo-heading {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--text-100);
+      letter-spacing: -.02em;
+      margin-bottom: 12px;
+    }
+    .demo-desc {
+      font-size: 15px;
+      color: var(--text-60);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    /* ── Section 1: Workflow SVG ── */
+    .wf-layout {
+      display: flex;
+      gap: 0;
+      background: var(--noir-card);
+      border: 1px solid var(--noir-border);
+      border-radius: 10px;
+      overflow: hidden;
+      min-height: 400px;
+    }
+    .wf-canvas {
+      flex: 1;
+      position: relative;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0,229,204,.03) 0%, transparent 70%);
+      overflow-x: auto;
+    }
+    .wf-dots {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .08;
+    }
+    .wf-canvas svg.wf-svg {
+      width: 100%;
+      min-width: 660px;
+      display: block;
+      padding: 20px 16px;
+    }
+
+    .wf-panel {
+      width: 0;
+      min-width: 0;
+      background: var(--noir-card);
+      border-left: 1px solid var(--noir-border);
+      transition: width .3s var(--ease-out), min-width .3s var(--ease-out);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .wf-panel.open {
+      width: 360px;
+      min-width: 360px;
+    }
+    .wf-panel-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--noir-border);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .wf-panel-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .wf-panel-close {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      background: var(--noir-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-60);
+      font-size: 16px;
+      border: 1px solid var(--noir-border);
+      transition: color .2s;
+    }
+    .wf-panel-close:hover { color: var(--text-100); }
+    .wf-panel-body {
+      flex: 1;
+      overflow: auto;
+      padding: 20px;
+    }
+    .wf-panel-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-40);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 10px;
+    }
+    .wf-panel-text {
+      font-size: 13.5px;
+      color: var(--text-60);
+      line-height: 1.75;
+      margin-bottom: 22px;
+    }
+    .wf-benefit {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .wf-benefit-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      background: var(--gold-bg);
+      border: 1px solid var(--gold-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wf-benefit span {
+      font-size: 13px;
+      color: var(--text-60);
+      line-height: 1.55;
+    }
+    .wf-panel-tech {
+      padding: 12px 14px;
+      border-radius: 7px;
+      background: var(--noir);
+      border: 1px solid var(--noir-border);
+      font-size: 11.5px;
+      color: var(--text-40);
+      font-family: var(--font-mono);
+      line-height: 1.6;
+    }
+    .wf-panel-footer {
+      padding: 14px 20px;
+      border-top: 1px solid var(--noir-border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .wf-panel-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 6px rgba(0,229,204,.4);
+    }
+    .wf-panel-footer span {
+      font-size: 11px;
+      color: var(--text-40);
+    }
+
+    /* ── Section 2: Dashboard ── */
+    .dash-grid {
+      display: grid;
+      gap: 8px;
+    }
+    .dash-stats {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 8px;
+    }
+    .dash-card {
+      background: var(--noir-card);
+      border: 1px solid var(--noir-border);
+      border-radius: 10px;
+    }
+    .dash-stat {
+      padding: 14px 18px;
+    }
+    .dash-stat-featured {
+      border-left: 2px solid var(--gold);
+    }
+    .dash-stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-40);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .dash-stat-num {
+      font-family: var(--font-display);
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      line-height: 1;
+      color: var(--text-100);
+    }
+    .dash-stat-delta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--gold);
+      margin-top: 6px;
+    }
+    .dash-stat-sm .dash-stat-num {
+      font-size: 28px;
+      letter-spacing: -1.2px;
+    }
+    .dash-stat-sm .dash-stat-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    .dash-stat-sm .dash-stat-delta {
+      margin-top: 0;
+    }
+    .dash-stat-delta.warn { color: #e8a84c; }
+    .dash-bar {
+      height: 3px;
+      background: var(--noir-border);
+      border-radius: 2px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+    .dash-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+    }
+    .dash-bar-fill.fill-accent { background: var(--gold); }
+    .dash-bar-fill.fill-warm { background: #e8a84c; }
+
+    /* Dashboard bar chart fill anim */
+    .dash-bar-fill.anim-active { animation: dashFillIn 1.2s ease both; }
+    @keyframes dashFillIn { from { width: 0 !important; } }
+
+    /* Feed */
+    .dash-bottom {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 8px;
+    }
+    .dash-feed-head {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--noir-border);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--text-40);
+    }
+    .f-row {
+      display: grid;
+      grid-template-columns: 26px 1fr auto auto;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-bottom: 1px solid rgba(42,49,64,.4);
+    }
+    .f-row:last-child { border-bottom: none; }
+    .f-row.anim-active { animation: fRowIn 6s ease-in-out infinite; }
+    .f-row.anim-active:nth-child(1) { animation-delay: .4s; }
+    .f-row.anim-active:nth-child(2) { animation-delay: 1.8s; }
+    .f-row.anim-active:nth-child(3) { animation-delay: 3.2s; }
+    .f-row.anim-active:nth-child(4) { animation-delay: 4.6s; }
+    @keyframes fRowIn {
+      0% { opacity: 0; transform: translateY(4px); }
+      6% { opacity: 1; transform: translateY(0); }
+      68% { opacity: 1; }
+      100% { opacity: .15; }
+    }
+    .f-av {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--noir);
+    }
+    .f-text {
+      font-size: 12px;
+      color: var(--text-60);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .f-text b { color: var(--text-100); font-weight: 600; }
+    .f-tag {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 500;
+      padding: 2px 5px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+    .tag-score { background: var(--gold-bg); color: var(--gold-dim); }
+    .tag-email { background: rgba(90,99,114,.1); color: var(--text-60); }
+    .tag-new { background: rgba(232,168,76,.07); color: #e8a84c; }
+    .tag-done { background: var(--gold-bg); color: var(--gold); }
+    .f-time {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-40);
+      text-align: right;
+      min-width: 18px;
+    }
+
+    /* Chart */
+    .dash-chart {
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    .ch-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+    .ch-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--text-40);
+    }
+    .ch-pct {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--gold-dim);
+    }
+    .ch-big {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: var(--text-100);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .ch-big span {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-40);
+      letter-spacing: 0;
+    }
+    .ch-bars {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+      min-height: 60px;
+    }
+    .b-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .b-bar {
+      width: 100%;
+      border-radius: 3px;
+      background: var(--noir-border);
+      min-height: 3px;
+    }
+    .b-bar.anim-active { animation: bBarGrow .7s ease both; }
+    .b-col:nth-child(1) .b-bar.anim-active { animation-delay: .8s; }
+    .b-col:nth-child(2) .b-bar.anim-active { animation-delay: .9s; }
+    .b-col:nth-child(3) .b-bar.anim-active { animation-delay: 1.0s; }
+    .b-col:nth-child(4) .b-bar.anim-active { animation-delay: 1.1s; }
+    .b-col:nth-child(5) .b-bar.anim-active { animation-delay: 1.2s; }
+    .b-col:nth-child(6) .b-bar.anim-active { animation-delay: 1.3s; }
+    .b-col:nth-child(7) .b-bar.anim-active { animation-delay: 1.4s; }
+    @keyframes bBarGrow { from { height: 0 !important; opacity: 0; } to { opacity: 1; } }
+    .b-bar.today {
+      background: var(--gold);
+      box-shadow: 0 0 10px rgba(0,229,204,.15);
+    }
+    .b-day {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--text-40);
+      font-weight: 500;
+    }
+    .b-col:nth-child(4) .b-day { color: var(--gold-dim); }
+
+    /* ── Section 3: ROI Calculator ── */
+    .calc-card {
+      background: var(--noir-card);
+      border: 1px solid var(--noir-border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .calc-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--noir-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .calc-header-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-100);
+    }
+    .calc-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      background: var(--gold-bg);
+      color: var(--gold);
+      font-weight: 500;
+      border: 1px solid var(--gold-border);
+    }
+    .calc-body {
+      padding: 20px;
+    }
+    .calc-sliders {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .calc-slider-head {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .calc-slider-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-40);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .calc-slider-value {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--gold);
+    }
+    .calc-slider-range {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-40);
+      margin-top: 3px;
+    }
+
+    /* Slider styles */
+    input[type="range"].sl {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      background: var(--noir-border);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"].sl::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--noir-card);
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(0,229,204,.35);
+    }
+    input[type="range"].sl::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--noir-card);
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(0,229,204,.35);
+    }
+
+    /* KPI cards */
+    .calc-kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .calc-kpi {
+      background: var(--gold-bg);
+      border: 1px solid var(--gold-border);
+      border-radius: 8px;
+      padding: 16px 10px;
+      text-align: center;
+    }
+    .calc-kpi-value {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--gold);
+    }
+    .calc-kpi-value span {
+      font-size: 13px;
+      margin-left: 2px;
+    }
+    .calc-kpi-label {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      color: var(--text-40);
+      margin-top: 5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .3px;
+    }
+
+    /* Time saved bar */
+    .calc-timebar {
+      padding: 16px 18px;
+      background: var(--noir);
+      border-radius: 8px;
+      border: 1px solid var(--noir-border);
+      margin-bottom: 24px;
+    }
+    .calc-timebar-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .calc-timebar-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .calc-timebar-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-60);
+    }
+    .calc-timebar-pct {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--gold);
+    }
+    .calc-progress {
+      width: 100%;
+      height: 8px;
+      background: var(--noir-hover);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .calc-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+      border-radius: 4px;
+      transition: width .4s ease;
+    }
+    .calc-timebar-foot {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+    .calc-timebar-foot span {
+      font-size: 10.5px;
+      color: var(--text-40);
+    }
+    .calc-timebar-foot .hl-gold { color: var(--gold); font-weight: 700; }
+    .calc-timebar-foot .hl-bright { color: var(--gold-bright); font-weight: 700; }
+
+    /* Comparison grid */
+    .calc-compare {
+      display: grid;
+      grid-template-columns: 1fr 56px 1fr;
+      background: var(--noir);
+      border-radius: 8px;
+      border: 1px solid var(--noir-border);
+      overflow: hidden;
+    }
+    .calc-compare-col {
+      padding: 22px 20px;
+    }
+    .calc-compare-tag {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .calc-compare-tag span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .calc-compare-tag.manual span { color: #ff6b6b; }
+    .calc-compare-tag.auto span { color: var(--gold); }
+    .calc-compare-big {
+      font-family: var(--font-display);
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .calc-compare-big.manual { color: #ff6b6b; }
+    .calc-compare-big.auto { color: var(--gold); }
+    .calc-compare-big .unit {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-40);
+    }
+    .calc-compare-list {
+      font-size: 12px;
+      color: var(--text-40);
+      line-height: 2;
+    }
+    .calc-compare-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid var(--noir-border);
+      border-right: 1px solid var(--noir-border);
+    }
+    .calc-compare-arrow-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--gold-bg);
+      border: 1px solid var(--gold-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .calc-compare-speed {
+      margin-top: 6px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    /* Manual minutes input */
+    .calc-manual-input {
+      width: 56px;
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 800;
+      color: #ff6b6b;
+      background: var(--noir-hover);
+      border: 1px solid var(--noir-border);
+      border-radius: 6px;
+      padding: 2px 6px;
+      outline: none;
+      text-align: center;
+    }
+    .calc-manual-input:focus {
+      border-color: var(--gold-border);
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type="number"] { -moz-appearance: textfield; }
+
+    /* ── CTA Section ── */
+    .cta-section {
+      position: relative;
+      z-index: 2;
+      padding: 60px 0 100px;
+      text-align: center;
+    }
+    .cta-box {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 48px 32px;
+      background: var(--noir-card);
+      border: 1px solid var(--noir-border);
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .cta-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--text-100);
+      margin-bottom: 12px;
+      letter-spacing: -.02em;
+    }
+    .cta-text {
+      font-size: 15px;
+      color: var(--text-60);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      background: var(--gold);
+      color: var(--noir);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 6px;
+      transition: background .3s, transform .3s;
+    }
+    .cta-btn:hover {
+      background: var(--gold-bright);
+      transform: translateY(-2px);
+    }
+
+    /* ── Aurora background boost for subpage ── */
+    .aurora-bg { opacity: .45; }
+    .aurora-streak--1 { height: 3px; }
+    .aurora-streak--2 { height: 2px; }
+    .aurora-streak--3 { height: 4px; }
+    .aurora-streak--4 { height: 2.5px; }
+
+    /* ── Workflow SVG glow keyframe ── */
+    @keyframes wfGlow { 0%,100%{opacity:.1;} 50%{opacity:.35;} }
+
+    /* ── Mobile overrides ── */
+    @media (max-width: 1024px) {
+      .wf-panel.open {
+        width: 300px;
+        min-width: 300px;
+      }
+    }
+    @media (max-width: 768px) {
+      .subpage-hero { padding: 120px 0 60px; }
+      .demo-section { padding: 60px 0; }
+
+      .wf-layout { flex-direction: column; }
+      .wf-panel {
+        border-left: none;
+        border-top: 1px solid var(--noir-border);
+      }
+      .wf-canvas { overflow-x: hidden; }
+      .wf-canvas svg.wf-svg { min-width: 0; padding: 10px 8px; }
+      .wf-panel.open {
+        width: 100%;
+        min-width: 100%;
+        max-height: 400px;
+      }
+
+      .dash-stats { grid-template-columns: 1fr; }
+      .dash-bottom { grid-template-columns: 1fr; }
+      .calc-sliders { grid-template-columns: 1fr; }
+      .calc-kpis { grid-template-columns: repeat(2, 1fr); }
+      .calc-compare { grid-template-columns: 1fr; }
+      .calc-compare-arrow {
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid var(--noir-border);
+        border-bottom: 1px solid var(--noir-border);
+        flex-direction: row;
+        gap: 12px;
+        padding: 12px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <a href="Colone-vertebrale/index.html#projects" class="back-button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
+
+  <!-- Aurora Background -->
+  <div class="aurora-bg" id="auroraBg">
+    <div class="aurora-streak aurora-streak--1"></div>
+    <div class="aurora-streak aurora-streak--2"></div>
+    <div class="aurora-streak aurora-streak--3"></div>
+    <div class="aurora-streak aurora-streak--4"></div>
+  </div>
+
+  <!-- Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Grain -->
+  <div class="grain"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar is-scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">A<span class="nav-logo-dot">.</span></div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-studio">STUDIO</span>
+          <span class="nav-logo-name">AURALIS<span class="dot">.</span></span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#services">Expertises</a>
+        <a href="index.html#projets">Projets</a>
+        <a href="index.html#apropos">À propos</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <a href="index.html#contact" class="nav-cta">Démarrer un projet</a>
+      <button class="nav-burger" id="navBurger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="index.html#services">Expertises</a>
+      <a href="index.html#projets">Projets</a>
+      <a href="index.html#apropos">À propos</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="index.html#contact" class="mobile-menu-cta">Démarrer un projet</a>
+    </div>
+  </div>
+
+  <!-- React root -->
+  <div id="root"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-line"></div>
+    <div class="footer-inner">
+      <span class="footer-logo"><em>Auralis</em><span class="gold-dot">.</span></span>
+      <p class="footer-copy">&copy; 2026 Studio Auralis. Tous droits réservés.</p>
+      <a href="https://linkedin.com" class="footer-social" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5"/>
         </svg>
-        Retour au portfolio
-    </a>
-    <div id="root"></div>
+      </a>
+    </div>
+  </footer>
 
-    <script type="text/babel">
-const { useState, useEffect } = React;
+  <script type="text/babel">
+const { useState, useEffect, useRef } = React;
 
-const Icons = {
+/* ── SVG Icons ── */
+const I = {
   zap: (c) => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
   database: (c) => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>,
   search: (c) => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>,
@@ -74,57 +949,57 @@ const Icons = {
   clock: (c) => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
   activity: (c) => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
   trending: (c) => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>,
-  edit: (c) => <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>,
 };
 
+/* ── Workflow Data ── */
 const NODES = [
   {
-    id: "trigger", iconKey: "zap", label: "Webhook", sub: "Déclencheur", accent: "#ff6d5a", col: 0, row: 1,
-    panelTitle: "Webhook — Déclencheur automatique",
-    panelDesc: "Dès qu'un nouveau prospect remplit un formulaire, s'inscrit sur votre site, ou est ajouté dans votre CRM, ce node détecte l'événement et lance le workflow en temps réel. Aucune action humaine requise.",
-    panelBenefits: ["Déclenchement instantané (< 1 seconde)", "Fonctionne 24h/24, 7j/7", "Compatible tous CRM et formulaires web"],
-    panelTech: "Webhook HTTP / API REST / CRM Polling",
+    id: "trigger", iconKey: "zap", label: "Webhook", sub: "Déclencheur", col: 0, row: 1,
+    panelTitle: "Le déclencheur",
+    panelDesc: "Quelqu'un remplit votre formulaire ou arrive dans votre CRM ? Le workflow se lance tout seul, en moins d'une seconde. Même à 3h du matin.",
+    panelBenefits: ["Réaction immédiate, jour et nuit", "Marche avec n'importe quel formulaire ou CRM", "Vous ne ratez plus jamais un lead"],
+    panelTech: "Webhook HTTP · API REST · CRM Polling",
   },
   {
-    id: "crm", iconKey: "database", label: "CRM", sub: "Extraction", accent: "#ff9922", col: 1, row: 0,
-    panelTitle: "CRM — Récupération fiche lead",
-    panelDesc: "Récupère automatiquement toutes les informations déjà disponibles dans votre CRM : nom, email, téléphone, entreprise, source d'acquisition, historique des échanges et tags existants.",
-    panelBenefits: ["Aucune re-saisie manuelle", "Données toujours à jour et centralisées", "Connexion native avec votre CRM actuel"],
+    id: "crm", iconKey: "database", label: "CRM", sub: "Extraction", col: 1, row: 0,
+    panelTitle: "On va chercher la fiche",
+    panelDesc: "Le lead existe déjà dans votre CRM ? On récupère tout : nom, email, entreprise, historique, tags. Pas besoin de copier-coller quoi que ce soit, tout remonte en une fraction de seconde.",
+    panelBenefits: ["Zéro re-saisie, jamais", "La fiche est toujours à jour", "Compatible avec votre CRM actuel"],
     panelTech: "HubSpot / Pipedrive / Salesforce API",
   },
   {
-    id: "enrich", iconKey: "search", label: "Compléter", sub: "Profil enrichi", accent: "#00b4d8", col: 1, row: 2,
-    panelTitle: "Compléter le profil — Données manquantes",
-    panelDesc: "Votre lead a laissé un email et un nom d'entreprise — mais c'est insuffisant pour le qualifier. Ce node va chercher automatiquement les informations manquantes : taille de l'entreprise, chiffre d'affaires, secteur, poste du contact, etc. Comme si un assistant faisait la recherche Google et LinkedIn à votre place, mais en 2 secondes.",
-    panelBenefits: ["Fiche lead complète sans effort", "Plus besoin de chercher sur LinkedIn / Google", "Meilleure qualité de scoring ensuite"],
+    id: "enrich", iconKey: "search", label: "Compléter", sub: "Profil enrichi", col: 1, row: 2,
+    panelTitle: "On complète ce qui manque",
+    panelDesc: "Un email et un nom, c'est pas assez pour décider. Le système va chercher le reste tout seul : taille de la boîte, CA, secteur, poste du contact. Plus besoin d'ouvrir LinkedIn dans un onglet à côté.",
+    panelBenefits: ["Fiche complète sans lever le petit doigt", "Fini les recherches Google/LinkedIn à la main", "Le scoring sera bien plus fiable derrière"],
     panelTech: "Clearbit / Apollo / Societeinfo / LinkedIn API",
   },
   {
-    id: "ai", iconKey: "brain", label: "AI Agent", sub: "Scoring IA", accent: "#00c9a7", col: 2, row: 1,
-    panelTitle: "AI Agent — Analyse & Score automatique",
-    panelDesc: "Le cœur du système. L'IA analyse toutes les données collectées et attribue un score de 0 à 100 selon VOS critères : budget estimé, taille entreprise, adéquation produit, urgence du besoin. Elle rédige aussi un résumé de 3 lignes pour que votre commercial comprenne le lead en un coup d'œil.",
-    panelBenefits: ["Scoring objectif, identique à chaque lead", "Résumé prêt à lire pour le commercial", "Critères personnalisés à votre business"],
+    id: "ai", iconKey: "brain", label: "AI Agent", sub: "Scoring IA", col: 2, row: 1,
+    panelTitle: "L'IA note et résume",
+    panelDesc: "C'est le cœur du truc. L'IA lit tout ce qu'on sait du lead et lui colle un score de 0 à 100 — selon vos critères à vous : budget, taille de boîte, urgence, fit produit. Elle écrit aussi un résumé en 3 lignes pour que le commercial comprenne la situation d'un coup d'œil.",
+    panelBenefits: ["Même rigueur sur chaque lead, pas de feeling", "Résumé clair, prêt à lire", "Vos critères, pas ceux d'un logiciel générique"],
     panelTech: "GPT-4 / Claude / Mistral — Prompt sur mesure",
   },
   {
-    id: "router", iconKey: "gitBranch", label: "Aiguillage", sub: "Par score", accent: "#ffd166", col: 3, row: 1,
-    panelTitle: "Aiguillage — Orientation automatique",
-    panelDesc: "En fonction du score attribué par l'IA, le lead est envoyé vers le bon parcours. Un lead chaud (score élevé) part directement dans le pipeline commercial. Un lead tiède est mis en nurturing automatique. Les seuils sont ajustables selon votre stratégie.",
-    panelBenefits: ["Les meilleurs leads traités en priorité", "Aucun prospect oublié ou perdu", "Seuils modifiables à tout moment"],
+    id: "router", iconKey: "gitBranch", label: "Aiguillage", sub: "Par score", col: 3, row: 1,
+    panelTitle: "On envoie au bon endroit",
+    panelDesc: "Score élevé ? Le lead file droit vers le commercial. Score moyen ? Il part en nurturing — des emails automatiques qui le réchauffent. Pas besoin de trier à la main, les seuils décident pour vous (et vous pouvez les changer quand vous voulez).",
+    panelBenefits: ["Les meilleurs leads traités en premier", "Personne ne tombe entre les mailles", "Vous ajustez les seuils en 2 clics"],
     panelTech: "Score ≥ 70 → Chaud | 40-69 → Tiède | < 40 → Froid",
   },
   {
-    id: "hot", iconKey: "flame", label: "Pipeline", sub: "Lead chaud", accent: "#ff6b6b", col: 4, row: 0,
-    panelTitle: "Pipeline — Opportunité commerciale",
-    panelDesc: "Les leads à fort potentiel sont transformés en opportunité dans votre CRM automatiquement. Le commercial reçoit une notification instantanée (Slack, email, SMS) avec le score et le résumé IA. Il n'a plus qu'à appeler.",
-    panelBenefits: ["Réactivité maximale sur les leads chauds", "Notification instantanée au bon commercial", "Opportunité CRM créée sans saisie"],
+    id: "hot", iconKey: "flame", label: "Pipeline", sub: "Lead chaud", col: 4, row: 0,
+    panelTitle: "Le commercial est prévenu",
+    panelDesc: "Lead chaud détecté : une opportunité se crée toute seule dans le CRM. Le bon commercial reçoit un Slack (ou email, ou SMS) avec le score et le résumé. Il rappelle dans les 5 minutes, pas dans les 2 jours.",
+    panelBenefits: ["Rappel ultra-rapide = plus de deals signés", "Le bon commercial reçoit le bon lead", "Tout est déjà dans le CRM, rien à remplir"],
     panelTech: "CRM Pipeline + Slack / Email / SMS alert",
   },
   {
-    id: "nurture", iconKey: "mail", label: "Nurturing", sub: "Suivi auto", accent: "#4ecdc4", col: 4, row: 2,
-    panelTitle: "Nurturing — Séquence email automatique",
-    panelDesc: "Les leads pas encore prêts à acheter sont inscrits automatiquement dans une séquence d'emails personnalisée. Le contenu s'adapte à leur profil et à leur score. Objectif : les faire mûrir jusqu'au bon moment, sans effort de votre part.",
-    panelBenefits: ["Aucun lead gaspillé ou oublié", "Emails personnalisés selon le profil", "Relance automatique sans intervention"],
+    id: "nurture", iconKey: "mail", label: "Nurturing", sub: "Suivi auto", col: 4, row: 2,
+    panelTitle: "On garde le contact",
+    panelDesc: "Pas prêt à acheter maintenant ? Pas grave. Le lead reçoit des emails adaptés à son profil — automatiquement, sans que personne n'y pense. Quand il sera mûr, le workflow le détectera et le rebasculera en chaud.",
+    panelBenefits: ["Aucun lead oublié dans un coin", "Les emails collent au profil, pas du spam", "Le jour où il est prêt, vous le savez"],
     panelTech: "Brevo / Mailchimp / ActiveCampaign",
   },
 ];
@@ -138,30 +1013,273 @@ const COL_X = [40, 210, 390, 560, 730];
 const ROW_Y = [28, 130, 232];
 const NW = 136, NH = 72;
 
-function ctr(n) { return { x: COL_X[n.col] + NW / 2, y: ROW_Y[n.row] + NH / 2 }; }
-function bz(f, t) {
-  const a = ctr(f), b = ctr(t), dx = Math.abs(b.x - a.x) * 0.5;
+/* Mobile vertical layout: 2 columns, 5 rows */
+const MOB_NW = 130, MOB_NH = 66;
+const MOB_COL = [20, 170];
+const MOB_ROW = [20, 110, 200, 290, 380];
+const MOB_POS = {
+  trigger:  { col: 0, row: 0 },
+  crm:      { col: 0, row: 1 },
+  enrich:   { col: 1, row: 1 },
+  ai:       { col: 0, row: 2, span: true },
+  router:   { col: 0, row: 3, span: true },
+  hot:      { col: 0, row: 4 },
+  nurture:  { col: 1, row: 4 },
+};
+
+function ctr(n, mob) {
+  if (mob) {
+    const m = MOB_POS[n.id];
+    const x = m.span ? (MOB_COL[0] + MOB_COL[1]) / 2 : MOB_COL[m.col];
+    return { x: x + MOB_NW / 2, y: MOB_ROW[m.row] + MOB_NH / 2 };
+  }
+  return { x: COL_X[n.col] + NW / 2, y: ROW_Y[n.row] + NH / 2 };
+}
+function bz(f, t, mob) {
+  const a = ctr(f, mob), b = ctr(t, mob);
+  if (mob) {
+    const dy = Math.abs(b.y - a.y) * 0.4;
+    return `M${a.x},${a.y} C${a.x},${a.y + dy} ${b.x},${b.y - dy} ${b.x},${b.y}`;
+  }
+  const dx = Math.abs(b.x - a.x) * 0.5;
   return `M${a.x},${a.y} C${a.x + dx},${a.y} ${b.x - dx},${b.y} ${b.x},${b.y}`;
 }
 
+function useIsMobile(bp = 768) {
+  const [mob, setMob] = useState(window.innerWidth <= bp);
+  useEffect(() => {
+    const fn = () => setMob(window.innerWidth <= bp);
+    window.addEventListener('resize', fn);
+    return () => window.removeEventListener('resize', fn);
+  }, [bp]);
+  return mob;
+}
+
+const ACCENT = "#00E5CC";
+const ACCENT_DIM = "#00BFA6";
+
 const DEFAULT_MANUAL_STEPS = [
-  { text: "Lecture manuelle des informations", min: 4 },
-  { text: "Recherche LinkedIn et Google", min: 5 },
-  { text: "Évaluation du potentiel au ressenti", min: 4 },
-  { text: "Saisie et mise à jour CRM", min: 4 },
-  { text: "Assignation au bon commercial", min: 3 },
+  { text: "Lire les infos une par une" },
+  { text: "Chercher sur LinkedIn et Google" },
+  { text: "Évaluer au feeling" },
+  { text: "Remplir le CRM à la main" },
+  { text: "Trouver le bon commercial" },
 ];
 
-function App() {
+/* ── useIntersection hook ── */
+function useInView(opts = {}) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    if (!ref.current) return;
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setVisible(true); io.disconnect(); }
+    }, { threshold: opts.threshold || 0.2 });
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, []);
+  return [ref, visible];
+}
+
+/* ══════════════════════════════════════
+   Section 1 — Workflow SVG
+   ══════════════════════════════════════ */
+function UnifiedDemo() {
   const [sel, setSel] = useState(null);
-  const [lpm, setLpm] = useState(150);
-  const [cph, setCph] = useState(35);
-  const [manualMin, setManualMin] = useState(20);
-  const [steps] = useState(DEFAULT_MANUAL_STEPS);
   const [rdy, setRdy] = useState(false);
-  useEffect(() => { setTimeout(() => setRdy(true), 150); }, []);
+  const [dashRef, dashVisible] = useInView({ threshold: 0.1 });
+  const mob = useIsMobile();
+  useEffect(() => { setTimeout(() => setRdy(true), 300); }, []);
 
   const nd = NODES.find(n => n.id === sel);
+  const nw = mob ? MOB_NW : NW;
+  const nh = mob ? MOB_NH : NH;
+  const vb = mob ? "0 0 320 470" : "0 0 920 340";
+
+  function nodeXY(n) {
+    if (mob) {
+      const m = MOB_POS[n.id];
+      const x = m.span ? (MOB_COL[0] + MOB_COL[1]) / 2 : MOB_COL[m.col];
+      return { x, y: MOB_ROW[m.row] };
+    }
+    return { x: COL_X[n.col], y: ROW_Y[n.row] };
+  }
+
+  return (
+    <section className="demo-section" id="sec-demo">
+      <div className="demo-container">
+        <div className="demo-label">Comment ça marche</div>
+        <h2 className="demo-heading">7 étapes, 30 secondes, zéro clic</h2>
+
+        <div className="wf-layout">
+          {/* SVG Canvas */}
+          <div className="wf-canvas">
+            <svg className="wf-dots" xmlns="http://www.w3.org/2000/svg">
+              <defs><pattern id="gd" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".6" fill="#6a7090"/></pattern></defs>
+              <rect width="100%" height="100%" fill="url(#gd)"/>
+            </svg>
+            <svg className="wf-svg" viewBox={vb}>
+              {/* Connections */}
+              {CONNECTIONS.map(([fId, tId], i) => {
+                const f = NODES.find(n => n.id === fId), t = NODES.find(n => n.id === tId);
+                return (
+                  <g key={i}>
+                    <path d={bz(f, t, mob)} fill="none" stroke="#1e2535" strokeWidth={2}/>
+                    {rdy && <circle r={3} fill={ACCENT} opacity={.55}>
+                      <animateMotion dur={`${2 + i * 0.3}s`} repeatCount="indefinite" path={bz(f, t, mob)}/>
+                    </circle>}
+                  </g>
+                );
+              })}
+              {/* Nodes */}
+              {NODES.map(n => {
+                const { x, y } = nodeXY(n);
+                const s = sel === n.id;
+                return (
+                  <g key={n.id} onClick={() => setSel(s ? null : n.id)} style={{ cursor: "pointer" }}>
+                    {s && <rect x={x - 2} y={y - 2} width={nw + 4} height={nh + 4} rx={10} fill="none" stroke={ACCENT} strokeWidth={1} opacity={.25}/>}
+                    <rect x={x} y={y} width={nw} height={nh} rx={8}
+                      fill={s ? "#101822" : "#0D1117"}
+                      stroke={s ? ACCENT : "#1e2535"}
+                      strokeWidth={s ? 2 : 1}/>
+                    <rect x={x} y={y} width={nw} height={3} rx={1.5} fill={ACCENT} opacity={s ? 1 : .5}/>
+                    <circle cx={x} cy={y + nh / 2} r={3.5} fill={ACCENT} opacity={.3}/>
+                    <circle cx={x + nw} cy={y + nh / 2} r={3.5} fill={ACCENT} opacity={.3}/>
+                    <foreignObject x={x + 10} y={y + (mob ? 12 : 16)} width={24} height={24}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>{I[n.iconKey](s ? "#50FFEB" : ACCENT)}</div>
+                    </foreignObject>
+                    <text x={x + 40} y={y + (mob ? 26 : 30)} fill={s ? "#E8EAED" : "#C4C8CE"} fontSize={mob ? 11 : 12} fontWeight={700} fontFamily="'Outfit',sans-serif">{n.label}</text>
+                    <text x={x + 40} y={y + (mob ? 40 : 46)} fill={s ? ACCENT_DIM : "#3A4150"} fontSize={mob ? 9 : 9.5} fontFamily="'Outfit',sans-serif">{n.sub}</text>
+                    {n.id === "ai" && <rect x={x + 1} y={y + 1} width={nw - 2} height={nh - 2} rx={7} fill="none" stroke={ACCENT} strokeWidth={1.2} opacity={.15} style={{ animation: "wfGlow 2.5s ease-in-out infinite" }}/>}
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+
+          {/* Detail Panel */}
+          <div className={`wf-panel ${nd ? "open" : ""}`}>
+            {nd && <>
+              <div className="wf-panel-header">
+                <div className="wf-panel-icon" style={{ background: "rgba(0,229,204,.06)", border: "1.5px solid rgba(0,229,204,.15)" }}>
+                  {I[nd.iconKey](ACCENT)}
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: "#E8EAED", fontFamily: "'Outfit',sans-serif" }}>{nd.label}</div>
+                  <div style={{ fontSize: 11, color: ACCENT, fontWeight: 600, fontFamily: "'Outfit',sans-serif" }}>{nd.sub}</div>
+                </div>
+                <div className="wf-panel-close" onClick={() => setSel(null)}>✕</div>
+              </div>
+              <div className="wf-panel-body">
+                <div style={{ marginBottom: 22 }}>
+                  <div className="wf-panel-section-label">En résumé</div>
+                  <div className="wf-panel-text">{nd.panelDesc}</div>
+                </div>
+                <div style={{ marginBottom: 22 }}>
+                  <div className="wf-panel-section-label">Pourquoi c'est utile</div>
+                  {nd.panelBenefits.map((b, i) => (
+                    <div key={i} className="wf-benefit">
+                      <div className="wf-benefit-check">{I.check(ACCENT)}</div>
+                      <span>{b}</span>
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <div className="wf-panel-section-label">Sous le capot</div>
+                  <div className="wf-panel-tech">{nd.panelTech}</div>
+                </div>
+              </div>
+              <div className="wf-panel-footer">
+                <div className="wf-panel-dot"></div>
+                <span>Actif — tourne tout seul</span>
+              </div>
+            </>}
+          </div>
+        </div>
+
+        {/* Dashboard */}
+        <div ref={dashRef} style={{ marginTop: 32 }}>
+          <DashboardBlock visible={dashVisible} />
+        </div>
+
+        {/* Calculateur ROI */}
+        <CalculatorBlock />
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════
+   Dashboard + Calculator (inline blocks)
+   ══════════════════════════════════════ */
+function DashboardBlock({ visible }) {
+  return (
+    <div className="dash-grid" style={{ marginBottom: 20 }}>
+      <div className="dash-stats">
+        <div className="dash-card dash-stat dash-stat-featured">
+          <div className="dash-stat-label">Leads actifs</div>
+          <div className="dash-stat-num">284</div>
+          <div className="dash-stat-delta">+23% vs mois dernier</div>
+        </div>
+        <div className="dash-card dash-stat dash-stat-sm">
+          <div className="dash-stat-label">Qualification</div>
+          <div className="dash-stat-row">
+            <div className="dash-stat-num">94%</div>
+            <div className="dash-stat-delta">+8pts</div>
+          </div>
+          <div className="dash-bar"><div className={`dash-bar-fill fill-accent ${visible ? "anim-active" : ""}`} style={{ width: "94%" }}/></div>
+        </div>
+        <div className="dash-card dash-stat dash-stat-sm">
+          <div className="dash-stat-label">Conversion</div>
+          <div className="dash-stat-row">
+            <div className="dash-stat-num">31%</div>
+            <div className="dash-stat-delta warn">stable</div>
+          </div>
+          <div className="dash-bar"><div className={`dash-bar-fill fill-warm ${visible ? "anim-active" : ""}`} style={{ width: "31%" }}/></div>
+        </div>
+      </div>
+      <div className="dash-bottom">
+        <div className="dash-card" style={{ overflow: "hidden" }}>
+          <div className="dash-feed-head">Activité</div>
+          {[
+            { bg: "#0d6b5e", ini: "MD", txt: <><b>Marie D.</b> scorée — 92</>, tag: "92", cls: "tag-score", t: "2s" },
+            { bg: "#3a5580", ini: "LT", txt: <><b>Lucas T.</b> email #2</>, tag: "seq", cls: "tag-email", t: "14s" },
+            { bg: "#7a5a1a", ini: "SR", txt: <><b>Sophie R.</b> nouveau</>, tag: "new", cls: "tag-new", t: "31s" },
+            { bg: "#0d6b5e", ini: "AB", txt: <><b>Alex B.</b> converti</>, tag: "ok", cls: "tag-done", t: "1m" },
+          ].map((r, i) => (
+            <div key={i} className={`f-row ${visible ? "anim-active" : ""}`}>
+              <div className="f-av" style={{ background: r.bg }}>{r.ini}</div>
+              <div className="f-text">{r.txt}</div>
+              <div className={`f-tag ${r.cls}`}>{r.tag}</div>
+              <div className="f-time">{r.t}</div>
+            </div>
+          ))}
+        </div>
+        <div className="dash-card dash-chart">
+          <div className="ch-head">
+            <div className="ch-title">Conversions</div>
+            <div className="ch-pct">+18%</div>
+          </div>
+          <div className="ch-big">47<span>/sem</span></div>
+          <div className="ch-bars">
+            {[22,38,30,50,42,26,14].map((h, i) => (
+              <div className="b-col" key={i}>
+                <div className={`b-bar ${i === 3 ? "today" : ""} ${visible ? "anim-active" : ""}`} style={{ height: h + "px" }}></div>
+                <div className="b-day">{["L","M","M","J","V","S","D"][i]}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CalculatorBlock() {
+  const [lpm, setLpm] = useState(150);
+  const [cph, setCph] = useState(35);
+  const [manualMin, setManualMin] = useState(30);
+
   const autoSec = 30;
   const sH = (lpm * manualMin) / 60 - (lpm * autoSec) / 3600;
   const sHY = sH * 12;
@@ -169,288 +1287,188 @@ function App() {
   const sY = sHY * cph;
   const spd = manualMin > 0 ? Math.round((manualMin * 60) / autoSec) : 0;
   const fmt = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-
-  // % of time reinvested
   const pctTimeSaved = lpm > 0 && manualMin > 0 ? Math.min(99, Math.round(((manualMin * 60 - autoSec) / (manualMin * 60)) * 100)) : 0;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0e1018", fontFamily: "'Segoe UI','Helvetica Neue',sans-serif", color: "#d0d5e0" }}>
-      {/* Topbar */}
-      <div style={{ height: 50, background: "#151820", borderBottom: "1px solid #232738", display: "flex", alignItems: "center", padding: "0 20px", gap: 12 }}>
-        <div style={{ background: "linear-gradient(135deg,#ff6d5a,#ff9922)", borderRadius: 7, width: 30, height: 30, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 900, color: "#fff", letterSpacing: -0.5 }}>n8n</div>
-        <span style={{ color: "#333848", fontSize: 16 }}>›</span>
-        <span style={{ fontSize: 13, fontWeight: 600, color: "#8890a4" }}>Qualification Leads</span>
-        <span style={{ fontSize: 13, color: "#3a3f50" }}>—</span>
-        <span style={{ fontSize: 13, color: "#5a6278" }}>Workflow automatisé</span>
-        <div style={{ flex: 1 }} />
-        <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "5px 14px", borderRadius: 6, background: "#00c9a710", border: "1px solid #00c9a725" }}>
-          <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#00c9a7", boxShadow: "0 0 6px #00c9a760" }} />
-          <span style={{ fontSize: 11, fontWeight: 700, color: "#00c9a7", letterSpacing: 0.5 }}>ACTIF</span>
-        </div>
+    <div className="calc-card">
+      <div className="calc-header">
+        <span className="calc-header-title">Combien vous gagneriez ?</span>
+        <span className="calc-badge">TESTEZ</span>
       </div>
-
-      <div style={{ display: "flex", height: "calc(100vh - 50px)" }}>
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
-
-          {/* Canvas */}
-          <div style={{ flex: "0 0 auto", background: "#12141e", borderBottom: "1px solid #232738", position: "relative" }}>
-            <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.1, pointerEvents: "none" }}>
-              <defs><pattern id="gd" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.6" fill="#6a7090" /></pattern></defs>
-              <rect width="100%" height="100%" fill="url(#gd)" />
-            </svg>
-            <div style={{ overflowX: "auto" }}>
-              <svg viewBox="0 0 920 340" style={{ width: "100%", minWidth: 660, maxHeight: 340, display: "block", padding: "10px 16px" }}>
-                {CONNECTIONS.map(([fId, tId], i) => {
-                  const f = NODES.find(n => n.id === fId), t = NODES.find(n => n.id === tId);
-                  return (
-                    <g key={i}>
-                      <path d={bz(f, t)} fill="none" stroke="#282d40" strokeWidth={2} />
-                      {rdy && <circle r={3} fill="#00c9a7" opacity={0.65}>
-                        <animateMotion dur={`${2 + i * 0.3}s`} repeatCount="indefinite" path={bz(f, t)} />
-                      </circle>}
-                    </g>
-                  );
-                })}
-                {NODES.map(n => {
-                  const x = COL_X[n.col], y = ROW_Y[n.row], s = sel === n.id;
-                  return (
-                    <g key={n.id} onClick={() => setSel(s ? null : n.id)} style={{ cursor: "pointer" }}>
-                      {s && <rect x={x - 2} y={y - 2} width={NW + 4} height={NH + 4} rx={10} fill="none" stroke={n.accent} strokeWidth={1} opacity={0.2} />}
-                      <rect x={x} y={y} width={NW} height={NH} rx={8} fill={s ? "#1a1e2c" : "#161924"} stroke={s ? n.accent : "#262a3a"} strokeWidth={s ? 2 : 1} />
-                      <rect x={x} y={y} width={NW} height={3} fill={n.accent} />
-                      <circle cx={x} cy={y + NH / 2} r={3.5} fill={n.accent} opacity={0.45} />
-                      <circle cx={x + NW} cy={y + NH / 2} r={3.5} fill={n.accent} opacity={0.45} />
-                      <foreignObject x={x + 10} y={y + 16} width={24} height={24}>
-                        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>{Icons[n.iconKey](n.accent)}</div>
-                      </foreignObject>
-                      <text x={x + 40} y={y + 30} fill="#e0e4f0" fontSize={12} fontWeight={700} fontFamily="'Segoe UI',sans-serif">{n.label}</text>
-                      <text x={x + 40} y={y + 46} fill="#555c70" fontSize={9.5} fontFamily="'Segoe UI',sans-serif">{n.sub}</text>
-                      {n.id === "ai" && <rect x={x + 1} y={y + 1} width={NW - 2} height={NH - 2} rx={7} fill="none" stroke={n.accent} strokeWidth={1.2} opacity={0.15} style={{ animation: "glow 2.5s ease-in-out infinite" }} />}
-                    </g>
-                  );
-                })}
-              </svg>
+      <div className="calc-body">
+        <div className="calc-sliders">
+          <div>
+            <div className="calc-slider-head">
+              <span className="calc-slider-label">Vos leads / mois</span>
+              <span className="calc-slider-value">{fmt(lpm)}</span>
+            </div>
+            <input type="range" className="sl" min={0} max={500} step={5} value={lpm} onChange={e => setLpm(+e.target.value)}/>
+            <div className="calc-slider-range"><span>0</span><span>500</span></div>
+          </div>
+          <div>
+            <div className="calc-slider-head">
+              <span className="calc-slider-label">Taux horaire</span>
+              <span className="calc-slider-value">{cph} €</span>
+            </div>
+            <input type="range" className="sl" min={8} max={120} step={1} value={cph} onChange={e => setCph(+e.target.value)}/>
+            <div className="calc-slider-range"><span>8 €</span><span>120 €</span></div>
+          </div>
+        </div>
+        <div className="calc-kpis">
+          {[
+            { l: "Heures gagnées / mois", v: fmt(sH), u: "h" },
+            { l: "Heures gagnées / an", v: fmt(sHY), u: "h" },
+            { l: "Économisé / mois", v: fmt(sM), u: "€" },
+            { l: "Économisé / an", v: fmt(sY), u: "€" },
+          ].map(k => (
+            <div key={k.l} className="calc-kpi">
+              <div className="calc-kpi-value">{k.v}<span>{k.u}</span></div>
+              <div className="calc-kpi-label">{k.l}</div>
+            </div>
+          ))}
+        </div>
+        <div className="calc-timebar">
+          <div className="calc-timebar-head">
+            <div className="calc-timebar-left">
+              {I.trending(ACCENT)}
+              <span className="calc-timebar-label">Ce temps part dans la vente</span>
+            </div>
+            <span className="calc-timebar-pct">{pctTimeSaved}%</span>
+          </div>
+          <div className="calc-progress">
+            <div className="calc-progress-fill" style={{ width: pctTimeSaved + "%" }}/>
+          </div>
+          <div className="calc-timebar-foot">
+            <span>Vos commerciaux récupèrent <span className="hl-gold">{fmt(sH)}h/mois</span> pour vendre</span>
+            <span>soit <span className="hl-bright">{fmt(sY)}€</span> / an</span>
+          </div>
+        </div>
+        <div className="calc-compare">
+          <div className="calc-compare-col">
+            <div className="calc-compare-tag manual">
+              {I.clock("#ff6b6b")}
+              <span>À la main</span>
+            </div>
+            <div className="calc-compare-big manual" style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+              <input type="number" className="calc-manual-input" min={1} max={60} value={manualMin}
+                onChange={e => setManualMin(Math.max(1, Math.min(60, +e.target.value || 1)))}/>
+              <span className="unit">min / lead</span>
+            </div>
+            <div className="calc-compare-list">
+              {DEFAULT_MANUAL_STEPS.map((s, i) => <div key={i}>{s.text}</div>)}
             </div>
           </div>
-
-          {/* Bottom */}
-          <div style={{ flex: 1, overflow: "auto", padding: 20 }}>
-            {/* Comparison */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 56px 1fr", background: "#151820", borderRadius: 10, border: "1px solid #232738", overflow: "hidden", marginBottom: 20 }}>
-              {/* MANUEL — editable */}
-              <div style={{ padding: "22px 20px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 12 }}>
-                  {Icons.clock("#ff6b6b")}
-                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.5, color: "#ff6b6b", textTransform: "uppercase" }}>Processus manuel</span>
-                </div>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 14 }}>
-                  <input
-                    type="number"
-                    min={1}
-                    max={60}
-                    value={manualMin}
-                    onChange={e => setManualMin(Math.max(1, Math.min(60, +e.target.value || 1)))}
-                    style={{
-                      width: 56, fontSize: 32, fontWeight: 800, color: "#ff6b6b",
-                      background: "#1c1f2c", border: "1px solid #2e3244", borderRadius: 6,
-                      padding: "2px 6px", outline: "none", textAlign: "center",
-                      fontFamily: "'Segoe UI',sans-serif",
-                    }}
-                  />
-                  <span style={{ fontSize: 14, color: "#4a5060" }}>min / lead</span>
-                </div>
-                <div style={{ fontSize: 12, color: "#454c60", lineHeight: 2 }}>
-                  {steps.map((s, i) => (
-                    <div key={i}>{s.text}</div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Arrow */}
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", borderLeft: "1px solid #232738", borderRight: "1px solid #232738" }}>
-                <div style={{ width: 38, height: 38, borderRadius: "50%", background: "#00c9a710", border: "1px solid #00c9a725", display: "flex", alignItems: "center", justifyContent: "center", color: "#00c9a7", fontSize: 15, fontWeight: 700 }}>→</div>
-                <div style={{ marginTop: 6, fontSize: 13, fontWeight: 800, color: "#00c9a7" }}>×{spd}</div>
-              </div>
-
-              {/* AUTOMATISÉ */}
-              <div style={{ padding: "22px 20px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 12 }}>
-                  {Icons.activity("#00c9a7")}
-                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.5, color: "#00c9a7", textTransform: "uppercase" }}>Workflow automatisé</span>
-                </div>
-                <div style={{ fontSize: 34, fontWeight: 800, color: "#00c9a7", marginBottom: 14 }}>30 <span style={{ fontSize: 14, fontWeight: 400, color: "#4a5060" }}>sec / lead</span></div>
-                <div style={{ fontSize: 12, color: "#454c60", lineHeight: 2 }}>
-                  Déclenchement automatique<br />
-                  Profil complété en 2 secondes<br />
-                  Scoring IA objectif 0 à 100<br />
-                  Routage CRM instantané<br />
-                  Notification temps réel
-                </div>
-              </div>
+          <div className="calc-compare-arrow">
+            <div className="calc-compare-arrow-circle">→</div>
+            <div className="calc-compare-speed">×{spd}</div>
+          </div>
+          <div className="calc-compare-col">
+            <div className="calc-compare-tag auto">
+              {I.activity(ACCENT)}
+              <span>Automatisé</span>
             </div>
-
-            {/* Calculator */}
-            <div style={{ background: "#151820", borderRadius: 10, border: "1px solid #232738", overflow: "hidden" }}>
-              <div style={{ padding: "14px 20px", borderBottom: "1px solid #232738", display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{ fontSize: 14, fontWeight: 700, color: "#e0e4f0" }}>Calculateur d'impact</span>
-                <span style={{ fontSize: 10, padding: "3px 10px", borderRadius: 4, background: "#ffd16612", color: "#ffd166", fontWeight: 700, border: "1px solid #ffd16620" }}>INTERACTIF</span>
-              </div>
-              <div style={{ padding: 20 }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 24 }}>
-                  <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 10 }}>
-                      <span style={{ fontSize: 11, color: "#5c6378", fontWeight: 600, textTransform: "uppercase", letterSpacing: 1 }}>Leads / mois</span>
-                      <span style={{ fontSize: 18, fontWeight: 800, color: "#ff9922" }}>{fmt(lpm)}</span>
-                    </div>
-                    <input type="range" min={0} max={500} step={5} value={lpm} onChange={e => setLpm(+e.target.value)} className="sl sl-or" />
-                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, color: "#333848", marginTop: 3 }}><span>0</span><span>500</span></div>
-                  </div>
-                  <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 10 }}>
-                      <span style={{ fontSize: 11, color: "#5c6378", fontWeight: 600, textTransform: "uppercase", letterSpacing: 1 }}>Coût horaire</span>
-                      <span style={{ fontSize: 18, fontWeight: 800, color: "#00b4d8" }}>{cph} €</span>
-                    </div>
-                    <input type="range" min={8} max={120} step={1} value={cph} onChange={e => setCph(+e.target.value)} className="sl sl-cy" />
-                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, color: "#333848", marginTop: 3 }}><span>8 €</span><span>120 €</span></div>
-                  </div>
-                </div>
-
-                {/* KPIs */}
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 10, marginBottom: 16 }}>
-                  {[
-                    { l: "Heures / mois", v: fmt(sH), u: "h", c: "#00b4d8" },
-                    { l: "Heures / an", v: fmt(sHY), u: "h", c: "#ffd166" },
-                    { l: "Économie / mois", v: fmt(sM), u: "€", c: "#00c9a7" },
-                    { l: "Économie / an", v: fmt(sY), u: "€", c: "#ff6d5a" },
-                  ].map(k => (
-                    <div key={k.l} style={{ background: `${k.c}08`, border: `1px solid ${k.c}18`, borderRadius: 8, padding: "16px 10px", textAlign: "center" }}>
-                      <div style={{ fontSize: 24, fontWeight: 800, color: k.c }}>{k.v}<span style={{ fontSize: 13, marginLeft: 2 }}>{k.u}</span></div>
-                      <div style={{ fontSize: 9.5, color: "#4e5568", marginTop: 5, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.3 }}>{k.l}</div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Replaced ETP/ROI line → Positive time reinvested bar */}
-                <div style={{
-                  padding: "16px 18px", background: "#12141e", borderRadius: 8, border: "1px solid #232738",
-                }}>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      {Icons.trending("#00c9a7")}
-                      <span style={{ fontSize: 12, fontWeight: 600, color: "#8890a4" }}>Temps réinvesti dans la vente</span>
-                    </div>
-                    <span style={{ fontSize: 20, fontWeight: 800, color: "#00c9a7" }}>{pctTimeSaved}%</span>
-                  </div>
-                  {/* Progress bar */}
-                  <div style={{ width: "100%", height: 8, background: "#1e2230", borderRadius: 4, overflow: "hidden" }}>
-                    <div style={{
-                      width: `${pctTimeSaved}%`,
-                      height: "100%",
-                      background: "linear-gradient(90deg, #00c9a7, #4ecdc4)",
-                      borderRadius: 4,
-                      transition: "width 0.4s ease",
-                    }} />
-                  </div>
-                  <div style={{ display: "flex", justifyContent: "space-between", marginTop: 8 }}>
-                    <span style={{ fontSize: 10.5, color: "#454c60" }}>
-                      Vos commerciaux récupèrent <span style={{ color: "#00c9a7", fontWeight: 700 }}>{fmt(sH)}h/mois</span> pour closer
-                    </span>
-                    <span style={{ fontSize: 10.5, color: "#454c60" }}>
-                      soit <span style={{ color: "#ffd166", fontWeight: 700 }}>{fmt(sY)}€</span> / an
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Footer — AURALIS */}
-            <div style={{
-              textAlign: "center", padding: "28px 0 12px",
-              display: "flex", flexDirection: "column", alignItems: "center", gap: 6,
-            }}>
-              <div style={{
-                fontSize: 16, fontWeight: 800, letterSpacing: 3,
-                background: "linear-gradient(135deg, #ff6d5a, #ff9922, #ffd166, #00c9a7)",
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-                textTransform: "uppercase",
-              }}>AURALIS</div>
-              <div style={{ fontSize: 11, color: "#3a3f50", letterSpacing: 0.5 }}>Automatisation IA — Workflow n8n × CRM × AI Agent</div>
+            <div className="calc-compare-big auto">30 <span className="unit">sec / lead</span></div>
+            <div className="calc-compare-list">
+              Se lance tout seul<br/>
+              Profil complété en 2 sec<br/>
+              Score IA de 0 à 100<br/>
+              Envoyé au bon endroit<br/>
+              Notif au commercial direct
             </div>
           </div>
         </div>
-
-        {/* Side panel */}
-        <div style={{
-          width: nd ? 360 : 0, minWidth: nd ? 360 : 0,
-          background: "#151820", borderLeft: "1px solid #232738",
-          transition: "width 0.3s ease, min-width 0.3s ease",
-          overflow: "hidden", display: "flex", flexDirection: "column",
-        }}>
-          {nd && <>
-            <div style={{ padding: "16px 20px", borderBottom: "1px solid #232738", display: "flex", alignItems: "center", gap: 14 }}>
-              <div style={{ width: 42, height: 42, borderRadius: 10, background: `${nd.accent}12`, border: `1.5px solid ${nd.accent}30`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{Icons[nd.iconKey](nd.accent)}</div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: 15, fontWeight: 700, color: "#e8eaf0" }}>{nd.label}</div>
-                <div style={{ fontSize: 11, color: nd.accent, fontWeight: 600 }}>{nd.sub}</div>
-              </div>
-              <div onClick={() => setSel(null)} style={{ cursor: "pointer", width: 30, height: 30, borderRadius: 6, background: "#1c2030", display: "flex", alignItems: "center", justifyContent: "center", color: "#555c70", fontSize: 16, border: "1px solid #282d40" }}>✕</div>
-            </div>
-            <div style={{ flex: 1, overflow: "auto", padding: "20px 20px 24px" }}>
-              <div style={{ marginBottom: 22 }}>
-                <div style={{ fontSize: 10, fontWeight: 700, color: "#555c70", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 10 }}>Ce que fait ce node</div>
-                <div style={{ fontSize: 13.5, color: "#a0a8bc", lineHeight: 1.75 }}>{nd.panelDesc}</div>
-              </div>
-              <div style={{ marginBottom: 22 }}>
-                <div style={{ fontSize: 10, fontWeight: 700, color: "#555c70", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 12 }}>Bénéfices concrets</div>
-                {nd.panelBenefits.map((b, i) => (
-                  <div key={i} style={{ display: "flex", gap: 10, marginBottom: 10 }}>
-                    <div style={{ width: 20, height: 20, borderRadius: 5, flexShrink: 0, marginTop: 1, background: `${nd.accent}14`, border: `1px solid ${nd.accent}28`, display: "flex", alignItems: "center", justifyContent: "center" }}>{Icons.check(nd.accent)}</div>
-                    <span style={{ fontSize: 13, color: "#8890a4", lineHeight: 1.55 }}>{b}</span>
-                  </div>
-                ))}
-              </div>
-              <div>
-                <div style={{ fontSize: 10, fontWeight: 700, color: "#555c70", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 10 }}>Stack technique</div>
-                <div style={{ padding: "12px 14px", borderRadius: 7, background: "#12141e", border: "1px solid #232738", fontSize: 11.5, color: "#6a7288", fontFamily: "'SF Mono','Fira Code','Consolas',monospace", lineHeight: 1.6 }}>{nd.panelTech}</div>
-              </div>
-            </div>
-            <div style={{ padding: "14px 20px", borderTop: "1px solid #232738", display: "flex", alignItems: "center", gap: 8 }}>
-              <div style={{ width: 7, height: 7, borderRadius: "50%", background: nd.accent, boxShadow: `0 0 6px ${nd.accent}50` }} />
-              <span style={{ fontSize: 11, color: "#454c60" }}>Node actif — exécution automatique</span>
-            </div>
-          </>}
-        </div>
       </div>
-
-      <style>{`
-        @keyframes glow { 0%,100%{opacity:.1} 50%{opacity:.35} }
-        .sl { -webkit-appearance:none; appearance:none; width:100%; height:4px; background:#232738; border-radius:2px; outline:none; cursor:pointer; }
-        .sl::-webkit-slider-thumb { -webkit-appearance:none; width:16px; height:16px; border-radius:50%; border:2px solid #151820; cursor:pointer; }
-        .sl::-moz-range-thumb { width:16px; height:16px; border-radius:50%; border:2px solid #151820; cursor:pointer; }
-        .sl-or::-webkit-slider-thumb { background:#ff9922; box-shadow:0 0 8px #ff992235; }
-        .sl-or::-moz-range-thumb { background:#ff9922; box-shadow:0 0 8px #ff992235; }
-        .sl-cy::-webkit-slider-thumb { background:#00b4d8; box-shadow:0 0 8px #00b4d835; }
-        .sl-cy::-moz-range-thumb { background:#00b4d8; box-shadow:0 0 8px #00b4d835; }
-        *{box-sizing:border-box;margin:0;padding:0;}
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-        input[type="number"] { -moz-appearance: textfield; }
-      `}</style>
     </div>
   );
 }
 
-// Render the app
-const { StrictMode } = React;
-const { createRoot } = ReactDOM;
+/* ══════════════════════════════════════
+   App root
+   ══════════════════════════════════════ */
+function App() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="subpage-hero">
+        <div className="section-container">
+          <a href="index.html#projets" className="subpage-back">&larr; Retour aux projets</a>
+          <h1 className="subpage-title">Automatisation <em className="serif-gold">IA.</em></h1>
+          <p className="subpage-subtitle">Un lead arrive, il est qualifié, scoré et routé au bon commercial en 30 secondes. Vos équipes ne touchent à rien.</p>
+        </div>
+      </section>
 
-const container = document.getElementById('root');
-const root = createRoot(container);
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
-    </script>
+      <UnifiedDemo />
+
+      {/* CTA */}
+      <section className="cta-section">
+        <div className="demo-container">
+          <div className="cta-box">
+            <h2 className="cta-title">Envie de tester sur votre process ?</h2>
+            <p className="cta-text">Un appel de 30 minutes pour analyser votre process actuel, identifier les gains et vous proposer un workflow sur mesure.</p>
+            <a href="index.html#contact" className="cta-btn" data-hover>
+              Démarrer un projet <span>&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+
+  <!-- GSAP scroll animations -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Animate each demo-section on scroll
+      document.querySelectorAll('.demo-section, .cta-section').forEach(function(sec) {
+        gsap.from(sec, {
+          scrollTrigger: { trigger: sec, start: 'top 85%', once: true },
+          y: 40, opacity: 0, duration: 0.8, ease: 'power3.out'
+        });
+      });
+
+      // Mobile burger menu
+      var burger = document.getElementById('navBurger');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (burger && mobileMenu) {
+        burger.addEventListener('click', function() {
+          burger.classList.toggle('is-active');
+          mobileMenu.classList.toggle('is-open');
+          document.body.style.overflow = mobileMenu.classList.contains('is-open') ? 'hidden' : '';
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            burger.classList.remove('is-active');
+            mobileMenu.classList.remove('is-open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+    });
+  </script>
+
+  <!-- Custom cursor -->
+  <script>
+    (function(){
+      if(window.matchMedia('(hover:none)').matches)return;
+      var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
+      var mx=0,my=0,rx=0,ry=0,vis=false;
+      document.addEventListener('mousemove',function(e){
+        mx=e.clientX;my=e.clientY;
+        dot.style.left=mx+'px';dot.style.top=my+'px';
+        if(!vis){vis=true;dot.style.opacity='1';ring.style.opacity='.6';rx=mx;ry=my;}
+      });
+      (function loop(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
+      document.querySelectorAll('a,button,[data-hover]').forEach(function(el){
+        el.addEventListener('mouseenter',function(){dot.classList.add('is-hover');ring.classList.add('is-hover')});
+        el.addEventListener('mouseleave',function(){dot.classList.remove('is-hover');ring.classList.remove('is-hover')});
+      });
+    })();
+  </script>
+
 </body>
 </html>

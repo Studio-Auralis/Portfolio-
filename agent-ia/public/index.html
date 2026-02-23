@@ -7,34 +7,53 @@
   <meta name="description" content="Système multi-agents IA pour votre transformation digitale. Analyse personnalisée par intelligence artificielle.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
   <link rel="icon" type="image/svg+xml" href="assets/auralis-favicon.svg">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- ======================== AI BACKGROUND ======================== -->
+  <div class="ai-bg">
+    <div class="ai-grid"></div>
+    <div class="ai-orb ai-orb--1"></div>
+    <div class="ai-orb ai-orb--2"></div>
+    <div class="ai-orb ai-orb--3"></div>
+    <div class="ai-glow"></div>
+  </div>
+
+  <!-- ======================== GRAIN ======================== -->
+  <div class="grain"></div>
+
   <!-- Particle canvas background -->
   <canvas id="particles-canvas"></canvas>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="header-inner">
-      <a href="https://studio-auralis.com" class="logo" target="_blank" rel="noopener">
-        <div class="logo-icon">
-          <img src="assets/auralis-emblem.svg" alt="Auralis" width="32" height="32">
+  <!-- ======================== DEMO BANNER ======================== -->
+  <div class="demo-banner">
+    <span class="demo-banner-dot"></span>
+    <span>MODE DÉMONSTRATION</span> — Cette analyse est simulée pour illustrer le fonctionnement du système.
+  </div>
+
+  <!-- ======================== NAVBAR ======================== -->
+  <nav class="navbar is-scrolled">
+    <div class="nav-inner">
+      <a href="https://studio-auralis.com" class="nav-logo" target="_blank" rel="noopener">
+        <div class="nav-logo-icon">A<span class="nav-logo-dot">.</span></div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-studio">STUDIO</span>
+          <span class="nav-logo-name">AURALIS<span class="dot">.</span></span>
         </div>
-        <span class="logo-text">Studio Auralis</span>
       </a>
-      <div class="header-title">
-        <h1>AI Strategy Engine</h1>
-        <p>Système multi-agents pour votre transformation digitale</p>
+      <div class="nav-center">
+        <span class="nav-title">AI Strategy Engine</span>
+        <span class="nav-subtitle">Système multi-agents</span>
       </div>
-      <div class="demo-badge-header">MODE DÉMO</div>
-      <a href="../../index.html" class="header-link">
-        ← Retour au portfolio
-      </a>
+      <div class="nav-right">
+        <a href="../../index.html#projets" class="nav-back-btn">← Retour au site</a>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <main class="main">
 
@@ -42,12 +61,12 @@
     <section id="form-section" class="section active">
       <div class="form-container">
         <div class="form-header">
-          <div class="form-badge">Analyse gratuite</div>
-          <h2>Découvrez votre stratégie IA personnalisée</h2>
-          <p>Nos 3 agents IA vont analyser votre entreprise en temps réel et produire un rapport stratégique complet.</p>
+          <div class="overline">Analyse gratuite</div>
+          <h2>Découvrez votre stratégie IA <span class="serif-gold">personnalisée.</span></h2>
+          <p class="form-desc">Nos 3 agents IA vont analyser votre entreprise en temps réel et produire un rapport stratégique complet.</p>
         </div>
 
-        <form id="analysis-form" autocomplete="off">
+        <form id="analysis-form" autocomplete="off" class="glass-card">
           <div class="form-grid">
             <div class="form-group">
               <label for="companyName">Nom de l'entreprise <span class="required">*</span></label>
@@ -178,8 +197,8 @@
     <section id="report-section" class="section">
       <div class="report-container">
         <div class="report-header">
-          <div class="report-badge">Rapport terminé</div>
-          <h2>Votre Stratégie IA Personnalisée</h2>
+          <div class="overline">Rapport terminé</div>
+          <h2>Votre Stratégie IA <span class="serif-gold">Personnalisée.</span></h2>
           <p id="report-subtitle"></p>
         </div>
 
@@ -193,7 +212,7 @@
             Télécharger en PDF
           </button>
           <a href="https://studio-auralis.com/#contact" target="_blank" rel="noopener" class="btn-primary btn-cta">
-            <span class="btn-text">Mettre en œuvre cette stratégie avec Studio Auralis</span>
+            <span class="btn-text">Mettre en œuvre cette stratégie</span>
             <span class="btn-icon">→</span>
           </a>
         </div>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets — Agents IA | Studio Auralis</title>
+  <meta name="description" content="Projets d'agents IA par Studio Auralis. Agents autonomes, RAG, analyse stratégique et support client.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Aurora background boost */
+    .aurora-bg { opacity: .45; }
+    .aurora-streak--1 { height: 3px; }
+    .aurora-streak--2 { height: 2px; }
+    .aurora-streak--3 { height: 4px; }
+    .aurora-streak--4 { height: 2.5px; }
+
+    .subpage-hero {
+      padding: 160px 0 80px;
+      text-align: center;
+    }
+    .subpage-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-80);
+      margin-bottom: 32px;
+      transition: color .3s;
+    }
+    .subpage-back:hover { color: var(--gold); }
+    .subpage-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--text-100);
+      letter-spacing: -.03em;
+      margin-bottom: 16px;
+    }
+    .subpage-subtitle {
+      font-size: 17px;
+      color: var(--text-60);
+      font-weight: 300;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .subpage-content {
+      padding: 0 0 120px;
+    }
+    .subpage-card {
+      max-width: 640px;
+      margin: 0 auto;
+      background: var(--noir-card);
+      border: 1px solid var(--noir-border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .subpage-placeholder {
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, var(--noir-hover) 0%, var(--noir-card) 50%, var(--noir-hover) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .subpage-placeholder-text {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-40);
+    }
+    .subpage-card-body {
+      padding: 28px;
+    }
+    .subpage-card-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--text-100);
+      margin-bottom: 8px;
+    }
+    .subpage-card-desc {
+      font-size: 14px;
+      color: var(--text-60);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .subpage-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .subpage-soon {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 15px;
+      color: var(--text-40);
+      font-style: italic;
+    }
+    .subpage-card + .subpage-card {
+      margin-top: 48px;
+    }
+    .subpage-card-stats {
+      display: flex;
+      gap: 24px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--noir-border);
+    }
+    .subpage-card-stat { text-align: center; flex: 1; }
+    .subpage-card-stat-value {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--gold);
+      text-shadow: 0 0 12px var(--gold-glow);
+      line-height: 1;
+    }
+    .subpage-card-stat-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-40);
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Aurora Background -->
+  <div class="aurora-bg" id="auroraBg">
+    <div class="aurora-streak aurora-streak--1"></div>
+    <div class="aurora-streak aurora-streak--2"></div>
+    <div class="aurora-streak aurora-streak--3"></div>
+    <div class="aurora-streak aurora-streak--4"></div>
+  </div>
+
+  <!-- Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Grain -->
+  <div class="grain"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar is-scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">A<span class="nav-logo-dot">.</span></div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-studio">STUDIO</span>
+          <span class="nav-logo-name">AURALIS<span class="dot">.</span></span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#services">Expertises</a>
+        <a href="index.html#projets">Projets</a>
+        <a href="index.html#apropos">À propos</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <a href="index.html#contact" class="nav-cta">Démarrer un projet</a>
+      <button class="nav-burger" id="navBurger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="index.html#services">Expertises</a>
+      <a href="index.html#projets">Projets</a>
+      <a href="index.html#apropos">À propos</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="index.html#contact" class="mobile-menu-cta">Démarrer un projet</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="subpage-hero">
+    <div class="section-container">
+      <a href="index.html#projets" class="subpage-back">&larr; Retour aux projets</a>
+      <h1 class="subpage-title">Agents <em class="serif-gold">IA.</em></h1>
+      <p class="subpage-subtitle">Agents intelligents autonomes pour l'analyse stratégique, le RAG et le support client.</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="subpage-content">
+    <div class="section-container">
+
+      <!-- Project 1: AI Strategy Engine -->
+      <div class="subpage-card">
+        <a href="agent-ia/public/index.html" target="_blank" rel="noopener">
+          <img src="assets/screenshots/ai-strategy.png" alt="AI Strategy Engine" style="width:100%; display:block;">
+        </a>
+        <div class="subpage-card-body">
+          <h2 class="subpage-card-title">AI Strategy Engine</h2>
+          <p class="subpage-card-desc">Moteur de stratégie multi-agents autonome. Trois agents spécialisés (Analyste, Technique, Stratégique) collaborent en temps réel pour générer des rapports stratégiques complets avec export PDF.</p>
+          <div class="subpage-card-tags">
+            <span class="tag">GPT-4</span>
+            <span class="tag">Claude</span>
+            <span class="tag">Multi-Agents</span>
+            <span class="tag">RAG</span>
+            <span class="tag">PDF</span>
+          </div>
+          <div class="subpage-card-stats">
+            <div class="subpage-card-stat">
+              <span class="subpage-card-stat-value">3</span>
+              <span class="subpage-card-stat-label">Agents IA</span>
+            </div>
+            <div class="subpage-card-stat">
+              <span class="subpage-card-stat-value">Temps réel</span>
+              <span class="subpage-card-stat-label">Orchestration</span>
+            </div>
+            <div class="subpage-card-stat">
+              <span class="subpage-card-stat-value">PDF</span>
+              <span class="subpage-card-stat-label">Export auto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: ChatWidget IA -->
+      <div class="subpage-card">
+        <a href="chatbot-demo.html" target="_blank" rel="noopener">
+          <img src="assets/screenshots/chatwidget.png" alt="ChatWidget IA" style="width:100%; display:block;">
+        </a>
+        <div class="subpage-card-body">
+          <h2 class="subpage-card-title">ChatWidget IA</h2>
+          <p class="subpage-card-desc">Widget conversationnel intelligent intégrable sur n'importe quel site. Réponses contextuelles, séquence d'accueil personnalisée, quick replies et interface premium avec rate limiting.</p>
+          <div class="subpage-card-tags">
+            <span class="tag">GPT</span>
+            <span class="tag">NLP</span>
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+          </div>
+          <div class="subpage-card-stats">
+            <div class="subpage-card-stat">
+              <span class="subpage-card-stat-value">24/7</span>
+              <span class="subpage-card-stat-label">Disponible</span>
+            </div>
+            <div class="subpage-card-stat">
+              <span class="subpage-card-stat-value">&lt;2s</span>
+              <span class="subpage-card-stat-label">Temps réponse</span>
+            </div>
+            <div class="subpage-card-stat">
+              <span class="subpage-card-stat-value">98%</span>
+              <span class="subpage-card-stat-label">Satisfaction</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="subpage-soon">D'autres projets arrivent bientôt.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-line"></div>
+    <div class="footer-inner">
+      <span class="footer-logo"><em>Auralis</em><span class="gold-dot">.</span></span>
+      <p class="footer-copy">&copy; 2026 Studio Auralis. Tous droits réservés.</p>
+      <a href="https://linkedin.com" class="footer-social" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var burger=document.getElementById('navBurger');
+      var mobileMenu=document.getElementById('mobileMenu');
+      if(burger&&mobileMenu){
+        burger.addEventListener('click',function(){
+          burger.classList.toggle('is-active');
+          mobileMenu.classList.toggle('is-open');
+          document.body.style.overflow=mobileMenu.classList.contains('is-open')?'hidden':'';
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(link){
+          link.addEventListener('click',function(){
+            burger.classList.remove('is-active');
+            mobileMenu.classList.remove('is-open');
+            document.body.style.overflow='';
+          });
+        });
+      }
+    })();
+  </script>
+
+  <script>
+    (function(){
+      if(window.matchMedia('(hover:none)').matches)return;
+      var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
+      var mx=0,my=0,rx=0,ry=0,vis=false;
+      document.addEventListener('mousemove',function(e){
+        mx=e.clientX;my=e.clientY;
+        dot.style.left=mx+'px';dot.style.top=my+'px';
+        if(!vis){vis=true;dot.style.opacity='1';ring.style.opacity='.6';rx=mx;ry=my;}
+      });
+      (function loop(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
+      document.querySelectorAll('a,button,[data-hover]').forEach(function(el){
+        el.addEventListener('mouseenter',function(){dot.classList.add('is-hover');ring.classList.add('is-hover')});
+        el.addEventListener('mouseleave',function(){dot.classList.remove('is-hover');ring.classList.remove('is-hover')});
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,854 +1,947 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Auralis — Expériences Digitales Premium</title>
+  <meta name="description" content="Studio Auralis crée des expériences digitales inoubliables. Dev Web, Automatisation IA, Agents IA sur mesure.">
 
-    <!-- Title & Basic SEO -->
-    <title>Studio Auralis — Développeur Web & IA | Automatisation & Agents IA</title>
-    <meta name="description" content="Studio Auralis : sites web modernes, chatbots IA et automatisation sur mesure pour entreprises en France. Agents intelligents, dashboards interactifs. Devis gratuit.">
-    <meta name="keywords" content="développeur web, automatisation IA, agent IA, chatbot entreprise, création site web, dashboard interactif, automatisation processus, intelligence artificielle entreprise, développeur freelance France, studio web IA, développeur web Clermont-Ferrand, création site web Auvergne">
-    <meta name="author" content="Studio Auralis">
-    <meta name="robots" content="index, follow">
-    <meta name="geo.region" content="FR-63">
-    <meta name="geo.placename" content="Auvergne-Rhône-Alpes">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://studio-auralis.com/">
-    <meta property="og:title" content="Studio Auralis — Développement Web & Automatisation IA">
-    <meta property="og:description" content="Sites web modernes, chatbots IA et automatisation sur mesure pour les entreprises. Agents intelligents, dashboards interactifs, workflows automatisés.">
-    <meta property="og:image" content="https://studio-auralis.com/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="fr_FR">
-    <meta property="og:site_name" content="Studio Auralis">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Studio Auralis — Développement Web & Automatisation IA">
-    <meta name="twitter:description" content="Sites web, chatbots IA, agents intelligents et automatisation sur mesure. Studio de développement en France.">
-    <meta name="twitter:image" content="https://studio-auralis.com/og-image.png">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://studio-auralis.com/">
-
-    <!-- Theme color -->
-    <meta name="theme-color" content="#00E5CC">
-
-    <!-- Preconnect & DNS Prefetch -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Schema.org — ProfessionalService -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Studio Auralis",
-      "alternateName": "Auralis",
-      "description": "Studio de développement web et d'intelligence artificielle. Création de sites web modernes, chatbots IA, agents intelligents autonomes, automatisation de processus métier et dashboards interactifs pour les entreprises en France.",
-      "url": "https://studio-auralis.com",
-      "logo": "https://studio-auralis.com/auralis-horizontal.svg",
-      "image": "https://studio-auralis.com/og-image.png",
-      "email": "contact@studio-auralis.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressRegion": "Auvergne-Rhône-Alpes",
-        "addressCountry": "FR"
-      },
-      "areaServed": [
-        { "@type": "Country", "name": "France" },
-        { "@type": "City", "name": "Clermont-Ferrand" },
-        { "@type": "City", "name": "Lyon" }
-      ],
-      "serviceType": [
-        "Création de site web",
-        "Développement web sur mesure",
-        "Automatisation IA",
-        "Création de chatbot IA",
-        "Agent IA pour entreprise",
-        "Dashboard interactif",
-        "Automatisation de processus métier",
-        "Développement d'applications web"
-      ],
-      "knowsAbout": [
-        "React", "Next.js", "Node.js", "Python", "OpenAI", "LangChain",
-        "Claude AI", "GPT", "RAG", "n8n", "TypeScript", "JavaScript",
-        "Machine Learning", "NLP", "Data Visualization"
-      ],
-      "priceRange": "€€",
-      "sameAs": [
-        "https://github.com/Studio-Auralis",
-        "https://www.linkedin.com/in/studio-auralis-5276b73b0",
-        "https://www.instagram.com/auralis_studio08"
-      ],
-      "founder": {
-        "@type": "Person",
-        "name": "Studio Auralis",
-        "jobTitle": "Développeur Web & IA"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Services Studio Auralis",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Développement Web",
-              "description": "Sites web modernes, responsive et performants. Applications web sur mesure avec les dernières technologies : React, Next.js, Node.js."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Automatisation IA",
-              "description": "Automatisation intelligente de vos processus métier. Intégration d'IA pour optimiser la productivité avec Python, OpenAI, LangChain."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Création d'Agents IA",
-              "description": "Développement d'agents intelligents autonomes. Chatbots avancés et assistants virtuels personnalisés avec GPT, Claude, RAG."
-            }
-          }
-        ]
-      }
-    }
-    </script>
-
-    <!-- Schema.org — WebSite (for sitelinks search) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Studio Auralis",
-      "url": "https://studio-auralis.com",
-      "description": "Studio de développement web et d'intelligence artificielle en France"
-    }
-    </script>
-
-    <!-- Schema.org — BreadcrumbList -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://studio-auralis.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://studio-auralis.com/#services" },
-        { "@type": "ListItem", "position": 3, "name": "Projets", "item": "https://studio-auralis.com/#projects" },
-        { "@type": "ListItem", "position": 4, "name": "Contact", "item": "https://studio-auralis.com/#contact" }
-      ]
-    }
-    </script>
-
-    <!-- Schema.org — FAQPage -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Combien coûte la création d'un site web professionnel ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Le tarif dépend de la complexité du projet. Un site vitrine démarre à partir de 800€, un site complet multi-pages entre 1 500€ et 4 000€, et une application web sur mesure entre 3 000€ et 8 000€. Contactez Studio Auralis pour un devis gratuit personnalisé."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Qu'est-ce qu'un agent IA et comment ça peut aider mon entreprise ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Un agent IA est un assistant virtuel intelligent qui automatise des tâches comme la réponse aux clients, la qualification de prospects, le tri d'emails ou la gestion de données. Il travaille 24h/24 et peut faire gagner jusqu'à 10 heures par semaine à votre équipe. Studio Auralis développe des agents IA sur mesure adaptés à votre métier."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quelles technologies utilisez-vous pour le développement web ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Studio Auralis utilise les technologies les plus modernes : React, Next.js et Node.js pour le développement web, Python et LangChain pour l'automatisation IA, et les API GPT, Claude et Groq pour les agents intelligents. Chaque projet est développé sur mesure selon vos besoins."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Vous travaillez avec quels types d'entreprises ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Studio Auralis accompagne les TPE, PME et startups partout en France. Que vous soyez artisan, agence immobilière, commerce local ou startup tech, nous adaptons nos solutions à votre budget et vos objectifs. Premier rendez-vous gratuit et sans engagement."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quel est le délai pour créer un chatbot IA ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Un chatbot IA fonctionnel peut être développé en 1 à 3 semaines selon la complexité. Cela inclut l'entraînement sur vos données, la personnalisation de l'interface à votre charte graphique et l'intégration sur votre site web existant."
-          }
-        }
-      ]
-    }
-    </script>
-
-    <!-- Schema.org — Portfolio ItemList -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "name": "Projets Studio Auralis",
-      "description": "Portfolio de réalisations en développement web, automatisation IA et data visualisation",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "item": {
-            "@type": "WebApplication",
-            "name": "Global Conflict Tracker",
-            "description": "Plateforme de cartographie des conflits armés en temps réel avec dashboard interactif, intégration GDELT et UNHCR, timelapse historique depuis 1945, bilingue FR/EN.",
-            "url": "https://conflit.studio-auralis.com",
-            "applicationCategory": "Data Visualization",
-            "operatingSystem": "Web"
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "item": {
-            "@type": "WebApplication",
-            "name": "AI Strategy Engine",
-            "description": "Système multi-agents IA (Analyste, Technicien, Stratège) orchestré en pipeline pour générer des stratégies IA d'entreprise avec streaming temps réel.",
-            "url": "https://studio-auralis.com",
-            "applicationCategory": "Business Intelligence"
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "item": {
-            "@type": "WebSite",
-            "name": "Site Aménagement Extérieur 63",
-            "description": "Site vitrine responsive pour un paysagiste : galerie projets, devis en ligne, SEO local optimisé et animations scroll.",
-            "url": "https://studio-auralis.github.io/Site-Web-Am-nagement-Ext-rieur-63-/"
-          }
-        }
-      ]
-    }
-    </script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" as="image" href="assets/lead-automation-poster.jpg">
 </head>
 <body>
-    <!-- Skip Navigation -->
-    <a href="#main-content" class="sr-only sr-only-focusable">Aller au contenu principal</a>
 
-    <!-- Fond cosmique 3D -->
-    <div id="cosmos">
-        <canvas id="starfield"></canvas>
-        <canvas id="three-scene"></canvas>
-        <div class="neb neb-1"></div>
-        <div class="neb neb-2"></div>
-        <div class="neb neb-3"></div>
-        <div class="vignette"></div>
-        <div class="grain"></div>
+  <!-- ======================== CURSOR ======================== -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ======================== AURORA BACKGROUND ======================== -->
+  <div class="aurora-bg" id="auroraBg">
+    <div class="aurora-streak aurora-streak--1"></div>
+    <div class="aurora-streak aurora-streak--2"></div>
+    <div class="aurora-streak aurora-streak--3"></div>
+    <div class="aurora-streak aurora-streak--4"></div>
+  </div>
+
+  <!-- ======================== GRAIN ======================== -->
+  <div class="grain"></div>
+
+  <!-- ======================== NAVIGATION ======================== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">A<span class="nav-logo-dot">.</span></div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-studio">STUDIO</span>
+          <span class="nav-logo-name">AURALIS<span class="dot">.</span></span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Expertises</a>
+        <a href="#projets">Projets</a>
+        <a href="#apropos">À propos</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="#contact" class="nav-cta">Démarrer un projet</a>
+      <button class="nav-burger" id="navBurger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======================== MOBILE MENU ======================== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="#services">Expertises</a>
+      <a href="#projets">Projets</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="mobile-menu-cta">Démarrer un projet</a>
+    </div>
+  </div>
+
+  <!-- ======================== HERO ======================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <!-- Perspective infinity grid -->
+    <div class="hero-grid"></div>
+    <!-- Gold radiance burst at horizon -->
+    <div class="hero-radiance"></div>
+    <!-- Crisp horizon line with bloom -->
+    <div class="hero-horizon"></div>
+    <!-- Cinematic volumetric light beams -->
+    <div class="hero-beam hero-beam--1"></div>
+    <div class="hero-beam hero-beam--2"></div>
+    <div class="hero-grain"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-orb hero-orb--1"></div>
+    <div class="hero-orb hero-orb--2"></div>
+    <div class="hero-orb hero-orb--3"></div>
+    <canvas class="hero-particles" id="heroParticles"></canvas>
+    <div class="hero-glow" id="heroGlow"></div>
+
+    <div class="hero-watermark">01</div>
+
+    <div class="hero-content">
+      <div class="hero-overline overline">
+        Web sur mesure · IA · Automatisation
+      </div>
+
+      <div class="hero-title-wrap">
+        <div class="hero-gold-line"></div>
+        <h1 class="hero-title">
+          <span class="hero-word">Nous</span>
+          <span class="hero-word">créons</span>
+          <span class="hero-word">des</span>
+          <span class="hero-word">expériences</span>
+          <span class="hero-word">digitales</span>
+          <br>
+          <span class="hero-word hero-word--serif">inoubliables.</span>
+        </h1>
+      </div>
+
+      <p class="hero-subtitle">Dev Web &middot; Automatisation IA &middot; Agents IA</p>
+
+      <div class="hero-buttons">
+        <a href="#projets" class="btn btn-primary">Voir nos projets</a>
+        <a href="#contact" class="btn btn-outline">Nous contacter</a>
+      </div>
     </div>
 
-    <!-- Navigation -->
-    <header role="banner">
-    <nav class="navbar" role="navigation" aria-label="Navigation principale">
-        <div class="logo">
-            <span class="logo-text-dev">STUDIO AURALIS</span>
+    <div class="hero-stats" id="heroStats">
+      <div class="hero-stat">
+        <span class="hero-stat-value" data-count="7" data-suffix="+">0</span>
+        <span class="hero-stat-label">projets livrés</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value" data-count="3">0</span>
+        <span class="hero-stat-label">expertises</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value" data-count="100" data-suffix="%">0</span>
+        <span class="hero-stat-label">sur mesure</span>
+      </div>
+    </div>
+
+    <div class="scroll-cue">
+      <div class="scroll-cue-line"></div>
+      <span class="scroll-cue-text">scroll</span>
+    </div>
+  </section>
+
+  <!-- ======================== HERO → SERVICES TRANSITION ======================== -->
+  <div class="hero-fade" aria-hidden="true"></div>
+
+  <!-- ======================== SERVICES ======================== -->
+  <section class="services" id="services">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="overline">Ce qu'on fait</div>
+        <h2 class="section-title">Nos <em class="serif-gold">expertises.</em></h2>
+      </div>
+
+      <div class="services-grid">
+        <!-- Card 1 — Dev Web -->
+        <div class="service-card" data-hover>
+          <div class="service-watermark">01</div>
+          <div class="service-icon">
+            <svg width="44" height="44" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 12L4 20L14 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M26 12L36 20L26 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M23 8L17 32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="service-label">Développement</span>
+          <h3 class="service-title">Sites Web <em class="serif-gold">sur mesure.</em></h3>
+          <p class="service-desc">Du code from scratch, zéro template. Performance maximale, design premium.</p>
+          <div class="service-footer">
+            <span class="service-tag">React</span>
+            <span class="service-tag">Next.js</span>
+            <span class="service-tag">GSAP</span>
+          </div>
+          <div class="service-corner service-corner--tl"></div>
+          <div class="service-corner service-corner--br"></div>
         </div>
-        <ul class="nav-links">
-            <li><a href="#home" class="nav-link active">Accueil</a></li>
-            <li><a href="#services" class="nav-link">Services</a></li>
-            <li><a href="#projects" class="nav-link">Projets</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-        <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </nav>
-    </header>
 
-    <main role="main" id="main-content">
+        <!-- Card 2 — Automatisation IA -->
+        <div class="service-card" data-hover>
+          <div class="service-watermark">02</div>
+          <div class="service-icon">
+            <svg width="44" height="44" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="6" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M20 8V4M20 36V32M32 20H36M4 20H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M28.5 11.5L31 9M9 31L11.5 28.5M28.5 28.5L31 31M9 9L11.5 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" opacity=".4"/>
+            </svg>
+          </div>
+          <span class="service-label">Automatisation</span>
+          <h3 class="service-title">Workflows <em class="serif-gold">intelligents.</em></h3>
+          <p class="service-desc">On connecte vos outils, on élimine le répétitif. Vos process tournent en autopilote.</p>
+          <div class="service-footer">
+            <span class="service-tag">n8n</span>
+            <span class="service-tag">Make</span>
+            <span class="service-tag">API</span>
+          </div>
+          <div class="service-corner service-corner--tl"></div>
+          <div class="service-corner service-corner--br"></div>
+        </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero" aria-label="Accueil">
-        <div class="hero-content">
-            <div class="glitch-wrapper">
-                <img src="auralis-horizontal.svg" alt="Studio Auralis - studio de développement web et intelligence artificielle" class="hero-logo-main" width="320" height="60" loading="eager" fetchpriority="high">
+        <!-- Card 3 — Agents IA -->
+        <div class="service-card" data-hover>
+          <div class="service-watermark">03</div>
+          <div class="service-icon">
+            <svg width="44" height="44" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 4C13 4 8 9 8 16C8 21 10 23 12 26V32H28V26C30 23 32 21 32 16C32 9 27 4 20 4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M14 32V34C14 36 16 38 20 38C24 38 26 36 26 34V32" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <circle cx="16" cy="17" r="2" fill="currentColor"/>
+              <circle cx="24" cy="17" r="2" fill="currentColor"/>
+              <path d="M14 22C16 24 24 24 26 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M4 16H8M32 16H36M6 8L9 11M31 11L34 8" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity=".4"/>
+            </svg>
+          </div>
+          <span class="service-label">Intelligence Artificielle</span>
+          <h3 class="service-title">Agents IA <em class="serif-gold">autonomes.</em></h3>
+          <p class="service-desc">Chatbots, assistants, agents sur mesure. Ils travaillent pour vous, 24h/24.</p>
+          <div class="service-footer">
+            <span class="service-tag">GPT</span>
+            <span class="service-tag">Claude</span>
+            <span class="service-tag">RAG</span>
+          </div>
+          <div class="service-corner service-corner--tl"></div>
+          <div class="service-corner service-corner--br"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ======================== PROJET PHARE ======================== -->
+  <section class="phare" id="phare">
+    <div class="phare-glow"></div>
+    <div class="section-container">
+      <div class="phare-overline overline">PROJET PHARE</div>
+
+      <div class="phare-grid">
+        <!-- Left — Text -->
+        <div class="phare-text">
+          <div class="phare-tags">
+            <span>MONTAGE VIDÉO</span>
+            <span>&middot;</span>
+            <span>WEB APP</span>
+          </div>
+
+          <h2 class="phare-title">MotionUp</h2>
+
+          <p class="phare-desc">Site web pour une agence de montage vidéo professionnel. Interface premium avec portfolio dynamique, showreel intégré et système de devis en ligne.</p>
+
+          <a href="https://github.com/Studio-Auralis" target="_blank" rel="noopener noreferrer" class="btn btn-pill" data-hover>
+            Voir le projet <span class="btn-arrow">&rarr;</span>
+          </a>
+        </div>
+
+        <!-- Right — Mockup -->
+        <div class="phare-mockup-wrap">
+          <div class="phare-mockup" id="phareMockup" data-hover>
+            <div class="phare-mockup-glow"></div>
+            <div class="mockup-bar">
+              <div class="mockup-dots">
+                <span class="dot dot--red"></span>
+                <span class="dot dot--yellow"></span>
+                <span class="dot dot--green"></span>
+              </div>
+              <div class="mockup-url">motionup.io</div>
+              <div class="mockup-dots-placeholder"></div>
             </div>
-            <h1 class="sr-only">Studio Auralis — Développement Web & Intelligence Artificielle</h1>
-            <p class="hero-subtitle" aria-live="polite">
-                <span class="typing-text"></span>
-                <span class="cursor" aria-hidden="true">|</span>
-            </p>
-            <p class="hero-description">
-                Création d'expériences web innovantes & solutions d'intelligence artificielle
-            </p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">
-                    <span class="btn-text">Voir mes projets</span>
-                    <span class="btn-icon">→</span>
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <span class="btn-text">Me contacter</span>
-                </a>
+            <div class="mockup-content">
+              <img src="assets/screenshots/motionup.png" alt="MotionUp — Site web agence de montage vidéo" loading="lazy">
             </div>
-        </div>
-        <div class="hero-visual">
-            <div class="orbit-container">
-                <div class="planet">
-                    <div class="robot">
-                        <div class="robot-head">
-                            <div class="antenna"></div>
-                            <div class="robot-eyes">
-                                <div class="eye eye-left">
-                                    <div class="pupil"></div>
-                                </div>
-                                <div class="eye eye-right">
-                                    <div class="pupil"></div>
-                                </div>
-                            </div>
-                            <div class="robot-mouth"></div>
-                        </div>
-                        <div class="robot-body">
-                            <div class="body-light"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="orbit orbit-1">
-                    <div class="satellite"></div>
-                </div>
-                <div class="orbit orbit-2">
-                    <div class="satellite"></div>
-                </div>
-                <div class="orbit orbit-3">
-                    <div class="satellite"></div>
-                </div>
+            <div class="mockup-overlay">
+              <span class="mockup-overlay-text">Voir le projet</span>
+              <span class="mockup-overlay-arrow">&rarr;</span>
             </div>
+          </div>
         </div>
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
+      </div>
+
+      <!-- Stats below mockup -->
+      <div class="phare-stats">
+        <div class="phare-stat">
+          <span class="phare-stat-value">+40%</span>
+          <span class="phare-stat-label">Conversions</span>
+        </div>
+        <div class="phare-stat-sep"></div>
+        <div class="phare-stat">
+          <span class="phare-stat-value">98</span>
+          <span class="phare-stat-label">Score Perf.</span>
+        </div>
+        <div class="phare-stat-sep"></div>
+        <div class="phare-stat">
+          <span class="phare-stat-value">SaaS</span>
+          <span class="phare-stat-label">Architecture</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ======================== NOS EXPERTISES — PROJETS ======================== -->
+  <section class="projets" id="projets">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="overline">Nos réalisations</div>
+        <h2 class="section-title">Projets par <em class="serif-gold">expertise.</em></h2>
+      </div>
+
+      <div class="projets-cols">
+
+        <!-- Colonne 1 — Développement Web -->
+        <div class="projet-col">
+          <span class="projet-col-label">Développement Web</span>
+          <h3 class="projet-col-title">Aménagement Extérieur</h3>
+          <a href="https://studio-auralis.github.io/Site-Web-Am-nagement-Ext-rieur-63-/" target="_blank" rel="noopener noreferrer" class="projet-col-mockup" data-hover>
+            <div class="mockup-bar">
+              <div class="mockup-dots">
+                <span class="dot dot--red"></span>
+                <span class="dot dot--yellow"></span>
+                <span class="dot dot--green"></span>
+              </div>
+              <div class="mockup-url">studio-auralis.com</div>
+              <div class="mockup-dots-placeholder"></div>
             </div>
-            <span>Scroll</span>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services" aria-label="Nos services">
-        <div class="section-header">
-            <span class="section-tag">// SERVICES</span>
-            <h2 class="section-title">Mes Expertises</h2>
-        </div>
-        <div class="services-grid">
-            <article class="service-card" data-aos="fade-up">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
-                </div>
-                <h3>Développement Web</h3>
-                <p>Sites web modernes, responsive et performants. Applications web sur mesure avec les dernières technologies. Nous créons des sites vitrines, des applications web complètes et des interfaces utilisateur optimisées pour convertir vos visiteurs en clients.</p>
-                <div class="service-tags">
-                    <span>React</span>
-                    <span>Next.js</span>
-                    <span>Node.js</span>
-                </div>
-            </article>
-            <article class="service-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <circle cx="12" cy="12" r="3"/>
-                        <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-                    </svg>
-                </div>
-                <h3>Automatisation IA</h3>
-                <p>Automatisation intelligente de vos processus métier. Intégration d'intelligence artificielle pour optimiser votre productivité. Workflows automatisés, connexion CRM, enrichissement de données et notifications en temps réel pour réduire les tâches manuelles de 70%.</p>
-                <div class="service-tags">
-                    <span>Python</span>
-                    <span>OpenAI</span>
-                    <span>LangChain</span>
-                </div>
-            </article>
-            <article class="service-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
-                        <path d="M20 12a8 8 0 0 0-8-8v8h8z"/>
-                        <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                </div>
-                <h3>Création d'Agents IA</h3>
-                <p>Développement d'agents intelligents autonomes. Chatbots avancés et assistants virtuels personnalisés qui répondent à vos clients 24h/24, qualifient vos prospects et automatisent votre service client avec une personnalité adaptée à votre marque.</p>
-                <div class="service-tags">
-                    <span>GPT</span>
-                    <span>Claude</span>
-                    <span>RAG</span>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <!-- Featured Project Section -->
-    <section class="featured-project" aria-label="Projet phare">
-        <div class="section-header">
-            <span class="section-tag">// SPOTLIGHT</span>
-            <h2 class="section-title">Projet Phare</h2>
-        </div>
-        <div class="featured-card">
-            <div class="featured-info">
-                <div class="featured-badge">
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    PROJET PHARE
-                </div>
-                <h3>Global Conflict Tracker</h3>
-                <p>Plateforme de cartographie des conflits armés en temps réel. Intégration de 3 API (GDELT, UNHCR, ReliefWeb), timelapse historique depuis 1945, dashboard interactif, visualisation des flux de réfugiés, espace enseignants, bilingue FR/EN.</p>
-                <div class="featured-tech">
-                    <span>JavaScript</span>
-                    <span>GDELT</span>
-                    <span>UNHCR</span>
-                    <span>ReliefWeb</span>
-                    <span>Leaflet</span>
-                    <span>Data Viz</span>
-                </div>
-                <a href="https://conflit.studio-auralis.com" target="_blank" rel="noopener noreferrer" class="featured-cta">
-                    Voir le projet
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
+            <div class="mockup-content">
+              <img src="assets/screenshots/amenagement.png" alt="Aménagement Extérieur" loading="lazy">
             </div>
-            <div class="featured-preview">
-                <iframe data-src="https://conflit.studio-auralis.com" loading="lazy" title="Global Conflict Tracker - cartographie interactive des conflits mondiaux en temps réel"></iframe>
-                <a href="https://conflit.studio-auralis.com" target="_blank" rel="noopener noreferrer" class="featured-preview-overlay" aria-label="Ouvrir Global Conflict Tracker"></a>
+            <div class="mockup-overlay">
+              <span class="mockup-overlay-text">Voir le projet</span>
+              <span class="mockup-overlay-arrow">&rarr;</span>
             </div>
+          </a>
+          <p class="projet-col-desc">Site vitrine responsive pour un paysagiste avec galerie projets et devis en ligne.</p>
+          <div class="projet-col-tags">
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">React</span>
+            <span class="tag">GSAP</span>
+          </div>
+          <a href="projets-dev.html" class="btn btn-outline projet-col-cta" data-hover>
+            Voir tous les projets <span class="btn-arrow">&rarr;</span>
+          </a>
         </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects" aria-label="Nos réalisations">
-        <div class="section-header">
-            <span class="section-tag">// PORTFOLIO</span>
-            <h2 class="section-title">Mes Projets</h2>
-        </div>
-        <div class="projects-filter">
-            <button class="filter-btn active" data-filter="all">Tous</button>
-            <button class="filter-btn" data-filter="web">Web</button>
-            <button class="filter-btn" data-filter="data">Data</button>
-            <button class="filter-btn" data-filter="ia">IA</button>
-            <button class="filter-btn" data-filter="agent">Agents</button>
-        </div>
-        <div class="projects-grid">
-            <!-- Project Card 0 — Global Conflict Tracker -->
-            <article class="project-card" data-category="data web">
-                <div class="project-video">
-                    <div class="video-overlay">
-                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="project-placeholder">
-                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="32" cy="32" r="28" stroke="#00E5CC" stroke-width="1.5" opacity="0.2"/>
-                            <ellipse cx="32" cy="32" rx="28" ry="14" stroke="#00E5CC" stroke-width="1" opacity="0.3"/>
-                            <ellipse cx="32" cy="32" rx="28" ry="14" stroke="#00BFA6" stroke-width="1" opacity="0.2" transform="rotate(60 32 32)"/>
-                            <ellipse cx="32" cy="32" rx="28" ry="14" stroke="#00E5CC" stroke-width="1" opacity="0.2" transform="rotate(120 32 32)"/>
-                            <circle cx="20" cy="26" r="2.5" fill="#00E5CC" opacity="0.8"/>
-                            <circle cx="38" cy="22" r="2" fill="#FF6B6B" opacity="0.8"/>
-                            <circle cx="44" cy="34" r="2.5" fill="#00E5CC" opacity="0.6"/>
-                            <circle cx="26" cy="40" r="1.5" fill="#FF6B6B" opacity="0.7"/>
-                            <circle cx="40" cy="42" r="2" fill="#00BFA6" opacity="0.6"/>
-                            <circle cx="32" cy="30" r="1.5" fill="#FF6B6B" opacity="0.9"/>
-                            <line x1="20" y1="26" x2="32" y2="30" stroke="#FF6B6B" stroke-width="0.5" opacity="0.4"/>
-                            <line x1="38" y1="22" x2="32" y2="30" stroke="#FF6B6B" stroke-width="0.5" opacity="0.4"/>
-                            <line x1="26" y1="40" x2="32" y2="30" stroke="#FF6B6B" stroke-width="0.5" opacity="0.4"/>
-                        </svg>
-                        <span>Global Conflict Tracker</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Global Conflict Tracker</h3>
-                    <p>Cartographie en temps réel des conflits armés mondiaux avec dashboard interactif.</p>
-                    <div class="project-tech">
-                        <span>JavaScript</span>
-                        <span>GDELT</span>
-                        <span>UNHCR</span>
-                        <span>Data Viz</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://conflit.studio-auralis.com" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
-                            Voir
-                        </a>
-                        <a href="https://github.com/Studio-Auralis/Conflit" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                            Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Project Card 1 -->
-            <article class="project-card" data-category="web">
-                <div class="project-video">
-                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project1.mp4" type="video/mp4"></video> -->
-                    <div class="video-overlay">
-                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="project-placeholder">
-                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="32" cy="32" r="18" stroke="#00E5CC" stroke-width="1.5"/>
-                            <circle cx="32" cy="32" r="12" stroke="#00BFA6" stroke-width="1.5"/>
-                            <line x1="14" y1="32" x2="50" y2="32" stroke="#00E5CC" stroke-width="1.5"/>
-                            <path d="M32 14 Q38 32 32 50" stroke="#00E5CC" stroke-width="1.5" fill="none"/>
-                            <path d="M32 14 Q26 32 32 50" stroke="#00E5CC" stroke-width="1.5" fill="none"/>
-                            <circle cx="32" cy="14" r="2" fill="#00E5CC"/>
-                            <circle cx="32" cy="50" r="2" fill="#00E5CC"/>
-                            <circle cx="14" cy="32" r="2" fill="#00E5CC"/>
-                            <circle cx="50" cy="32" r="2" fill="#00E5CC"/>
-                        </svg>
-                        <span>Projet Web</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Site Aménagement Extérieur 63</h3>
-                    <p>Site vitrine responsive pour un paysagiste : galerie projets, devis en ligne, SEO local optimisé et animations scroll.</p>
-                    <div class="project-tech">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://studio-auralis.github.io/Site-Web-Am-nagement-Ext-rieur-63-/" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
-                            Voir
-                        </a>
-                        <a href="https://github.com/Studio-Auralis/Site-Web-Am-nagement-Ext-rieur-63-" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                            Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Project Card 3 -->
-            <article class="project-card" data-category="agent">
-                <div class="project-video">
-                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project3.mp4" type="video/mp4"></video> -->
-                    <div class="video-overlay">
-                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="project-placeholder">
-                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Agent 1 - Analyst (blue) -->
-                            <circle cx="16" cy="20" r="6" stroke="#4A9EFF" stroke-width="1.5" fill="#0D1117"/>
-                            <circle cx="16" cy="20" r="2.5" fill="#4A9EFF" opacity="0.6"/>
-                            <!-- Agent 2 - Technical (green) -->
-                            <circle cx="16" cy="44" r="6" stroke="#4AFF8B" stroke-width="1.5" fill="#0D1117"/>
-                            <circle cx="16" cy="44" r="2.5" fill="#4AFF8B" opacity="0.6"/>
-                            <!-- Agent 3 - Strategist (cyan) -->
-                            <circle cx="48" cy="32" r="7" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
-                            <circle cx="48" cy="32" r="3" fill="#00E5CC" opacity="0.6"/>
-                            <!-- Orchestrator center -->
-                            <rect x="27" y="27" width="10" height="10" rx="2" stroke="#00BFA6" stroke-width="1.5" fill="#0D1117"/>
-                            <rect x="30" y="30" width="4" height="4" rx="1" fill="#00BFA6" opacity="0.5"/>
-                            <!-- Connections agent→orchestrator -->
-                            <line x1="22" y1="20" x2="27" y2="29" stroke="#4A9EFF" stroke-width="1" opacity="0.5"/>
-                            <line x1="22" y1="44" x2="27" y2="35" stroke="#4AFF8B" stroke-width="1" opacity="0.5"/>
-                            <line x1="41" y1="32" x2="37" y2="32" stroke="#00E5CC" stroke-width="1" opacity="0.5"/>
-                            <!-- Data flow arrows -->
-                            <polygon points="27,29 25,27 23,29" fill="#4A9EFF" opacity="0.6"/>
-                            <polygon points="27,35 25,37 23,35" fill="#4AFF8B" opacity="0.6"/>
-                            <polygon points="37,31 39,29 39,33" fill="#00E5CC" opacity="0.6"/>
-                        </svg>
-                        <span>AI Strategy</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>AI Strategy Engine <span class="demo-tag">DÉMO</span></h3>
-                    <p>Système multi-agents (Analyste, Technicien, Stratège) orchestré en pipeline pour générer des stratégies IA d'entreprise avec streaming temps réel.</p>
-                    <div class="project-tech">
-                        <span>Node.js</span>
-                        <span>Groq API</span>
-                        <span>SSE</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="agent-ia/public/index.html" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
-                            Voir
-                        </a>
-                        <a href="https://github.com/Studio-Auralis" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                            Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Project Card 5 -->
-            <article class="project-card" data-category="ia">
-                <div class="project-video">
-                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project5.mp4" type="video/mp4"></video> -->
-                    <div class="video-overlay">
-                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="project-placeholder">
-                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Nodes -->
-                            <rect x="14" y="14" width="10" height="10" rx="2" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
-                            <circle cx="32" cy="19" r="5" stroke="#00BFA6" stroke-width="1.5" fill="#0D1117"/>
-                            <rect x="40" y="14" width="10" height="10" rx="2" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
-                            <circle cx="19" cy="45" r="5" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
-                            <rect x="27" y="40" width="10" height="10" rx="2" stroke="#00BFA6" stroke-width="1.5" fill="#0D1117"/>
-                            <circle cx="45" cy="45" r="5" stroke="#00E5CC" stroke-width="1.5" fill="#0D1117"/>
-                            <!-- Arrows -->
-                            <line x1="24" y1="19" x2="27" y2="19" stroke="#00E5CC" stroke-width="1.5"/>
-                            <polygon points="27,19 24,17 24,21" fill="#00E5CC"/>
-                            <line x1="37" y1="19" x2="40" y2="19" stroke="#00E5CC" stroke-width="1.5"/>
-                            <polygon points="40,19 37,17 37,21" fill="#00E5CC"/>
-                            <line x1="19" y1="30" x2="19" y2="40" stroke="#00E5CC" stroke-width="1.5"/>
-                            <polygon points="19,40 17,37 21,37" fill="#00E5CC"/>
-                            <line x1="32" y1="24" x2="32" y2="40" stroke="#00BFA6" stroke-width="1.5"/>
-                            <polygon points="32,40 30,37 34,37" fill="#00BFA6"/>
-                            <line x1="45" y1="24" x2="45" y2="40" stroke="#00E5CC" stroke-width="1.5"/>
-                            <polygon points="45,40 43,37 47,37" fill="#00E5CC"/>
-                            <line x1="24" y1="45" x2="27" y2="45" stroke="#00E5CC" stroke-width="1.5"/>
-                            <polygon points="27,45 24,43 24,47" fill="#00E5CC"/>
-                            <line x1="37" y1="45" x2="40" y2="45" stroke="#00E5CC" stroke-width="1.5"/>
-                            <polygon points="40,45 37,43 37,47" fill="#00E5CC"/>
-                        </svg>
-                        <span>Workflow IA</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Workflow Automatisé</h3>
-                    <p>Orchestration n8n de 12+ noeuds : scraping, enrichissement IA, notifications Slack et reporting automatique.</p>
-                    <div class="project-tech">
-                        <span>n8n</span>
-                        <span>Claude</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="workflow-demo.html" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
-                            Voir
-                        </a>
-                        <a href="https://github.com/Studio-Auralis" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                            Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Project Card 6 -->
-            <article class="project-card" data-category="agent">
-                <div class="project-video">
-                    <!-- Video a ajouter: <video poster="" muted loop><source src="videos/project6.mp4" type="video/mp4"></video> -->
-                    <div class="video-overlay">
-                        <button class="play-btn" aria-label="Lancer la vidéo du projet">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="project-placeholder">
-                        <svg class="placeholder-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="32" cy="32" r="28" stroke="#00E5CC" stroke-width="2" opacity="0.2"/>
-                            <rect x="16" y="20" width="32" height="24" rx="4" fill="url(#grad6)" stroke="#00E5CC" stroke-width="1.5"/>
-                            <path d="M28 44L32 48L36 44" fill="url(#grad6)" stroke="#00E5CC" stroke-width="1.5" stroke-linejoin="round"/>
-                            <circle cx="25" cy="30" r="2" fill="#E8EAED"/>
-                            <circle cx="32" cy="30" r="2" fill="#E8EAED"/>
-                            <circle cx="39" cy="30" r="2" fill="#E8EAED"/>
-                            <line x1="22" y1="36" x2="42" y2="36" stroke="#00BFA6" stroke-width="1" stroke-linecap="round"/>
-                            <defs>
-                                <linearGradient id="grad6" x1="16" y1="20" x2="48" y2="48">
-                                    <stop offset="0%" stop-color="#00E5CC" stop-opacity="0.3"/>
-                                    <stop offset="100%" stop-color="#00BFA6" stop-opacity="0.1"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                        <span>Chatbot IA</span>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <h3>Chatbot Avancé <span class="demo-tag">DÉMO</span></h3>
-                    <p>Widget chat IA avec animations Framer Motion, réponses Groq en temps réel, rate limiting et design glassmorphism.</p>
-                    <div class="project-tech">
-                        <span>React</span>
-                        <span>TypeScript</span>
-                        <span>Groq API</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="chatbot-demo.html" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                                <polyline points="15 3 21 3 21 9"/>
-                                <line x1="10" y1="14" x2="21" y2="3"/>
-                            </svg>
-                            Voir
-                        </a>
-                        <a href="https://github.com/Studio-Auralis" class="project-link" target="_blank" rel="noopener noreferrer">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                            Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact" aria-label="Nous contacter">
-        <div class="section-header">
-            <span class="section-tag">// CONTACT</span>
-            <h2 class="section-title">Travaillons Ensemble</h2>
-        </div>
-        <div class="contact-container">
-            <div class="contact-info">
-                <p class="contact-description">
-                    Vous avez un projet en tête ? Une idée à concrétiser ? 
-                    N'hésitez pas à me contacter pour en discuter.
-                </p>
-                <div class="contact-links">
-                    <a href="mailto:contact@studio-auralis.com" class="contact-link" aria-label="Envoyer un email à Studio Auralis">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                        </div>
-                        <span>contact@studio-auralis.com</span>
-                    </a>
-                    <a href="https://github.com/Studio-Auralis" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Profil GitHub de Studio Auralis">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </div>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/martins-moragdo-stduo-auralis" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Profil LinkedIn de Studio Auralis">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </div>
-                        <span>LinkedIn</span>
-                    </a>
-                </div>
+        <!-- Colonne 2 — Automatisation IA -->
+        <div class="projet-col">
+          <span class="projet-col-label">Automatisation IA</span>
+          <h3 class="projet-col-title">Gestion automatisée de leads</h3>
+          <a href="workflow-demo.html" class="projet-col-mockup" data-hover>
+            <div class="mockup-bar">
+              <div class="mockup-dots">
+                <span class="dot dot--red"></span>
+                <span class="dot dot--yellow"></span>
+                <span class="dot dot--green"></span>
+              </div>
+              <div class="mockup-url">automation.auralis.io</div>
+              <div class="mockup-dots-placeholder"></div>
             </div>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <input type="text" id="name" name="name" required aria-required="true" autocomplete="name">
-                    <label for="name">Nom</label>
-                    <div class="form-line"></div>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="email" required aria-required="true" autocomplete="email">
-                    <label for="email">Email</label>
-                    <div class="form-line"></div>
-                </div>
-                <div class="form-group">
-                    <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
-                    <label for="message">Message</label>
-                    <div class="form-line"></div>
-                </div>
-                <button type="submit" class="btn btn-primary btn-submit" aria-label="Envoyer le formulaire de contact">
-                    <span class="btn-text">Envoyer</span>
-                    <span class="btn-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="22" y1="2" x2="11" y2="13"/>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                        </svg>
-                    </span>
-                </button>
-            </form>
-        </div>
-    </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <img src="auralis-horizontal.svg" alt="Studio Auralis - studio de développement web et intelligence artificielle" class="footer-logo-img" width="160" height="30" loading="lazy">
+            <div class="mockup-content lead-auto-mockup">
+              <img src="assets/lead-automation-poster.jpg" alt="Dashboard automatisation de leads" width="720" height="520">
+              <video muted loop playsinline></video>
             </div>
-            <p class="footer-text">&copy; 2026 Studio Auralis — Développement Web & Automatisation IA en France</p>
-            <p class="footer-services">Services : Création de sites web &middot; Chatbot IA &middot; Agents intelligents &middot; Automatisation de processus &middot; Dashboards interactifs</p>
-            <div class="footer-links">
-                <a href="https://github.com/Studio-Auralis" target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub de Studio Auralis">GitHub</a>
-                <a href="https://www.linkedin.com/in/martins-moragdo-stduo-auralis" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn de Studio Auralis">LinkedIn</a>
+            <div class="mockup-overlay">
+              <span class="mockup-overlay-text">Voir le projet</span>
+              <span class="mockup-overlay-arrow">&rarr;</span>
             </div>
+          </a>
+          <p class="projet-col-desc">Workflows automatisés et intégrations IA pour gagner du temps au quotidien.</p>
+          <div class="projet-col-tags">
+            <span class="tag">n8n</span>
+            <span class="tag">Make</span>
+            <span class="tag">API</span>
+          </div>
+          <a href="workflow-demo.html" class="btn btn-outline projet-col-cta" data-hover>
+            Voir tous les projets <span class="btn-arrow">&rarr;</span>
+          </a>
         </div>
-    </footer>
 
-    <!-- Three.js CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <!-- Colonne 3 — Agents IA -->
+        <div class="projet-col">
+          <span class="projet-col-label">Agents IA</span>
+          <h3 class="projet-col-title">Orchestration multi-agents</h3>
+          <a href="agent-ia/public/index.html" class="projet-col-mockup" data-hover>
+            <div class="mockup-bar">
+              <div class="mockup-dots">
+                <span class="dot dot--red"></span>
+                <span class="dot dot--yellow"></span>
+                <span class="dot dot--green"></span>
+              </div>
+              <div class="mockup-url">agents.auralis.io</div>
+              <div class="mockup-dots-placeholder"></div>
+            </div>
+            <div class="mockup-content" style="background:#080b12;">
+                <svg id="agentsSvg" viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+                  <defs>
+                    <filter id="ag-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+                    <filter id="ag-pulse" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="6"/></filter>
+                    <clipPath id="ag-clip"><rect width="480" height="360"/></clipPath>
+                  </defs>
+                  <g clip-path="url(#ag-clip)">
+                  <!-- Background -->
+                  <rect width="480" height="360" fill="#080b12"/>
+                  <pattern id="ag-grid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <path d="M24 0V24H0" fill="none" stroke="rgba(42,49,64,.25)" stroke-width=".5"/>
+                  </pattern>
+                  <rect width="480" height="360" fill="url(#ag-grid)" opacity=".4"/>
 
-    <!-- Cosmos 3D Background Scripts -->
-    <script src="cosmos-3d.js"></script>
-    <script src="starfield-2d.js"></script>
+                  <!-- ═══ TOP BAR ═══ -->
+                  <rect class="ag-el" width="480" height="32" fill="#0d1117"/>
+                  <line x1="0" y1="32" x2="480" y2="32" stroke="#1a2030" stroke-width="1"/>
+                  <text x="12" y="21" font-family="'Outfit',sans-serif" font-size="12" font-weight="700" fill="#E8EAED" letter-spacing=".3">AI Strategy Engine</text>
+                  <!-- Live badge -->
+                  <rect class="ag-el" x="148" y="9" width="74" height="16" rx="8" fill="rgba(0,229,204,.1)" stroke="rgba(0,229,204,.3)" stroke-width=".5"/>
+                  <circle class="ag-live-dot" cx="160" cy="17" r="2.5" fill="#00E5CC"/>
+                  <text x="167" y="21" font-family="'JetBrains Mono',monospace" font-size="8" font-weight="500" fill="#00E5CC" letter-spacing=".5">EN DIRECT</text>
+                  <!-- Progress -->
+                  <rect x="370" y="12" width="70" height="5" rx="2.5" fill="#1a2030"/>
+                  <rect class="ag-progress-bar" x="370" y="12" width="0" height="5" rx="2.5" fill="#00E5CC"/>
+                  <text class="ag-progress-text" x="448" y="19" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#00E5CC">89%</text>
 
-    <script src="script.js"></script>
+                  <!-- ═══ LEFT SIDEBAR — AGENTS ═══ -->
+                  <rect class="ag-el" x="0" y="32" width="140" height="328" fill="#0a0e14"/>
+                  <line x1="140" y1="32" x2="140" y2="360" stroke="#1a2030" stroke-width="1"/>
+                  <text x="12" y="52" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="500" fill="#5A6372" letter-spacing="2">AGENTS</text>
+
+                  <!-- Agent 1: Analyste -->
+                  <g class="ag-agent-card">
+                    <rect x="6" y="60" width="128" height="64" rx="6" fill="#0d1117" stroke="#1a2030" stroke-width=".5"/>
+                    <circle cx="24" cy="80" r="12" fill="rgba(74,158,255,.12)" stroke="#4A9EFF" stroke-width="1"/>
+                    <text x="24" y="84" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#4A9EFF">A</text>
+                    <text x="42" y="77" font-family="'Outfit',sans-serif" font-size="11" font-weight="700" fill="#E8EAED">Analyste</text>
+                    <circle class="ag-status-dot" cx="42" cy="89" r="2.5" fill="#4A9EFF"/>
+                    <text x="49" y="92" font-family="'JetBrains Mono',monospace" font-size="8" fill="#4A9EFF">Actif</text>
+                    <rect x="14" y="102" width="112" height="5" rx="2.5" fill="#1a2030"/>
+                    <rect class="ag-agent-bar" x="14" y="102" width="0" height="5" rx="2.5" fill="#4A9EFF" data-target="103"/>
+                    <text x="126" y="115" font-family="'JetBrains Mono',monospace" font-size="8" fill="#4A9EFF" text-anchor="end">92%</text>
+                  </g>
+
+                  <!-- Agent 2: Technique -->
+                  <g class="ag-agent-card">
+                    <rect x="6" y="132" width="128" height="64" rx="6" fill="#0d1117" stroke="#1a2030" stroke-width=".5"/>
+                    <circle cx="24" cy="152" r="12" fill="rgba(74,255,139,.12)" stroke="#4AFF8B" stroke-width="1"/>
+                    <text x="24" y="156" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#4AFF8B">T</text>
+                    <text x="42" y="149" font-family="'Outfit',sans-serif" font-size="11" font-weight="700" fill="#E8EAED">Technique</text>
+                    <circle class="ag-status-dot" cx="42" cy="161" r="2.5" fill="#4AFF8B"/>
+                    <text x="49" y="164" font-family="'JetBrains Mono',monospace" font-size="8" fill="#4AFF8B">Actif</text>
+                    <rect x="14" y="174" width="112" height="5" rx="2.5" fill="#1a2030"/>
+                    <rect class="ag-agent-bar" x="14" y="174" width="0" height="5" rx="2.5" fill="#4AFF8B" data-target="73"/>
+                    <text x="126" y="187" font-family="'JetBrains Mono',monospace" font-size="8" fill="#4AFF8B" text-anchor="end">65%</text>
+                  </g>
+
+                  <!-- Agent 3: Stratégique -->
+                  <g class="ag-agent-card">
+                    <rect x="6" y="204" width="128" height="64" rx="6" fill="#0d1117" stroke="#1a2030" stroke-width=".5"/>
+                    <circle cx="24" cy="224" r="12" fill="rgba(0,229,204,.12)" stroke="#00E5CC" stroke-width="1"/>
+                    <text x="24" y="228" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#00E5CC">S</text>
+                    <text x="42" y="221" font-family="'Outfit',sans-serif" font-size="11" font-weight="700" fill="#E8EAED">Stratégique</text>
+                    <circle class="ag-status-dot" cx="42" cy="233" r="2.5" fill="#f59e0b"/>
+                    <text x="49" y="236" font-family="'JetBrains Mono',monospace" font-size="8" fill="#f59e0b">En attente</text>
+                    <rect x="14" y="246" width="112" height="5" rx="2.5" fill="#1a2030"/>
+                    <rect class="ag-agent-bar" x="14" y="246" width="0" height="5" rx="2.5" fill="#00E5CC" data-target="0"/>
+                  </g>
+
+                  <!-- Sidebar bottom — metrics -->
+                  <line x1="6" y1="282" x2="134" y2="282" stroke="#1a2030" stroke-width=".5"/>
+                  <text x="12" y="302" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5A6372" letter-spacing="1">TOKENS</text>
+                  <text x="12" y="320" font-family="'Outfit',sans-serif" font-size="14" font-weight="700" fill="#E8EAED">4,218</text>
+                  <text x="80" y="302" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5A6372" letter-spacing="1">DURÉE</text>
+                  <text x="80" y="320" font-family="'Outfit',sans-serif" font-size="14" font-weight="700" fill="#E8EAED">8.2s</text>
+
+                  <!-- Orchestration mini graph -->
+                  <line class="ag-orch-line" x1="30" y1="346" x2="70" y2="346" stroke="#4A9EFF" stroke-width="1" opacity=".4" stroke-dasharray="3 2"/>
+                  <line class="ag-orch-line" x1="70" y1="346" x2="110" y2="346" stroke="#4AFF8B" stroke-width="1" opacity=".4" stroke-dasharray="3 2"/>
+                  <circle cx="30" cy="346" r="7" fill="#0d1117" stroke="#4A9EFF" stroke-width="1"/>
+                  <text x="30" y="349" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#4A9EFF">A</text>
+                  <circle cx="70" cy="346" r="7" fill="#0d1117" stroke="#4AFF8B" stroke-width="1"/>
+                  <text x="70" y="349" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#4AFF8B">T</text>
+                  <circle cx="110" cy="346" r="7" fill="#0d1117" stroke="#00E5CC" stroke-width="1"/>
+                  <text x="110" y="349" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#00E5CC">S</text>
+                  <circle class="ag-orch-ping" r="3" fill="#4A9EFF" filter="url(#ag-glow)" opacity="0"/>
+
+                  <!-- ═══ MAIN PANEL — COMMUNICATION ═══ -->
+                  <text x="154" y="52" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="500" fill="#5A6372" letter-spacing="1.5">COMMUNICATION</text>
+
+                  <!-- Message 1: Analyste -->
+                  <g class="ag-msg" opacity="0">
+                    <rect x="148" y="60" width="200" height="52" rx="7" fill="#0d1117" stroke="rgba(74,158,255,.25)" stroke-width=".6"/>
+                    <circle cx="166" cy="76" r="8" fill="rgba(74,158,255,.15)" stroke="#4A9EFF" stroke-width=".8"/>
+                    <text x="166" y="79.5" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" font-weight="700" fill="#4A9EFF">A</text>
+                    <text x="180" y="76" font-family="'Outfit',sans-serif" font-size="11" font-weight="700" fill="#4A9EFF">Analyste</text>
+                    <text x="244" y="76" font-family="'JetBrains Mono',monospace" font-size="8" fill="#3A4150">12s</text>
+                    <text x="166" y="94" font-family="'Outfit',sans-serif" font-size="9.5" fill="#C4C8CE">12 opportunités IA identifiées.</text>
+                    <text x="166" y="106" font-family="'Outfit',sans-serif" font-size="9.5" fill="#C4C8CE">Score maturité : 7.2/10</text>
+                  </g>
+
+                  <!-- Message 2: Technique -->
+                  <g class="ag-msg" opacity="0">
+                    <rect x="148" y="120" width="200" height="52" rx="7" fill="#0d1117" stroke="rgba(74,255,139,.25)" stroke-width=".6"/>
+                    <circle cx="166" cy="136" r="8" fill="rgba(74,255,139,.15)" stroke="#4AFF8B" stroke-width=".8"/>
+                    <text x="166" y="139.5" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" font-weight="700" fill="#4AFF8B">T</text>
+                    <text x="180" y="136" font-family="'Outfit',sans-serif" font-size="11" font-weight="700" fill="#4AFF8B">Technique</text>
+                    <text x="250" y="136" font-family="'JetBrains Mono',monospace" font-size="8" fill="#3A4150">8s</text>
+                    <text x="166" y="154" font-family="'Outfit',sans-serif" font-size="9.5" fill="#C4C8CE">Architecture RAG + LLM validée.</text>
+                    <text x="166" y="166" font-family="'Outfit',sans-serif" font-size="9.5" fill="#C4C8CE">Coût estimé : 340€/mois</text>
+                  </g>
+
+                  <!-- Message 3: Stratégique (typing) -->
+                  <g class="ag-msg ag-msg-typing" opacity="0">
+                    <rect x="148" y="180" width="200" height="40" rx="7" fill="#0d1117" stroke="rgba(0,229,204,.25)" stroke-width=".6"/>
+                    <circle cx="166" cy="194" r="8" fill="rgba(0,229,204,.15)" stroke="#00E5CC" stroke-width=".8"/>
+                    <text x="166" y="197.5" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" font-weight="700" fill="#00E5CC">S</text>
+                    <text x="180" y="194" font-family="'Outfit',sans-serif" font-size="11" font-weight="700" fill="#00E5CC">Stratégique</text>
+                    <text x="258" y="194" font-family="'JetBrains Mono',monospace" font-size="8" fill="#3A4150">now</text>
+                    <!-- Typing dots -->
+                    <circle class="ag-typing-dot" cx="170" cy="210" r="2.5" fill="#00E5CC" opacity=".3"/>
+                    <circle class="ag-typing-dot" cx="180" cy="210" r="2.5" fill="#00E5CC" opacity=".3"/>
+                    <circle class="ag-typing-dot" cx="190" cy="210" r="2.5" fill="#00E5CC" opacity=".3"/>
+                  </g>
+
+                  <!-- ═══ RIGHT PANEL — INSIGHTS ═══ -->
+                  <line x1="356" y1="32" x2="356" y2="226" stroke="#1a2030" stroke-width=".5"/>
+                  <text x="368" y="52" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="500" fill="#5A6372" letter-spacing="1.5">INSIGHTS</text>
+
+                  <!-- Insight 1: Opportunités -->
+                  <g class="ag-insight" opacity="0">
+                    <rect x="362" y="60" width="112" height="52" rx="6" fill="#0d1117" stroke="#1a2030" stroke-width=".5"/>
+                    <text x="374" y="76" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5A6372" letter-spacing=".5">OPPORTUNITÉS</text>
+                    <text x="374" y="100" font-family="'Outfit',sans-serif" font-size="22" font-weight="800" fill="#4A9EFF">12</text>
+                    <text x="403" y="100" font-family="'Outfit',sans-serif" font-size="10" fill="#5A6372">détectées</text>
+                    <!-- Mini bars -->
+                    <rect x="440" y="92" width="5" height="7" rx="1" fill="#4A9EFF" opacity=".3"/>
+                    <rect x="448" y="86" width="5" height="13" rx="1" fill="#4A9EFF" opacity=".5"/>
+                    <rect x="456" y="78" width="5" height="21" rx="1" fill="#4A9EFF" opacity=".8"/>
+                    <rect x="464" y="70" width="5" height="29" rx="1" fill="#4A9EFF"/>
+                  </g>
+
+                  <!-- Insight 2: ROI -->
+                  <g class="ag-insight" opacity="0">
+                    <rect x="362" y="120" width="112" height="52" rx="6" fill="#0d1117" stroke="#1a2030" stroke-width=".5"/>
+                    <text x="374" y="136" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5A6372" letter-spacing=".5">ROI ESTIMÉ</text>
+                    <text x="374" y="160" font-family="'Outfit',sans-serif" font-size="20" font-weight="800" fill="#4AFF8B">+340%</text>
+                    <text x="440" y="160" font-family="'Outfit',sans-serif" font-size="8" fill="#5A6372">12 mois</text>
+                    <!-- Sparkline -->
+                    <polyline points="440,166 450,160 458,152 466,140 472,130" fill="none" stroke="#4AFF8B" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="472" cy="130" r="2.5" fill="#4AFF8B"/>
+                  </g>
+
+                  <!-- Insight 3: Maturité IA -->
+                  <g class="ag-insight" opacity="0">
+                    <rect x="362" y="180" width="112" height="52" rx="6" fill="#0d1117" stroke="#1a2030" stroke-width=".5"/>
+                    <text x="374" y="196" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5A6372" letter-spacing=".5">MATURITÉ IA</text>
+                    <text x="374" y="220" font-family="'Outfit',sans-serif" font-size="22" font-weight="800" fill="#00E5CC">7.2</text>
+                    <text x="405" y="220" font-family="'Outfit',sans-serif" font-size="10" fill="#5A6372">/10</text>
+                    <!-- Progress arc -->
+                    <circle cx="456" cy="210" r="16" fill="none" stroke="#1a2030" stroke-width="3"/>
+                    <circle class="ag-maturity-arc" cx="456" cy="210" r="16" fill="none" stroke="#00E5CC" stroke-width="3" stroke-dasharray="0 100" stroke-linecap="round" transform="rotate(-90 456 210)"/>
+                  </g>
+
+                  <!-- ═══ BOTTOM BAR — Tech tags + Confidence ═══ -->
+                  <line x1="140" y1="232" x2="480" y2="232" stroke="#1a2030" stroke-width=".5"/>
+                  <rect x="140" y="232" width="340" height="128" fill="#0a0e14"/>
+
+                  <text x="156" y="254" font-family="'JetBrains Mono',monospace" font-size="9" fill="#5A6372" letter-spacing="1.5">TECHNOLOGIES</text>
+                  <!-- Tech tags row 1 -->
+                  <rect x="156" y="264" width="50" height="20" rx="5" fill="rgba(74,158,255,.08)" stroke="rgba(74,158,255,.2)" stroke-width=".5"/>
+                  <text x="181" y="278" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4A9EFF">GPT-4</text>
+                  <rect x="212" y="264" width="52" height="20" rx="5" fill="rgba(74,255,139,.08)" stroke="rgba(74,255,139,.2)" stroke-width=".5"/>
+                  <text x="238" y="278" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#4AFF8B">Claude</text>
+                  <rect x="270" y="264" width="38" height="20" rx="5" fill="rgba(124,58,237,.08)" stroke="rgba(124,58,237,.2)" stroke-width=".5"/>
+                  <text x="289" y="278" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#7c3aed">RAG</text>
+                  <rect x="314" y="264" width="64" height="20" rx="5" fill="rgba(245,158,11,.08)" stroke="rgba(245,158,11,.2)" stroke-width=".5"/>
+                  <text x="346" y="278" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#f59e0b">LangChain</text>
+                  <rect x="384" y="264" width="60" height="20" rx="5" fill="rgba(0,229,204,.08)" stroke="rgba(0,229,204,.2)" stroke-width=".5"/>
+                  <text x="414" y="278" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#00E5CC">Pinecone</text>
+
+                  <!-- Confidence bar -->
+                  <text x="156" y="308" font-family="'JetBrains Mono',monospace" font-size="9" fill="#5A6372" letter-spacing="1">CONFIANCE</text>
+                  <rect x="230" y="300" width="190" height="6" rx="3" fill="#1a2030"/>
+                  <rect class="ag-confidence-bar" x="230" y="300" width="0" height="6" rx="3" fill="#00E5CC"/>
+                  <text x="430" y="308" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#00E5CC">94%</text>
+
+                  <!-- Model info -->
+                  <text x="156" y="336" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5A6372" letter-spacing="1">MODÈLE</text>
+                  <text x="156" y="352" font-family="'Outfit',sans-serif" font-size="11" font-weight="600" fill="#E8EAED">Multi-Agent GPT-4 + RAG</text>
+                  <text x="340" y="352" font-family="'JetBrains Mono',monospace" font-size="8" fill="#3A4150">v2.1 — 3 agents orchestrés</text>
+
+                  <!-- Data flow particles -->
+                  <g class="ag-particles">
+                    <circle class="ag-particle" r="2" fill="#4A9EFF" opacity="0"/>
+                    <circle class="ag-particle" r="2" fill="#4AFF8B" opacity="0"/>
+                    <circle class="ag-particle" r="2" fill="#00E5CC" opacity="0"/>
+                    <circle class="ag-particle" r="1.5" fill="#4A9EFF" opacity="0"/>
+                    <circle class="ag-particle" r="1.5" fill="#4AFF8B" opacity="0"/>
+                  </g>
+
+                  </g>
+                </svg>
+            </div>
+            <div class="mockup-overlay">
+              <span class="mockup-overlay-text">Voir le projet</span>
+              <span class="mockup-overlay-arrow">&rarr;</span>
+            </div>
+          </a>
+          <p class="projet-col-desc">Agents intelligents autonomes pour l'analyse, la stratégie et le support client.</p>
+          <div class="projet-col-tags">
+            <span class="tag">GPT</span>
+            <span class="tag">Claude</span>
+            <span class="tag">RAG</span>
+          </div>
+          <a href="projets-agents.html" class="btn btn-outline projet-col-cta" data-hover>
+            Voir tous les projets <span class="btn-arrow">&rarr;</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ======================== A PROPOS ======================== -->
+  <section class="apropos" id="apropos">
+    <div class="section-container">
+      <div class="apropos-grid">
+        <!-- Left — Text -->
+        <div class="apropos-text">
+          <div class="overline">À propos</div>
+          <h2 class="section-title">Le studio derrière la <em class="serif-gold">vision.</em></h2>
+          <p class="apropos-desc">Studio Auralis est un studio digital basé en France, fondé par <strong>Martins Morgado</strong>. On conçoit des solutions qui ont un réel impact sur le business de nos clients.</p>
+          <div class="apropos-pillars">
+            <div class="apropos-pillar">
+              <span class="apropos-pillar-icon">&#9672;</span>
+              <div>
+                <strong>Développement Web</strong>
+                <span>Sites performants, interfaces sur mesure, expériences immersives &mdash; zéro template.</span>
+              </div>
+            </div>
+            <div class="apropos-pillar">
+              <span class="apropos-pillar-icon">&#9672;</span>
+              <div>
+                <strong>Agents IA</strong>
+                <span>Chatbots intelligents, orchestration multi-agents, moteurs de stratégie autonomes.</span>
+              </div>
+            </div>
+            <div class="apropos-pillar">
+              <span class="apropos-pillar-icon">&#9672;</span>
+              <div>
+                <strong>Automatisation IA</strong>
+                <span>Workflows automatisés, scraping, qualification de leads, scoring &mdash; vos process tournent 24/7.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right — Metrics -->
+        <div class="apropos-metrics">
+          <div class="apropos-metric">
+            <span class="apropos-metric-value">2025</span>
+            <span class="apropos-metric-label">Fondé en</span>
+          </div>
+          <div class="apropos-metric">
+            <span class="apropos-metric-value">100%</span>
+            <span class="apropos-metric-label">Sur mesure</span>
+          </div>
+          <div class="apropos-metric">
+            <span class="apropos-metric-value">24/7</span>
+            <span class="apropos-metric-label">Agents actifs</span>
+          </div>
+          <div class="apropos-metric">
+            <span class="apropos-metric-value">France</span>
+            <span class="apropos-metric-label">Basé en</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quote -->
+      <blockquote class="apropos-quote">
+        <span class="apropos-quote-mark">&ldquo;</span>
+        Chaque ligne de code a un impact.
+        <span class="apropos-quote-mark">&rdquo;</span>
+        <cite>&mdash; Martins Morgado</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ======================== PROCESS ======================== -->
+  <section class="process" id="process">
+    <div class="section-container">
+      <div class="section-header section-header--center">
+        <div class="overline">Notre approche</div>
+        <h2 class="section-title">Comment on <em class="serif-gold">travaille.</em></h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-line" id="timelineLine"></div>
+
+        <div class="timeline-item timeline-item--left">
+          <div class="timeline-node"></div>
+          <div class="timeline-content" data-hover>
+            <span class="timeline-num">01</span>
+            <h3 class="timeline-title">Découverte</h3>
+            <p class="timeline-desc">On comprend votre besoin, votre marché, vos objectifs. Appel gratuit de 30 min.</p>
+            <span class="timeline-badge">30 min</span>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--right">
+          <div class="timeline-node"></div>
+          <div class="timeline-content" data-hover>
+            <span class="timeline-num">02</span>
+            <h3 class="timeline-title">Conception</h3>
+            <p class="timeline-desc">Maquettes, architecture technique, choix des outils. Validation avant chaque étape.</p>
+            <span class="timeline-badge">1-2 semaines</span>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--left">
+          <div class="timeline-node"></div>
+          <div class="timeline-content" data-hover>
+            <span class="timeline-num">03</span>
+            <h3 class="timeline-title">Développement</h3>
+            <p class="timeline-desc">Code propre, performant, sur mesure. Vous suivez l'avancement en temps réel.</p>
+            <span class="timeline-badge">2-6 semaines</span>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--right">
+          <div class="timeline-node"></div>
+          <div class="timeline-content" data-hover>
+            <span class="timeline-num">04</span>
+            <h3 class="timeline-title">Livraison</h3>
+            <p class="timeline-desc">Tests, déploiement, formation. On reste disponible après le lancement.</p>
+            <span class="timeline-badge">Support continu</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ======================== TESTIMONIALS ======================== -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-container">
+      <div class="section-header section-header--center">
+        <div class="overline">Ce qu'ils en disent</div>
+        <h2 class="section-title">Retours <em class="serif-gold">clients.</em></h2>
+      </div>
+
+      <div class="testimonials-carousel" id="testimonialsCarousel">
+        <div class="testimonials-track" id="testimonialsTrack">
+          <div class="testimonial-card" data-hover>
+            <span class="testimonial-quote-mark">&ldquo;</span>
+            <p class="testimonial-text">Un travail exceptionnel. Le site a dépassé toutes nos attentes en termes de design et performance.</p>
+            <div class="testimonial-sep"></div>
+            <span class="testimonial-name">Marie D.</span>
+            <span class="testimonial-role">Directrice Marketing</span>
+          </div>
+
+          <div class="testimonial-card" data-hover>
+            <span class="testimonial-quote-mark">&ldquo;</span>
+            <p class="testimonial-text">L'automatisation mise en place nous fait gagner 15h par semaine. Impressionnant.</p>
+            <div class="testimonial-sep"></div>
+            <span class="testimonial-name">Thomas R.</span>
+            <span class="testimonial-role">CEO Startup</span>
+          </div>
+
+          <div class="testimonial-card" data-hover>
+            <span class="testimonial-quote-mark">&ldquo;</span>
+            <p class="testimonial-text">L'agent IA qu'ils ont créé gère 80% de nos demandes clients. Un vrai game changer.</p>
+            <div class="testimonial-sep"></div>
+            <span class="testimonial-name">Sophie L.</span>
+            <span class="testimonial-role">Responsable Service Client</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ======================== CONTACT ======================== -->
+  <section class="contact" id="contact">
+    <div class="contact-glow"></div>
+    <div class="section-container">
+      <div class="overline overline--center">Passons à l'action</div>
+
+      <h2 class="contact-title">
+        <span class="contact-word">Prêt</span>
+        <span class="contact-word">à</span>
+        <span class="contact-word">créer</span>
+        <span class="contact-word">quelque chose</span>
+        <span class="contact-word">d'</span>
+        <span class="contact-word contact-word--serif">exceptionnel ?</span>
+      </h2>
+
+      <p class="contact-subtitle">Répondez à 3 questions. On vous recontacte sous 24h avec une proposition.</p>
+      <div class="contact-badge"><span class="contact-badge-dot"></span> Réponse en 24h max</div>
+
+      <!-- Interactive Form -->
+      <div class="contact-form" id="contactForm">
+        <!-- Step 1 — What do you need? -->
+        <div class="form-step form-step--active" data-step="1">
+          <div class="form-step-header">
+            <span class="form-step-num">01</span>
+            <h3 class="form-step-question">Que recherchez-vous ?</h3>
+          </div>
+          <div class="form-choices">
+            <button class="form-choice" data-value="Site Web" data-hover>
+              <span class="form-choice-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </span>
+              <span class="form-choice-label">Site Web</span>
+            </button>
+            <button class="form-choice" data-value="Automatisation IA" data-hover>
+              <span class="form-choice-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+              </span>
+              <span class="form-choice-label">Automatisation</span>
+            </button>
+            <button class="form-choice" data-value="Agent IA" data-hover>
+              <span class="form-choice-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 017 7c0 3-1.5 4.5-3 6v3H8v-3c-1.5-1.5-3-3-3-6a7 7 0 017-7z"/><path d="M9 22h6"/><circle cx="10" cy="10" r="1" fill="currentColor"/><circle cx="14" cy="10" r="1" fill="currentColor"/></svg>
+              </span>
+              <span class="form-choice-label">Agent IA</span>
+            </button>
+            <button class="form-choice" data-value="Autre / Multi" data-hover>
+              <span class="form-choice-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              </span>
+              <span class="form-choice-label">Multi-projet</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2 — Budget -->
+        <div class="form-step" data-step="2">
+          <div class="form-step-header">
+            <span class="form-step-num">02</span>
+            <h3 class="form-step-question">Quel est votre budget ?</h3>
+          </div>
+          <div class="form-choices">
+            <button class="form-choice" data-value="< 2 000€" data-hover>
+              <span class="form-choice-label">&lt; 2 000&euro;</span>
+            </button>
+            <button class="form-choice" data-value="2 000 - 5 000€" data-hover>
+              <span class="form-choice-label">2 000 &ndash; 5 000&euro;</span>
+            </button>
+            <button class="form-choice" data-value="5 000 - 10 000€" data-hover>
+              <span class="form-choice-label">5 000 &ndash; 10 000&euro;</span>
+            </button>
+            <button class="form-choice" data-value="> 10 000€" data-hover>
+              <span class="form-choice-label">&gt; 10 000&euro;</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3 — Contact info -->
+        <div class="form-step" data-step="3">
+          <div class="form-step-header">
+            <span class="form-step-num">03</span>
+            <h3 class="form-step-question">Comment vous contacter ?</h3>
+          </div>
+          <div class="form-fields">
+            <div class="form-field">
+              <input type="text" id="formName" placeholder="Votre nom" required autocomplete="name">
+              <div class="form-field-line"></div>
+            </div>
+            <div class="form-field">
+              <input type="email" id="formEmail" placeholder="Votre email" required autocomplete="email">
+              <div class="form-field-line"></div>
+            </div>
+            <div class="form-field form-field--full">
+              <textarea id="formMessage" placeholder="Décrivez brièvement votre projet (optionnel)" rows="3"></textarea>
+              <div class="form-field-line"></div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary btn-primary--large form-submit" id="formSubmit" data-hover>
+            Envoyer ma demande <span class="btn-arrow">&rarr;</span>
+          </button>
+        </div>
+
+        <!-- Success -->
+        <div class="form-step form-success" data-step="success">
+          <div class="form-success-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3 class="form-success-title">C'est envoyé !</h3>
+          <p class="form-success-desc">On revient vers vous sous 24h. Préparez-vous, ça va être grand.</p>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="form-progress">
+          <div class="form-progress-fill" id="formProgressFill"></div>
+        </div>
+      </div>
+
+      <div class="contact-infos">
+        <div class="contact-info">
+          <span class="contact-info-label">Email</span>
+          <a href="mailto:contact@studio-auralis.com" class="contact-info-value" data-hover>contact@studio-auralis.com</a>
+        </div>
+        <div class="contact-info">
+          <span class="contact-info-label">Localisation</span>
+          <span class="contact-info-value">France</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== FOOTER ======================== -->
+  <footer class="footer">
+    <div class="footer-line"></div>
+    <div class="footer-inner">
+      <span class="footer-logo"><em>Auralis</em><span class="gold-dot">.</span></span>
+      <p class="footer-copy">&copy; 2026 Studio Auralis. Tous droits réservés.</p>
+      <a href="https://www.linkedin.com/in/martins-morgado-studio-auralis" class="footer-social" aria-label="LinkedIn" target="_blank" rel="noopener" data-hover>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  // Lead automation video — lazy load, play when near viewport
+  (function() {
+    var container = document.querySelector('.lead-auto-mockup');
+    if (!container) return;
+    var v = container.querySelector('video');
+    if (!v) return;
+    var io = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        io.disconnect();
+        v.src = 'assets/lead-automation-preview.webm';
+        v.addEventListener('canplay', function() {
+          v.play();
+          v.style.opacity = '1';
+        }, { once: true });
+      }
+    }, { rootMargin: '300px' });
+    io.observe(container);
+  })();
+  </script>
 </body>
 </html>

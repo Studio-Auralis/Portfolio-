@@ -87,7 +87,7 @@ let formData = {};
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(74, 255, 212, ${p.alpha})`;
+      ctx.fillStyle = `rgba(0, 229, 204, ${p.alpha})`;
       ctx.fill();
     });
 
@@ -101,7 +101,7 @@ let formData = {};
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(74, 255, 212, ${0.06 * (1 - dist / 150)})`;
+          ctx.strokeStyle = `rgba(0, 229, 204, ${0.06 * (1 - dist / 150)})`;
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
