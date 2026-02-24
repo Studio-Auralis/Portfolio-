@@ -1437,24 +1437,6 @@ button { border: none; background: none; font: inherit; cursor: none; }
 .projet-col-mockup:hover .mockup-overlay { opacity: 1; }
 .projet-col-mockup:hover .mockup-overlay-arrow { transform: translateX(8px); }
 
-/* Placeholder for missing screenshots */
-.projet-col-placeholder {
-  aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, var(--noir-hover) 0%, var(--noir-card) 50%, var(--noir-hover) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.projet-col-placeholder:empty::after {
-  content: 'Bientôt';
-  font-family: var(--font-mono);
-  font-size: 14px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--text-40);
-}
-
 /* Description */
 .projet-col-desc {
   font-size: 16px;
@@ -2238,87 +2220,6 @@ button { border: none; background: none; font: inherit; cursor: none; }
   background-size: 20px 20px;
   opacity: .4;
   pointer-events: none;
-}
-
-/* ===============================================
-   SUBPAGE ANIMATED BACKGROUND
-   =============================================== */
-.subpage-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.subpage-bg-mesh {
-  position: absolute;
-  inset: -50%;
-}
-.subpage-bg-mesh--1 {
-  background:
-    radial-gradient(ellipse 600px 600px at 20% 50%, rgba(0,229,204,.05) 0%, transparent 70%),
-    radial-gradient(ellipse 800px 400px at 80% 30%, rgba(0,229,204,.03) 0%, transparent 70%);
-  animation: meshShift 20s ease-in-out infinite alternate;
-}
-.subpage-bg-mesh--2 {
-  background:
-    radial-gradient(ellipse 500px 500px at 75% 60%, rgba(0,229,204,.04) 0%, transparent 70%),
-    radial-gradient(ellipse 700px 500px at 30% 40%, rgba(0,229,204,.025) 0%, transparent 60%);
-  animation: meshShift2 25s ease-in-out infinite alternate;
-}
-.subpage-bg-streak {
-  position: absolute;
-  pointer-events: none;
-  border-radius: 100px;
-  filter: blur(6px);
-  mix-blend-mode: screen;
-}
-.subpage-bg-streak--1 {
-  top: -5%;
-  left: -10%;
-  width: 140%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(0,229,204,.2) 20%, rgba(80,255,235,.35) 50%, rgba(0,229,204,.2) 80%, transparent 100%);
-  transform: rotate(25deg);
-  animation: auroraSlide1 8s ease-in-out infinite;
-}
-.subpage-bg-streak--2 {
-  top: 55%;
-  left: -15%;
-  width: 150%;
-  height: 3px;
-  background: linear-gradient(90deg, transparent 0%, rgba(0,191,166,.15) 25%, rgba(0,229,204,.3) 50%, rgba(0,191,166,.15) 75%, transparent 100%);
-  transform: rotate(28deg);
-  animation: auroraSlide3 10s ease-in-out infinite;
-}
-.subpage-bg-orb {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  filter: blur(40px);
-  opacity: 0;
-}
-.subpage-bg-orb--1 {
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(0,229,204,.10) 0%, transparent 70%);
-  top: 15%;
-  right: 10%;
-  animation: orbFloat1 18s ease-in-out infinite alternate;
-}
-.subpage-bg-orb--2 {
-  width: 280px;
-  height: 280px;
-  background: radial-gradient(circle, rgba(0,229,204,.08) 0%, transparent 70%);
-  bottom: 20%;
-  left: 15%;
-  animation: orbFloat2 22s ease-in-out infinite alternate;
-}
-@media (prefers-reduced-motion: reduce) {
-  .subpage-bg-mesh,
-  .subpage-bg-streak,
-  .subpage-bg-orb { animation: none !important; opacity: 0 !important; }
 }
 
 /* ===============================================
