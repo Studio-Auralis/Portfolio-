@@ -807,130 +807,49 @@
   <script defer src="js/main.js?v=5"></script>
   <script>
   document.addEventListener('DOMContentLoaded', function() {
-  // Run after main.js DOMContentLoaded handler has defined initTestimonialsCarousel
   setTimeout(function() {
-  // ===================================================
-  // CONFIGURATION — Remplacez par votre clé API Google
-  // ===================================================
-  var GOOGLE_API_KEY = 'VOTRE_CLE_API_GOOGLE';
   // =============================================
-  // Avis en dur (fallback si pas de clé API)
-  // Mettez à jour cette liste quand vous recevez
-  // de nouveaux avis Google.
+  // AVIS GOOGLE — Ajoutez vos nouveaux avis ici
   // =============================================
-  var FALLBACK_REVIEWS = [
+  var REVIEWS = [
   {
   name: 'Muriel Gardette',
   rating: 5,
   text: "J'ai fais appel à Auralis studio pour mon site internet j'en suis ravie très pro et réactif",
   time: 'Avis Google'
+  },
+  {
+  name: 'Joshua',
+  rating: 5,
+  text: "J'avais déjà testé d'autres studios avant, et je peux dire que Studio Auralis est clairement au-dessus. Accompagnement sérieux, super réactif et surtout des résultats concrets sur mon site et mes automatisations. Je recommande les yeux fermés !",
+  time: 'Avis Google'
   }
   ];
-  // Si la clé n'est pas configurée, afficher les avis en dur (fallback)
-  if (GOOGLE_API_KEY === 'VOTRE_CLE_API_GOOGLE') {
-  console.info('[Auralis] Avis Google : mode fallback (clé API non configurée). Les avis statiques sont affichés.');
-  renderFallbackReviews();
-  return;
-  }
-  // Charger le script Google Maps API
-  var script = document.createElement('script');
-  script.src = 'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_API_KEY + '&libraries=places&callback=_auralisInitGoogleReviews';
-  script.async = true;
-  script.defer = true;
-  document.head.appendChild(script);
-  // Callback global appelé quand l'API Google est prête
-  window._auralisInitGoogleReviews = function() {
-  var service = new google.maps.places.PlacesService(document.createElement('div'));
-  service.findPlaceFromQuery({
-  query: 'Studio Auralis Billom',
-  fields: ['place_id']
-  }, function(results, status) {
-  if (status !== google.maps.places.PlacesServiceStatus.OK || !results || !results[0]) {
-  console.warn('[Auralis] Place non trouvée, fallback activé');
-  renderFallbackReviews();
-  return;
-  }
-  service.getDetails({
-  placeId: results[0].place_id,
-  fields: ['reviews', 'rating', 'user_ratings_total', 'url'],
-  language: 'fr'
-  }, function(place, detailStatus) {
-  if (detailStatus !== google.maps.places.PlacesServiceStatus.OK || !place) {
-  renderFallbackReviews();
-  return;
-  }
-  renderGoogleReviews(place);
-  });
-  });
-  };
-  function renderGoogleReviews(place) {
-  var track = document.getElementById('testimonialsTrack');
-  if (!track) return;
-  var reviews = place.reviews || [];
-  if (!reviews.length) { hideLoading(); return; }
-  // Mettre à jour le badge
-  var rating = place.rating || 5;
-  var count = place.user_ratings_total || reviews.length;
-  var badgeRating = document.getElementById('googleBadgeRating');
-  var badgeStars = document.getElementById('googleBadgeStars');
-  var badgeCount = document.getElementById('googleBadgeCount');
-  if (badgeRating) badgeRating.textContent = rating.toFixed(1).replace('.', ',');
-  if (badgeStars) badgeStars.textContent = getStars(rating);
-  if (badgeCount) badgeCount.textContent = count + ' avis Google';
-  // Construire les cartes d'avis
-  var html = '';
-  reviews.forEach(function(review) {
-  html += buildReviewCard(
-  review.author_name || 'Anonyme',
-  review.rating || 5,
-  review.text || '',
-  review.relative_time_description || ''
-  );
-  });
-  track.innerHTML = html;
-  hideLoading();
-  // Initialiser le carousel après le rendu
-  if (typeof window.initTestimonialsCarousel === 'function') {
-  window.initTestimonialsCarousel();
-  }
-  }
-  function renderFallbackReviews() {
   var track = document.getElementById('testimonialsTrack');
   if (!track) return;
   var html = '';
-  FALLBACK_REVIEWS.forEach(function(review) {
-  html += buildReviewCard(review.name, review.rating, review.text, review.time);
-  });
-  track.innerHTML = html;
-  hideLoading();
-  if (typeof window.initTestimonialsCarousel === 'function') {
-  window.initTestimonialsCarousel();
-  }
-  }
-  function buildReviewCard(name, rating, text, time) {
-  return '<div class="testimonial-card" data-hover>' +
+  REVIEWS.forEach(function(r) {
+  var stars = '\u2605'.repeat(Math.floor(r.rating)) + '\u2606'.repeat(5 - Math.floor(r.rating));
+  var d = document.createElement('div');
+  d.textContent = r.text; var safeText = d.innerHTML;
+  d.textContent = r.name; var safeName = d.innerHTML;
+  d.textContent = r.time; var safeTime = d.innerHTML;
+  html += '<div class="testimonial-card" data-hover>' +
   '<span class="testimonial-quote-mark">&ldquo;</span>' +
-  '<div class="testimonial-stars">' + getStars(rating) + '</div>' +
-  '<p class="testimonial-text">' + escapeHtml(text) + '</p>' +
+  '<div class="testimonial-stars">' + stars + '</div>' +
+  '<p class="testimonial-text">' + safeText + '</p>' +
   '<div class="testimonial-sep"></div>' +
-  '<span class="testimonial-name">' + escapeHtml(name) + '</span>' +
-  '<span class="testimonial-role">' + escapeHtml(time) + '</span>' +
+  '<span class="testimonial-name">' + safeName + '</span>' +
+  '<span class="testimonial-role">' + safeTime + '</span>' +
   '</div>';
-  }
-  function getStars(rating) {
-  var full = Math.floor(rating);
-  var half = rating - full >= 0.5 ? 1 : 0;
-  var empty = 5 - full - half;
-  return '\u2605'.repeat(full) + (half ? '\u00BD' : '') + '\u2606'.repeat(empty);
-  }
-  function escapeHtml(str) {
-  var div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-  }
-  function hideLoading() {
+  });
+  track.innerHTML = html;
   var loader = document.getElementById('testimonialsLoading');
   if (loader) loader.style.display = 'none';
+  var badgeCount = document.getElementById('googleBadgeCount');
+  if (badgeCount) badgeCount.textContent = REVIEWS.length + ' avis Google';
+  if (typeof window.initTestimonialsCarousel === 'function') {
+  window.initTestimonialsCarousel();
   }
   }, 0);
   });
