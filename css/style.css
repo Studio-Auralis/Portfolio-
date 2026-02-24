@@ -41,6 +41,7 @@ body {
   cursor: none;
 }
 img { display: block; max-width: 100%; height: auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 a { color: inherit; text-decoration: none; }
 button { border: none; background: none; font: inherit; cursor: none; }
 ::selection { background: rgba(0,229,204,.25); color: var(--text-100); }
