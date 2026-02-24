@@ -1410,38 +1410,26 @@
     initContactAnimation();
     initDecorations();
 
-    // Scroll to hash target after GSAP hero timeline + ScrollTrigger settle
+    // Scroll to hash target (e.g. index.html#projets from sub-pages)
     if (window.location.hash) {
       var hashTarget = document.querySelector(window.location.hash);
       if (hashTarget) {
         document.documentElement.style.scrollBehavior = 'auto';
-        // Use polling: keep scrolling until position sticks (GSAP may reset during animations)
-        var scrollAttempts = 0;
-        function forceHashScroll() {
-          var targetY = hashTarget.offsetTop;
-          window.scrollTo(0, targetY);
-          ScrollTrigger.refresh();
-          scrollAttempts++;
-          if (scrollAttempts < 30 && Math.abs(window.pageYOffset - targetY) > 50) {
-            requestAnimationFrame(forceHashScroll);
-          } else {
-            document.documentElement.style.scrollBehavior = '';
-          }
-        }
-        // Start after window load + a beat for GSAP to finish
-        window.addEventListener('load', function () {
-          setTimeout(forceHashScroll, 300);
-        });
-        // Also try immediately after GSAP hero timeline would be done (~2s)
-        gsap.delayedCall(2, function () {
-          if (Math.abs(window.pageYOffset - hashTarget.offsetTop) > 50) {
-            window.scrollTo(0, hashTarget.offsetTop);
+        // Keep forcing scroll every frame until GSAP stops fighting
+        var forceCount = 0;
+        function forceScroll() {
+          window.scrollTo(0, hashTarget.offsetTop);
+          forceCount++;
+          if (forceCount < 120) requestAnimationFrame(forceScroll);
+          else {
             ScrollTrigger.refresh();
             document.documentElement.style.scrollBehavior = '';
           }
-        });
+        }
+        forceScroll();
       }
     }
+
   }
 
   // Init as soon as DOM is ready (no waiting for images)

@@ -26,17 +26,53 @@
     .subpage-back {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--text-80);
+      justify-content: center;
+      position: relative;
+      padding: 11px 28px;
       margin-bottom: 32px;
+      background: rgba(0,229,204,.03);
+      border: 1px solid transparent;
+      border-radius: 4px;
+      transition: all .3s;
+      white-space: nowrap;
+      background-clip: padding-box;
+    }
+    .subpage-back::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 5px;
+      padding: 1px;
+      background: linear-gradient(135deg, #00E5CC, #50FFEB, #00BFA6, #00E5CC);
+      background-size: 300% 300%;
+      animation: borderShift 4s ease-in-out infinite;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: .6;
+      transition: opacity .3s;
+    }
+    @keyframes borderShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .subpage-back-text {
+      position: relative;
+      z-index: 1;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: var(--text-100);
       transition: color .3s;
     }
-    .subpage-back:hover { color: var(--gold); }
+    .subpage-back:hover {
+      background: rgba(0,229,204,.06);
+      box-shadow: 0 0 24px rgba(0,229,204,.12);
+    }
+    .subpage-back:hover::before { opacity: 1; }
+    .subpage-back:hover .subpage-back-text { color: var(--gold); }
     .subpage-title {
       font-family: var(--font-display);
       font-weight: 900;
@@ -190,7 +226,9 @@
   <!-- Hero -->
   <section class="subpage-hero">
     <div class="section-container">
-      <a href="index.html#projets" class="subpage-back">&larr; Retour aux projets</a>
+      <a href="index.html#projets" class="subpage-back">
+        <span class="subpage-back-text">&larr; Retour au site</span>
+      </a>
       <h1 class="subpage-title">Développement <em class="serif-gold">Web.</em></h1>
       <p class="subpage-subtitle">Sites vitrines, applications web et solutions SaaS sur mesure, performants et optimisés.</p>
     </div>

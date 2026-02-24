@@ -28,20 +28,86 @@
       position: relative;
       z-index: 2;
     }
+    .subpage-hero .section-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .demo-banner {
+      position: relative;
+      z-index: 101;
+      text-align: center;
+      padding: 8px 20px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: #f5c542;
+      background: rgba(245,158,11,.06);
+      border-bottom: 1px solid rgba(245,158,11,.15);
+    }
+    .demo-banner span { font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+    .demo-banner-dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: #f59e0b;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: middle;
+      box-shadow: 0 0 8px rgba(245,158,11,.5);
+      animation: demoPulse 2s ease-in-out infinite;
+    }
+    @keyframes demoPulse { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
     .subpage-back {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-family: var(--font-mono);
-      font-size: 12px;
+      justify-content: center;
+      position: relative;
+      padding: 11px 28px;
+      margin-bottom: 32px;
+      background: rgba(0,229,204,.03);
+      border: 1px solid transparent;
+      border-radius: 4px;
+      transition: all .3s;
+      white-space: nowrap;
+      background-clip: padding-box;
+    }
+    .subpage-back::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 5px;
+      padding: 1px;
+      background: linear-gradient(135deg, #00E5CC, #50FFEB, #00BFA6, #00E5CC);
+      background-size: 300% 300%;
+      animation: borderShift 4s ease-in-out infinite;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: .6;
+      transition: opacity .3s;
+    }
+    @keyframes borderShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .subpage-back-text {
+      position: relative;
+      z-index: 1;
+      font-family: var(--font-display);
+      font-size: 14px;
       font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--text-80);
-      margin-bottom: 20px;
+      letter-spacing: 1px;
+      color: var(--text-100);
       transition: color .3s;
     }
-    .subpage-back:hover { color: var(--gold); }
+    .subpage-back:hover {
+      background: rgba(0,229,204,.06);
+      box-shadow: 0 0 24px rgba(0,229,204,.12);
+    }
+    .subpage-back:hover::before { opacity: 1; }
+    .subpage-back:hover .subpage-back-text { color: var(--gold); }
     .subpage-title {
       font-family: var(--font-display);
       font-weight: 900;
@@ -307,7 +373,7 @@
       border-radius: 2px;
     }
     .dash-bar-fill.fill-accent { background: var(--gold); }
-    .dash-bar-fill.fill-warm { background: #e8a84c; }
+    .dash-bar-fill.fill-warm { background: #4ADE80; }
 
     /* Dashboard bar chart fill anim */
     .dash-bar-fill.anim-active { animation: dashFillIn 1.2s ease both; }
@@ -863,6 +929,12 @@
 </head>
 <body>
 
+  <!-- Demo Banner -->
+  <div class="demo-banner">
+    <span class="demo-banner-dot"></span>
+    <span>MODE DÉMONSTRATION</span> — Cette démo est simulée pour illustrer le fonctionnement du système.
+  </div>
+
   <!-- Aurora Background -->
   <div class="aurora-bg" id="auroraBg">
     <div class="aurora-streak aurora-streak--1"></div>
@@ -1233,7 +1305,7 @@ function DashboardBlock({ visible }) {
           <div className="dash-stat-label">Conversion</div>
           <div className="dash-stat-row">
             <div className="dash-stat-num">31%</div>
-            <div className="dash-stat-delta warn">stable</div>
+            <div className="dash-stat-delta">+5pts</div>
           </div>
           <div className="dash-bar"><div className={`dash-bar-fill fill-warm ${visible ? "anim-active" : ""}`} style={{ width: "31%" }}/></div>
         </div>
@@ -1391,7 +1463,9 @@ function App() {
       {/* Hero */}
       <section className="subpage-hero">
         <div className="section-container">
-          <a href="index.html#projets" className="subpage-back">&larr; Retour aux projets</a>
+          <a href="index.html#projets" className="subpage-back">
+            <span className="subpage-back-text">&larr; Retour au site</span>
+          </a>
           <h1 className="subpage-title">Automatisation <em className="serif-gold">IA.</em></h1>
           <p className="subpage-subtitle">Un lead arrive, il est qualifié, scoré et routé au bon commercial en 30 secondes. Vos équipes ne touchent à rien.</p>
         </div>

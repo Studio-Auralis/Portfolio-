@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
   <link rel="icon" type="image/svg+xml" href="assets/auralis-favicon.svg">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
 
@@ -49,9 +49,7 @@
         <span class="nav-title">AI Strategy Engine</span>
         <span class="nav-subtitle">Système multi-agents</span>
       </div>
-      <div class="nav-right">
-        <a href="../../index.html#projets" class="nav-back-btn">← Retour au site</a>
-      </div>
+      <div class="nav-right"></div>
     </div>
   </nav>
 
@@ -61,7 +59,9 @@
     <section id="form-section" class="section active">
       <div class="form-container">
         <div class="form-header">
-          <div class="overline">Analyse gratuite</div>
+          <a href="../../index.html#projets" class="back-btn">
+            <span class="back-btn-text">&larr; Retour au site</span>
+          </a>
           <h2>Découvrez votre stratégie IA <span class="serif-gold">personnalisée.</span></h2>
           <p class="form-desc">Nos 3 agents IA vont analyser votre entreprise en temps réel et produire un rapport stratégique complet.</p>
         </div>
@@ -238,6 +238,6 @@
     <button onclick="this.parentElement.classList.add('hidden')" aria-label="Fermer"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>
