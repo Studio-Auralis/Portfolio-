@@ -24,6 +24,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Minify CSS and JS
+        run: |
+          npm install -g csso-cli terser
+          csso css/style.css --output css/style.css
+          terser js/main.js --compress --mangle --output js/main.js
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

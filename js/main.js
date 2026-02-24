@@ -1057,25 +1057,34 @@
   }
 
   // ===========================================
-  // 10b. TESTIMONIALS — Infinite Sliding Carousel
+  // 10b. TESTIMONIALS — Reveal + Carousel
   // ===========================================
   function initTestimonialsAnimation() {
-    // ScrollTrigger reveal
+    // ScrollTrigger reveal only
     var tl = gsap.timeline({
       scrollTrigger: { trigger: '.testimonials', start: 'top 75%' }
     });
 
     tl.from('.testimonials .overline', { x: -20, opacity: 0, duration: 0.6 });
     tl.from('.testimonials .section-title', { y: 40, opacity: 0, duration: 0.8 }, '-=0.3');
+    tl.from('.google-reviews-badge', { y: 20, opacity: 0, duration: 0.6 }, '-=0.4');
     tl.from('.testimonials-carousel', { y: 40, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.4');
+  }
 
-    // Infinite sliding carousel
+  // Exposed globally so Google reviews script can call it after rendering
+  window.initTestimonialsCarousel = function() {
     var track = document.getElementById('testimonialsTrack');
     if (!track) return;
 
     var originalCards = track.querySelectorAll('.testimonial-card');
     var cardCount = originalCards.length;
     if (!cardCount) return;
+
+    // For a single review, center it — no carousel needed
+    if (cardCount === 1) {
+      track.parentElement.classList.add('testimonials-carousel--single');
+      return;
+    }
 
     // Clone cards for seamless loop
     originalCards.forEach(function (card) {
@@ -1103,7 +1112,6 @@
         duration: 0.9,
         ease: 'power2.inOut',
         onComplete: function () {
-          // Move first card to end for infinite loop
           var first = track.querySelector('.testimonial-card');
           track.appendChild(first);
           currentX += dist;
@@ -1118,7 +1126,6 @@
       isAnimating = true;
       var dist = getSlideDistance();
 
-      // Move last card to beginning
       var allCards = track.querySelectorAll('.testimonial-card');
       var last = allCards[allCards.length - 1];
       track.insertBefore(last, track.firstChild);
@@ -1137,17 +1144,11 @@
     function startAutoplay() {
       autoplayTimer = setInterval(slideNext, 4000);
     }
-    function resetAutoplay() {
-      clearInterval(autoplayTimer);
-      startAutoplay();
-    }
 
-    // Pause on hover
     var carousel = document.getElementById('testimonialsCarousel');
     carousel.addEventListener('mouseenter', function () { clearInterval(autoplayTimer); });
     carousel.addEventListener('mouseleave', startAutoplay);
 
-    // Touch swipe
     var touchStartX = 0;
     carousel.addEventListener('touchstart', function (e) {
       touchStartX = e.changedTouches[0].clientX;
@@ -1160,7 +1161,6 @@
       startAutoplay();
     }, { passive: true });
 
-    // Recalculate on resize
     var resizeTimer;
     window.addEventListener('resize', function () {
       clearTimeout(resizeTimer);
@@ -1171,7 +1171,7 @@
     });
 
     startAutoplay();
-  }
+  };
 
   // ===========================================
   // 11. CONTACT FORM + ANIMATIONS

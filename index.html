@@ -25,10 +25,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    body{font-family:'Outfit',sans-serif;font-weight:300;font-size:15px;line-height:1.7;color:#C4C8CE;background:#080B12;overflow-x:hidden}
+    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding-top:90px;padding-bottom:15vh}
+    .hero-bg{position:absolute;inset:0;z-index:0;background:#080B12;overflow:hidden}
+    .hero-content{position:relative;z-index:5;text-align:center;max-width:860px;padding:0 5%}
+    .hero-title{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(3rem,7vw,5.5rem);color:#E8EAED;letter-spacing:-.03em;line-height:1.05}
+    .navbar{position:fixed;top:0;left:0;width:100%;z-index:9999;padding:20px 5%}
+  </style>
   <link rel="preload" href="css/style.css?v=4" as="style">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" as="style">
   <link rel="stylesheet" href="css/style.css?v=4">
-  <link rel="preload" as="image" href="assets/lead-automation-poster.jpg">
+  <link rel="preload" as="image" href="assets/lead-automation-poster.webp" type="image/webp">
 
   <script type="application/ld+json">
   {
@@ -294,7 +303,10 @@
               <div class="mockup-dots-placeholder"></div>
             </div>
             <div class="mockup-content">
-              <img src="assets/screenshots/motionup.png" alt="MotionUp — Site web agence de montage vidéo" loading="lazy" decoding="async" width="720" height="450">
+              <picture>
+                <source srcset="assets/screenshots/motionup.webp" type="image/webp">
+                <img src="assets/screenshots/motionup.png" alt="MotionUp — Site web agence de montage vidéo" loading="lazy" decoding="async" width="720" height="450">
+              </picture>
             </div>
             <div class="mockup-overlay">
               <span class="mockup-overlay-text">Voir le projet</span>
@@ -351,7 +363,10 @@
               <div class="mockup-dots-placeholder"></div>
             </div>
             <div class="mockup-content">
-              <img src="assets/screenshots/amenagement.png" alt="Aménagement Extérieur — Site vitrine responsive paysagiste" loading="lazy" decoding="async" width="720" height="450">
+              <picture>
+                <source srcset="assets/screenshots/amenagement.webp" type="image/webp">
+                <img src="assets/screenshots/amenagement.png" alt="Aménagement Extérieur — Site vitrine responsive paysagiste" loading="lazy" decoding="async" width="720" height="450">
+              </picture>
             </div>
             <div class="mockup-overlay">
               <span class="mockup-overlay-text">Voir le projet</span>
@@ -384,7 +399,10 @@
               <div class="mockup-dots-placeholder"></div>
             </div>
             <div class="mockup-content lead-auto-mockup">
-              <img src="assets/lead-automation-poster.jpg" alt="Dashboard automatisation de leads" width="720" height="520" decoding="async">
+              <picture>
+                <source srcset="assets/lead-automation-poster.webp" type="image/webp">
+                <img src="assets/lead-automation-poster.jpg" alt="Dashboard automatisation de leads" width="720" height="520" decoding="async">
+              </picture>
               <video muted loop playsinline></video>
             </div>
             <div class="mockup-overlay">
@@ -770,31 +788,24 @@
         <h2 class="section-title">Retours <em class="serif-gold">clients.</em></h2>
       </div>
 
+      <!-- Google rating badge -->
+      <div class="google-reviews-badge" id="googleReviewsBadge">
+        <a href="https://g.co/kgs/d5bf601a09134c1a" target="_blank" rel="noopener" class="google-badge-link">
+          <svg class="google-logo" viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          <span class="google-badge-rating" id="googleBadgeRating">5,0</span>
+          <span class="google-badge-stars" id="googleBadgeStars">★★★★★</span>
+          <span class="google-badge-count" id="googleBadgeCount">1 avis Google</span>
+        </a>
+      </div>
+
       <div class="testimonials-carousel" id="testimonialsCarousel">
         <div class="testimonials-track" id="testimonialsTrack">
-          <div class="testimonial-card" data-hover>
-            <span class="testimonial-quote-mark">&ldquo;</span>
-            <p class="testimonial-text">On cherchait quelqu'un qui comprenne notre métier, pas juste un dev. Samuel a restructuré tout notre tunnel de vente et automatisé le suivi client. Résultat : +40% de leads qualifiés en 2 mois.</p>
-            <div class="testimonial-sep"></div>
-            <span class="testimonial-name">Julien M.</span>
-            <span class="testimonial-role">Fondateur — Agence Immobilière</span>
-          </div>
-
-          <div class="testimonial-card" data-hover>
-            <span class="testimonial-quote-mark">&ldquo;</span>
-            <p class="testimonial-text">Notre ancien site ne convertissait plus. Auralis nous a livré un site qui reflète enfin notre positionnement haut de gamme. Nos clients nous disent qu'ils nous ont choisis grâce au site.</p>
-            <div class="testimonial-sep"></div>
-            <span class="testimonial-name">Camille B.</span>
-            <span class="testimonial-role">Directrice — Cabinet de Conseil</span>
-          </div>
-
-          <div class="testimonial-card" data-hover>
-            <span class="testimonial-quote-mark">&ldquo;</span>
-            <p class="testimonial-text">L'agent IA qu'il a mis en place répond à 80% des questions récurrentes de nos clients. Mon équipe support se concentre enfin sur les vrais problèmes. On aurait dû faire ça il y a un an.</p>
-            <div class="testimonial-sep"></div>
-            <span class="testimonial-name">Alexandre P.</span>
-            <span class="testimonial-role">CTO — SaaS B2B</span>
-          </div>
+          <!-- Avis chargés dynamiquement depuis Google Business -->
+        </div>
+        <div class="testimonials-loading" id="testimonialsLoading">
+          <span class="testimonials-loading-dot"></span>
+          <span class="testimonials-loading-dot"></span>
+          <span class="testimonials-loading-dot"></span>
         </div>
       </div>
     </div>
@@ -954,7 +965,159 @@
   <!-- GSAP -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script defer src="js/main.js?v=4"></script>
+  <script defer src="js/main.js?v=5"></script>
+
+  <!-- Google Places API pour les avis -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+  // Run after main.js DOMContentLoaded handler has defined initTestimonialsCarousel
+  setTimeout(function() {
+    // ===================================================
+    // CONFIGURATION — Remplacez par votre clé API Google
+    // ===================================================
+    var GOOGLE_API_KEY = 'VOTRE_CLE_API_GOOGLE';
+
+    // =============================================
+    // Avis en dur (fallback si pas de clé API)
+    // Mettez à jour cette liste quand vous recevez
+    // de nouveaux avis Google.
+    // =============================================
+    var FALLBACK_REVIEWS = [
+      {
+        name: 'Muriel Gardette',
+        rating: 5,
+        text: "J'ai fais appel à Auralis studio pour mon site internet j'en suis ravie très pro et réactif",
+        time: 'Avis Google'
+      }
+    ];
+
+    // Si la clé n'est pas configurée, afficher les avis en dur (fallback)
+    if (GOOGLE_API_KEY === 'VOTRE_CLE_API_GOOGLE') {
+      console.info('[Auralis] Avis Google : mode fallback (clé API non configurée). Les avis statiques sont affichés.');
+      renderFallbackReviews();
+      return;
+    }
+
+    // Charger le script Google Maps API
+    var script = document.createElement('script');
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_API_KEY + '&libraries=places&callback=_auralisInitGoogleReviews';
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+
+    // Callback global appelé quand l'API Google est prête
+    window._auralisInitGoogleReviews = function() {
+      var service = new google.maps.places.PlacesService(document.createElement('div'));
+
+      service.findPlaceFromQuery({
+        query: 'Studio Auralis Billom',
+        fields: ['place_id']
+      }, function(results, status) {
+        if (status !== google.maps.places.PlacesServiceStatus.OK || !results || !results[0]) {
+          console.warn('[Auralis] Place non trouvée, fallback activé');
+          renderFallbackReviews();
+          return;
+        }
+
+        service.getDetails({
+          placeId: results[0].place_id,
+          fields: ['reviews', 'rating', 'user_ratings_total', 'url'],
+          language: 'fr'
+        }, function(place, detailStatus) {
+          if (detailStatus !== google.maps.places.PlacesServiceStatus.OK || !place) {
+            renderFallbackReviews();
+            return;
+          }
+          renderGoogleReviews(place);
+        });
+      });
+    };
+
+    function renderGoogleReviews(place) {
+      var track = document.getElementById('testimonialsTrack');
+      if (!track) return;
+
+      var reviews = place.reviews || [];
+      if (!reviews.length) { hideLoading(); return; }
+
+      // Mettre à jour le badge
+      var rating = place.rating || 5;
+      var count = place.user_ratings_total || reviews.length;
+      var badgeRating = document.getElementById('googleBadgeRating');
+      var badgeStars = document.getElementById('googleBadgeStars');
+      var badgeCount = document.getElementById('googleBadgeCount');
+      if (badgeRating) badgeRating.textContent = rating.toFixed(1).replace('.', ',');
+      if (badgeStars) badgeStars.textContent = getStars(rating);
+      if (badgeCount) badgeCount.textContent = count + ' avis Google';
+
+      // Construire les cartes d'avis
+      var html = '';
+      reviews.forEach(function(review) {
+        html += buildReviewCard(
+          review.author_name || 'Anonyme',
+          review.rating || 5,
+          review.text || '',
+          review.relative_time_description || ''
+        );
+      });
+
+      track.innerHTML = html;
+      hideLoading();
+
+      // Initialiser le carousel après le rendu
+      if (typeof window.initTestimonialsCarousel === 'function') {
+        window.initTestimonialsCarousel();
+      }
+    }
+
+    function renderFallbackReviews() {
+      var track = document.getElementById('testimonialsTrack');
+      if (!track) return;
+
+      var html = '';
+      FALLBACK_REVIEWS.forEach(function(review) {
+        html += buildReviewCard(review.name, review.rating, review.text, review.time);
+      });
+
+      track.innerHTML = html;
+      hideLoading();
+
+      if (typeof window.initTestimonialsCarousel === 'function') {
+        window.initTestimonialsCarousel();
+      }
+    }
+
+    function buildReviewCard(name, rating, text, time) {
+      return '<div class="testimonial-card" data-hover>' +
+        '<span class="testimonial-quote-mark">&ldquo;</span>' +
+        '<div class="testimonial-stars">' + getStars(rating) + '</div>' +
+        '<p class="testimonial-text">' + escapeHtml(text) + '</p>' +
+        '<div class="testimonial-sep"></div>' +
+        '<span class="testimonial-name">' + escapeHtml(name) + '</span>' +
+        '<span class="testimonial-role">' + escapeHtml(time) + '</span>' +
+        '</div>';
+    }
+
+    function getStars(rating) {
+      var full = Math.floor(rating);
+      var half = rating - full >= 0.5 ? 1 : 0;
+      var empty = 5 - full - half;
+      return '\u2605'.repeat(full) + (half ? '\u00BD' : '') + '\u2606'.repeat(empty);
+    }
+
+    function escapeHtml(str) {
+      var div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function hideLoading() {
+      var loader = document.getElementById('testimonialsLoading');
+      if (loader) loader.style.display = 'none';
+    }
+  }, 0);
+  });
+  </script>
   <script>
   // Lead automation video — lazy load, play when near viewport
   (function() {
