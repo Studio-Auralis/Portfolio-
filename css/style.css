@@ -480,6 +480,12 @@ button { border: none; background: none; font: inherit; cursor: none; }
   transition: transform .3s var(--ease-out);
 }
 .btn-pill:hover .btn-arrow { transform: translateX(4px); }
+.btn-pill--disabled {
+  background: var(--noir-40);
+  color: var(--text-60);
+  cursor: default;
+  pointer-events: none;
+}
 
 /* ===============================================
    HERO

@@ -62,7 +62,7 @@
     });
 
     // Project cards → "VOIR" cursor
-    var projectCards = document.querySelectorAll('.projet-card, .phare-mockup');
+    var projectCards = document.querySelectorAll('.projet-card');
     projectCards.forEach(function (el) {
       el.addEventListener('mouseenter', function () {
         dot.classList.add('is-project');
