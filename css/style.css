@@ -1561,7 +1561,7 @@ button { border: none; background: none; font: inherit; cursor: none; }
 }
 .apropos-pillar span {
   font-size: 13px;
-  color: var(--text-60, #5A6372);
+  color: var(--text-80, #C4C8CE);
   line-height: 1.5;
 }
 .apropos-metrics {
