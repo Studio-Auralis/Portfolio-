@@ -29,11 +29,21 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Minify CSS and JS
+      - name: Minify and inline CSS, minify JS
         run: |
           npm install -g csso-cli terser
-          csso css/style.css --output css/style.css
+          csso css/style.css --output css/style.min.css
           terser js/main.js --compress --mangle --output js/main.js
+          node -e "
+            const fs = require('fs');
+            let html = fs.readFileSync('index.html', 'utf8');
+            const css = fs.readFileSync('css/style.min.css', 'utf8');
+            html = html.replace(
+              /<link rel=\"stylesheet\" href=\"css\/style\.css[^\"]*\">/,
+              () => '<style>' + css + '</style>'
+            );
+            fs.writeFileSync('index.html', html);
+          "
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
