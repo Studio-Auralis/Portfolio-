@@ -1348,7 +1348,60 @@
   }
 
   // ===========================================
-  // 12. DECORATIVE LINE ANIMATIONS
+  // 12. FAQ ACCORDION
+  // ===========================================
+  function initFaq() {
+    var items = document.querySelectorAll('.faq-item');
+    if (!items.length) return;
+
+    items.forEach(function (item) {
+      var btn = item.querySelector('.faq-question');
+      var answer = item.querySelector('.faq-answer');
+
+      btn.addEventListener('click', function () {
+        var isOpen = item.classList.contains('open');
+
+        // Close all others
+        items.forEach(function (other) {
+          if (other !== item && other.classList.contains('open')) {
+            other.classList.remove('open');
+            other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            other.querySelector('.faq-answer').style.maxHeight = '0';
+          }
+        });
+
+        // Toggle current
+        if (isOpen) {
+          item.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          answer.style.maxHeight = '0';
+        } else {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // ScrollTrigger reveal
+    gsap.from('.faq .overline', {
+      scrollTrigger: { trigger: '.faq', start: 'top 80%' },
+      x: -20, opacity: 0, duration: 0.8
+    });
+    gsap.from('.faq .section-title', {
+      scrollTrigger: { trigger: '.faq', start: 'top 80%' },
+      y: 40, opacity: 0, duration: 1, delay: 0.1
+    });
+    gsap.from('.faq-item', {
+      scrollTrigger: { trigger: '.faq-list', start: 'top 85%' },
+      y: 30, opacity: 0, duration: 0.6,
+      stagger: 0.08,
+      ease: 'power3.out'
+    });
+  }
+
+  // ===========================================
+  // 13. DECORATIVE LINE ANIMATIONS
   // ===========================================
   function initDecorations() {
     // Footer line reveal
@@ -1407,6 +1460,7 @@
     initTestimonialsAnimation();
     initContactForm();
     initContactAnimation();
+    initFaq();
     initDecorations();
 
     // Scroll to hash target (e.g. index.html#projets from sub-pages)

@@ -2215,6 +2215,70 @@ button { border: none; background: none; font: inherit; cursor: none; }
 .footer-social:hover { color: var(--gold); transform: scale(1.15); }
 
 /* ===============================================
+   FAQ
+   =============================================== */
+.faq {
+  padding: 80px 0;
+  position: relative;
+}
+.faq .section-title {
+  margin-bottom: 48px;
+}
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.faq-item {
+  border-bottom: 1px solid var(--noir-border);
+}
+.faq-item:first-child {
+  border-top: 1px solid var(--noir-border);
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-100);
+  text-align: left;
+  cursor: pointer;
+  transition: color .3s;
+  background: none;
+  border: none;
+}
+.faq-question:hover {
+  color: var(--gold);
+}
+.faq-icon {
+  flex-shrink: 0;
+  font-size: 20px;
+  color: var(--gold);
+  transition: transform .3s var(--ease-out);
+  line-height: 1;
+}
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s var(--ease-smooth), padding .4s var(--ease-smooth);
+}
+.faq-item.open .faq-answer {
+  padding-bottom: 20px;
+}
+.faq-answer p {
+  font-size: 14px;
+  color: var(--text-80);
+  line-height: 1.8;
+}
+
+/* ===============================================
    DOT PATTERN (subtle bg decoration)
    =============================================== */
 .services::before,
