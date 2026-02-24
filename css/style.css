@@ -234,6 +234,7 @@ button { border: none; background: none; font: inherit; cursor: none; }
   justify-content: space-between;
   max-width: 1400px;
   margin: 0 auto;
+  position: relative;
 }
 .nav-logo {
   display: flex;
@@ -285,6 +286,9 @@ button { border: none; background: none; font: inherit; cursor: none; }
 .nav-links {
   display: flex;
   gap: 36px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .nav-links a {
   font-family: var(--font-display);
@@ -401,6 +405,7 @@ button { border: none; background: none; font: inherit; cursor: none; }
   font-weight: 500;
   font-size: 12px;
   letter-spacing: 5px;
+  text-indent: 5px;
   text-transform: uppercase;
   color: var(--gold);
   text-shadow: 0 0 8px var(--gold-glow);
@@ -1440,7 +1445,7 @@ button { border: none; background: none; font: inherit; cursor: none; }
 /* Description */
 .projet-col-desc {
   font-size: 16px;
-  color: var(--text-60);
+  color: var(--text-80);
   line-height: 1.7;
   margin-bottom: 24px;
 }
@@ -2172,6 +2177,8 @@ button { border: none; background: none; font: inherit; cursor: none; }
 .footer {
   padding: 60px 5%;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 .footer-line {
   width: 100%;
@@ -2193,7 +2200,7 @@ button { border: none; background: none; font: inherit; cursor: none; }
 }
 .footer-copy {
   font-size: 11px;
-  color: var(--text-40);
+  color: var(--text-60);
 }
 .footer-social {
   color: var(--text-60);

@@ -513,7 +513,6 @@
     gsap.from('.service-card', {
       scrollTrigger: { trigger: '.services-grid', start: 'top 85%' },
       y: 50, opacity: 0, duration: 0.8,
-      stagger: 0.12,
       ease: 'power3.out'
     });
   }
